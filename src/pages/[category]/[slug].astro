@@ -22,7 +22,6 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <div class="review-kicker"><span>{category.icon} {category.name}</span><span>{article.type}</span><span>Actualizado: {article.updatedAt}</span></div>
       <h1>{article.title}</h1>
       <p class="lead">{article.caseUse}</p>
-      <AffiliateNotice />
 
       <section class="verdict-box">
         <div>
@@ -80,6 +79,7 @@ const related = articles.filter(a => a.category === article.category && a.slug !
 
       <h2 id="veredicto">Veredicto honesto</h2>
       <p>La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, compara primero una alternativa sencilla o de coste contenido. Si lo vas a usar a diario, una opción más completa puede compensar.</p>
+      <AffiliateNotice />
 
       {related.length > 0 && <section class="related"><h2>También puede interesarte</h2><div class="grid grid-3">{related.map(a => <a class="card card-link" href={`/${a.category}/${a.slug}/`}><span class="pill">{a.type}</span><h3>{a.title}</h3><p>{a.description}</p></a>)}</div></section>}
     </article>
