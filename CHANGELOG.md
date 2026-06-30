@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.2.0 — 2026-06-30
+
+- Changed: cambio de marca visible de Casa Resuelta a **Con Buen Ojo**.
+- Changed: claim actualizado a “Productos para casa elegidos con criterio”.
+- Changed: logo textual del header/footer a “OJO” y favicon adaptado a icono de ojo/lupa.
+- Changed: textos legales, contacto, afiliación, metadatos y paquete actualizados con la nueva marca.
+
 ## v1.1.0 — 2026-06-30
 
 - Changed: rediseño visual inspirado en referencias GearLab/comparadores/ofertas: cabecera con búsqueda, barra de categorías, tarjetas tipo ranking, score visual, sidebar editorial y páginas de review con comparativa rápida.
@@ -9,7 +16,7 @@
 
 ## v1.0.0 — 2026-06-30
 
-- Added: primera implementación de Casa Resuelta según SOP.
+- Added: primera implementación de Con Buen Ojo según SOP.
 - Added: home, categorías, metodología, afiliación, legales, contacto, sitemap y robots.
 - Added: 30 URLs iniciales con estructura editorial, tablas comparativas y aviso afiliado.
 - Deployment: Vercel production en https://casa-resuelta.vercel.app/.

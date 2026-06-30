@@ -7,7 +7,7 @@ const featured = top[0];
 const secondary = top.slice(1, 5);
 const categoryList = categories.filter(c => !['hogar','deporte-casa','familia'].includes(c.slug));
 ---
-<BaseLayout title="Casa Resuelta" description="Comparativas y guías de compra para productos útiles de casa: hogar, cocina, climatización, limpieza, terraza, piscina, mascotas y teletrabajo.">
+<BaseLayout title="Con Buen Ojo" description="Comparativas y guías de compra para productos útiles de casa: hogar, cocina, climatización, limpieza, terraza, piscina, mascotas y teletrabajo.">
   <section class="market-hero">
     <div class="container hero-market-grid">
       <div class="hero-copy">
@@ -22,7 +22,7 @@ const categoryList = categories.filter(c => !['hogar','deporte-casa','familia'].
       <aside class="hero-featured-card">
         <span class="deal-label">Guía destacada</span>
         <div class="hero-image">🌬️</div>
-        <div class="store-line"><span>Casa Resuelta</span><strong>Actualizado hoy</strong></div>
+        <div class="store-line"><span>Con Buen Ojo</span><strong>Actualizado hoy</strong></div>
         <h2><a href={`/${featured.category}/${featured.slug}/`}>{featured.title}</a></h2>
         <p>{featured.description}</p>
         <div class="price-row"><strong>Comparativa P1</strong><span>Ranking + criterios + errores</span></div>

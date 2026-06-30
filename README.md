@@ -1,4 +1,4 @@
-# Casa Resuelta
+# Con Buen Ojo
 
 Web editorial de afiliados para hogar práctico: productos útiles, decisiones sencillas.
 
