@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.2 — 2026-06-30
+
+- Changed: barra superior reorientada al comprador: comparar rápido, elegir según la casa y evitar compras que no encajan.
+- Changed: aviso de afiliación en artículos reducido a título visible y botón de “Más info” hacia la página de afiliación.
+
 ## v1.3.1 — 2026-06-30
 
 - Fixed: eliminadas referencias internas/no orientadas al visitante en home, guías, reviews, marcas y páginas legales.
