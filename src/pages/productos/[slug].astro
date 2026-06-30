@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AffiliateNotice from '../../components/AffiliateNotice.astro';
+import { categories } from '../../data/categories';
+import { productBySlug, products } from '../../data/products';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return products.map(product => ({ params: { slug: product.slug }, props: { product } }));
+}
+
+const { product } = Astro.props;
+const category = categories.find(c => c.slug === product.category);
+const related = product.relatedProducts.map(productBySlug).filter(Boolean).slice(0, 3) as typeof products;
+const canonical = `${site.url}/productos/${product.slug}/`;
+const scoreRows = [
+  ['Calidad', product.scores.quality, 'Calidad percibida y solidez de la propuesta.'],
+  ['Calidad-precio', product.scores.priceValue, 'Valor relativo; pendiente de precio sincronizado.'],
+  ['Prestaciones', product.scores.features, 'Funciones útiles frente a alternativas similares.'],
+  ['Facilidad de uso', product.scores.easeOfUse, 'Uso diario sin complicaciones innecesarias.'],
+  ['Durabilidad/confianza', product.scores.durability, 'Confianza editorial según marca, tipo de producto y limitaciones.'],
+  ['Encaje de usuario', product.scores.userFit, 'Ajuste con la intención de compra principal.'],
+  ['Mantenimiento', product.scores.maintenance, 'Costes futuros, limpieza, repuestos o espacio necesario.']
+];
+const schemaJson = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: product.shortDescription,
+  brand: { '@type': 'Brand', name: product.brand },
+  sku: product.asin !== 'dato-pendiente' ? product.asin : product.slug,
+  review: {
+    '@type': 'Review',
+    author: { '@type': 'Organization', name: site.name },
+    reviewRating: { '@type': 'Rating', ratingValue: String(product.overallScore), bestRating: '10', worstRating: '0' },
+    positiveNotes: { '@type': 'ItemList', itemListElement: product.pros.map((name, position) => ({ '@type': 'ListItem', position: position + 1, name })) },
+    negativeNotes: { '@type': 'ItemList', itemListElement: product.cons.map((name, position) => ({ '@type': 'ListItem', position: position + 1, name })) }
+  }
+};
+---
+<BaseLayout title={`${product.name}: análisis y opinión`} description={product.shortDescription} canonical={canonical} schemaJson={schemaJson}>
+  <div class="container product-page-shell">
+    <article class="article product-page">
+      <div class="breadcrumbs"><a href="/">Inicio</a> / <a href={`/${category?.slug}/`}>{category?.name}</a> / {product.name}</div>
+
+      <section class="product-hero">
+        <div class="product-photo" aria-label={`Imagen editorial de ${product.name}`}>
+          <span>{category?.icon ?? '🏠'}</span>
+          <small>{product.brand}</small>
+        </div>
+        <div class="product-hero-copy">
+          <span class="pill">{product.rankingLabel}</span>
+          <h1>{product.name}: análisis y opinión</h1>
+          <p>{product.shortDescription}</p>
+          <div class="product-score-strip">
+            <strong>{product.overallScore}/10</strong>
+            <span>Nota editorial</span>
+          </div>
+          <div class="safe-price-box">
+            <strong>Precio: ver precio actualizado en Amazon</strong>
+            <span>Disponibilidad: {product.availability}</span>
+            <small>No mostramos precio exacto porque todavía no está sincronizado mediante API oficial. El precio aplicable será el mostrado en Amazon en el momento de la compra.</small>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href={product.affiliateUrl} rel="sponsored nofollow noopener" target="_blank">{product.ctaPrimary}</a>
+            <a class="btn btn-secondary" href={product.sourceArticles[0]?.url}>Ver comparativa</a>
+          </div>
+          <AffiliateNotice />
+        </div>
+      </section>
+
+      <section class="product-verdict">
+        <span class="eyebrow">Veredicto rápido</span>
+        <p>Este producto es recomendable si buscas <strong>{product.mainBenefit.toLowerCase()}</strong>. Su punto débil es claro: <strong>{product.mainObjection.toLowerCase()}</strong>. Lo pondría en la lista si tu prioridad coincide con <strong>{product.rankingLabel.toLowerCase()}</strong>; lo descartaría si esa limitación te afecta en el uso diario.</p>
+        <div class="fit-grid">
+          <div><strong>Para quién sí</strong><span>{product.bestFor}</span></div>
+          <div><strong>Para quién no</strong><span>{product.notFor}</span></div>
+          <div><strong>Lo mejor</strong><span>{product.mainBenefit}</span></div>
+          <div><strong>Lo peor</strong><span>{product.mainObjection}</span></div>
+        </div>
+      </section>
+
+      <h2 id="caracteristicas">Características clave</h2>
+      <div class="spec-table">
+        {product.specs.map(spec => <div><strong>{spec.label}</strong><span>{spec.value}</span></div>)}
+      </div>
+
+      <h2 id="analisis">Análisis editorial</h2>
+      <p>{product.editorialSummary}</p>
+      <p>Esta ficha está pensada para decidir, no para rellenar SEO: separa recomendación, objeción, puntuación y precio seguro. Si falta un dato comercial actualizado, se marca como pendiente y no se convierte en una afirmación pública.</p>
+
+      <h2 id="pros-contras">Pros y contras</h2>
+      <div class="pros-cons-grid">
+        <section><h3>Pros</h3><ul class="check-list">{product.pros.map(pro => <li>{pro}</li>)}</ul></section>
+        <section><h3>Contras</h3><ul class="check-list con-list">{product.cons.map(con => <li>{con}</li>)}</ul></section>
+      </div>
+
+      <h2 id="puntuacion">Puntuación por criterios</h2>
+      <p class="microcopy">{product.scoreExplanation}</p>
+      <div class="score-list">
+        {scoreRows.map(([label, score, comment]) => <div class="score-row"><strong>{label}</strong><span class="score-bar"><i style={`width:${Number(score) * 10}%`}></i></span><b>{score}/10</b><small>{comment}</small></div>)}
+      </div>
+
+      {related.length > 0 && <section class="related"><h2>Comparativa con alternativas</h2><div class="grid grid-3">{related.map(alt => <a class="card card-link" href={`/productos/${alt.slug}/`}><span class="pill">{alt.rankingLabel}</span><h3>{alt.name}</h3><p>{alt.shortDescription}</p><strong>{alt.overallScore}/10</strong></a>)}</div></section>}
+
+      <h2 id="opinion">Opinión final</h2>
+      <p>Lo recomendaría si resuelve tu caso concreto y si, al comprobar Amazon, precio, envío, vendedor y disponibilidad siguen encajando. No lo compraría solo por aparecer en un ranking: revisa el punto débil, compáralo con las alternativas y confirma las condiciones vigentes antes de pagar.</p>
+
+      <h2 id="faq">Preguntas frecuentes</h2>
+      <div class="faq-list">{product.faqs.map(faq => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div>
+
+      <section class="related"><h2>Donde aparece</h2><div class="grid grid-3">{product.sourceArticles.map(a => <a class="card card-link" href={a.url}><span class="pill">{a.keyword}</span><h3>{a.title}</h3><p>Ver ranking, comparativa o guía donde se recomienda este producto.</p></a>)}</div></section>
+    </article>
+
+    <aside class="toc">
+      <h3>En esta ficha</h3>
+      <a href="#caracteristicas">Características</a>
+      <a href="#analisis">Análisis</a>
+      <a href="#pros-contras">Pros y contras</a>
+      <a href="#puntuacion">Puntuación</a>
+      <a href="#opinion">Opinión final</a>
+      <a href="#faq">FAQ</a>
+    </aside>
+  </div>
+</BaseLayout>

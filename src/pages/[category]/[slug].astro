@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AffiliateNotice from '../../components/AffiliateNotice.astro';
 import { categories } from '../../data/categories';
 import { articles } from '../../data/articles';
+import { productUrl } from '../../data/products';
 
 export function getStaticPaths() {
   return articles.map(article => ({
@@ -34,7 +35,7 @@ const related = articles.filter(a => a.category === article.category && a.slug !
 
       <h2 id="resumen">Top 3 recomendado</h2>
       <div class="top3-grid">
-        {article.products.map((p, i) => <a class="top3-card" href={p.url} rel="sponsored nofollow noopener" target="_blank">
+        {article.products.map((p, i) => <a class="top3-card" href={productUrl(p.name)}>
           <span>{i === 0 ? 'Mejor global' : i === 1 ? 'Calidad-precio' : 'Alternativa premium'}</span>
           <strong>{p.name}</strong>
           <small>{p.bestFor}</small>
@@ -48,11 +49,11 @@ const related = articles.filter(a => a.category === article.category && a.slug !
           <div class="product-visual">{category.icon}</div>
           <div class="product-copy">
             <div class="deal-meta"><span>{p.bestFor}</span><span>{p.price}</span></div>
-            <h3>{p.name}</h3>
+            <h3><a href={productUrl(p.name)}>{p.name}</a></h3>
             <p>{p.strength}</p>
             <small>Punto débil: {p.limitation}</small>
           </div>
-          <a class="btn btn-primary" href={p.url} rel="sponsored nofollow noopener" target="_blank">{p.cta ?? 'Ver precio en Amazon'}</a>
+          <div class="product-actions"><a class="btn btn-secondary" href={productUrl(p.name)}>Ver análisis</a><a class="btn btn-primary" href={p.url} rel="sponsored nofollow noopener" target="_blank">{p.cta ?? 'Ver precio en Amazon'}</a></div>
         </div>)}
       </div>
       <p class="microcopy">No publicamos precios fijos para evitar datos desactualizados. Antes de comprar, revisa en Amazon el precio vigente, stock, vendedor, envío y condiciones.</p>
