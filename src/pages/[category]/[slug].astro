@@ -68,7 +68,7 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       </div>
 
       <h2 id="perfil">Recomendaciones por perfil</h2>
-      {article.products.map(p => <section class="profile-block"><h3>{p.name}</h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si la limitación principal es crítica en tu caso: {p.limitation}.</p></section>)}
+      {article.products.map(p => <section class="profile-block"><h3>{p.name}</h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si la limitación principal es crítica en tu caso: {p.limitation}</p></section>)}
 
       <h2 id="errores">Errores comunes al comprar</h2>
       <ul class="check-list">
