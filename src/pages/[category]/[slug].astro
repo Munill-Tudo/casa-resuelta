@@ -27,10 +27,10 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <section class="verdict-box">
         <div>
           <span class="eyebrow">Veredicto rápido</span>
-          <h2>Top 3 real para comparar antes de ir a Amazon.</h2>
-          <p>Para <strong>{article.keyword}</strong>, empezaría comparando <strong>{article.products[0]?.name}</strong> si buscas equilibrio, <strong>{article.products[1]?.name}</strong> si quieres ajustar presupuesto y <strong>{article.products[2]?.name}</strong> si vas a darle uso frecuente o necesitas más prestaciones.</p>
+          <h2>Tres opciones para comparar sin perder tiempo.</h2>
+          <p>Para <strong>{article.keyword}</strong>, compara <strong>{article.products[0]?.name}</strong> si buscas una opción equilibrada, <strong>{article.products[1]?.name}</strong> si quieres ajustar el presupuesto y <strong>{article.products[2]?.name}</strong> si necesitas más prestaciones.</p>
         </div>
-        <div class="score-big"><strong>91</strong><span>criterio editorial</span></div>
+        <div class="verdict-badge"><strong>Top 3</strong><span>selección recomendada</span></div>
       </section>
 
       <h2 id="resumen">Top 3 recomendado</h2>
@@ -56,19 +56,19 @@ const related = articles.filter(a => a.category === article.category && a.slug !
           <a class="btn btn-primary" href={p.url} rel="sponsored nofollow noopener" target="_blank">{p.cta ?? 'Ver precio en Amazon'}</a>
         </div>)}
       </div>
-      <p class="microcopy">No mostramos precios manuales para evitar datos desactualizados. El botón abre una búsqueda/producto en Amazon y allí debes comprobar precio, stock, vendedor, envío y condiciones.</p>
+      <p class="microcopy">No publicamos precios fijos para evitar datos desactualizados. Antes de comprar, revisa en Amazon el precio vigente, stock, vendedor, envío y condiciones.</p>
 
-      <h2 id="seleccion">Cómo hemos seleccionado</h2>
-      <p>Aplicamos el sistema TSA evolucionado del informe: intención transaccional, producto real comprable, utilidad en casa, comparación por necesidad, mantenimiento, limitaciones y posibilidad de enlazar con guías inbound. En esta fase los enlaces van a Amazon sin tag definitivo; cuando el programa esté configurado se sustituirán por URLs afiliadas verificadas.</p>
+      <h2 id="seleccion">Qué hemos tenido en cuenta</h2>
+      <p>La selección prioriza productos útiles para el uso indicado, diferencias claras entre modelos y limitaciones que conviene conocer antes de comprar. La idea es que puedas descartar rápido lo que no encaja contigo.</p>
       <div class="criteria-grid">
-        <div><strong>Uso real</strong><span>Qué problema resuelve y en qué vivienda encaja.</span></div>
-        <div><strong>Limitaciones</strong><span>Ruido, espacio, mantenimiento, consumo o instalación.</span></div>
-        <div><strong>Comparación</strong><span>Opciones equilibrada, económica y completa.</span></div>
-        <div><strong>Transparencia</strong><span>La comisión no sustituye el criterio editorial.</span></div>
+        <div><strong>Uso principal</strong><span>Qué necesidad resuelve y en qué tipo de casa encaja mejor.</span></div>
+        <div><strong>Punto fuerte</strong><span>La razón práctica por la que cada producto merece estar en la comparativa.</span></div>
+        <div><strong>Punto débil</strong><span>La limitación que debes revisar antes de decidir.</span></div>
+        <div><strong>Alternativa adecuada</strong><span>Cuándo elegir una opción sencilla, calidad-precio o más completa.</span></div>
       </div>
 
       <h2 id="perfil">Recomendaciones por perfil</h2>
-      {article.products.map(p => <section class="profile-block"><h3>{p.name}</h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si la limitación principal es crítica en tu caso: {p.limitation}</p></section>)}
+      {article.products.map(p => <section class="profile-block"><h3>{p.name}</h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si esta limitación es importante para ti: {p.limitation}</p></section>)}
 
       <h2 id="errores">Errores comunes al comprar</h2>
       <ul class="check-list">
@@ -87,7 +87,7 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <h3>En esta guía</h3>
       <a href="#resumen">Top 3 recomendado</a>
       <a href="#comparativa">Comparativa rápida</a>
-      <a href="#seleccion">Cómo seleccionamos</a>
+      <a href="#seleccion">Qué miramos</a>
       <a href="#perfil">Por perfil</a>
       <a href="#errores">Errores comunes</a>
       <a href="#veredicto">Veredicto</a>

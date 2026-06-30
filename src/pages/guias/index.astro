@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { articles } from '../../data/articles';
 const items = articles.filter(a => a.type.toLowerCase().includes('guía'));
 ---
-<BaseLayout title="Guías de compra" description="Guías inbound e informacionales que ayudan a entender qué comprar y qué evitar.">
-<section class="category-hero"><div class="container"><span class="eyebrow">Capa inbound</span><h1>Guías de compra y dudas frecuentes</h1><p class="lead">Contenido para usuarios que aún no saben qué producto comprar: factores clave, errores, presupuesto y enlaces hacia páginas monetizables.</p></div></section>
+<BaseLayout title="Guías de compra" description="Guías prácticas para entender qué comprar y qué evitar.">
+<section class="category-hero"><div class="container"><span class="eyebrow">Guías prácticas</span><h1>Guías de compra y dudas frecuentes</h1><p class="lead">Factores clave, errores habituales y recomendaciones para elegir productos de casa con más seguridad.</p></div></section>
 <section class="section"><div class="container grid grid-3">{items.map(a => <a class="card card-link" href={`/${a.category}/${a.slug}/`}><span class="pill">{a.type}</span><h3>{a.title}</h3><p>{a.description}</p></a>)}</div></section>
 </BaseLayout>

@@ -22,10 +22,10 @@ const categoryList = categories.filter(c => !['hogar','deporte-casa','familia'].
       <aside class="hero-featured-card">
         <span class="deal-label">Guía destacada</span>
         <div class="hero-image">🌬️</div>
-        <div class="store-line"><span>Con Buen Ojo</span><strong>Actualizado hoy</strong></div>
+        <div class="store-line"><span>Con Buen Ojo</span><strong>Guía actualizada</strong></div>
         <h2><a href={`/${featured.category}/${featured.slug}/`}>{featured.title}</a></h2>
         <p>{featured.description}</p>
-        <div class="price-row"><strong>Comparativa P1</strong><span>Ranking + criterios + errores</span></div>
+        <div class="price-row"><strong>Top recomendado</strong><span>Comparativa + errores a evitar</span></div>
         <a class="btn btn-primary full" href={`/${featured.category}/${featured.slug}/`}>Leer análisis</a>
       </aside>
     </div>
@@ -51,13 +51,13 @@ const categoryList = categories.filter(c => !['hogar','deporte-casa','familia'].
           <div class="tabs"><span class="active">Destacadas</span><span>Populares</span><span>Nuevas</span></div>
         </div>
         <div class="deal-list">
-          {top.map((a, i) => {
+          {top.map((a) => {
             const cat = categories.find(c => c.slug === a.category);
             return <a class="deal-card" href={`/${a.category}/${a.slug}/`}>
-              <div class="deal-vote"><strong>{92 - i}</strong><span>score</span></div>
+              <div class="deal-vote"><strong>✓</strong><span>guía</span></div>
               <div class="deal-thumb">{cat?.icon ?? '🏠'}</div>
               <div class="deal-body">
-                <div class="deal-meta"><span>{cat?.name}</span><span>{a.type}</span><span>{a.priority}</span></div>
+                <div class="deal-meta"><span>{cat?.name}</span><span>{a.type}</span></div>
                 <h3>{a.title}</h3>
                 <p>{a.description}</p>
                 <div class="deal-tags"><span>Para quién sí/no</span><span>Tabla comparativa</span><span>Errores comunes</span></div>
@@ -70,7 +70,7 @@ const categoryList = categories.filter(c => !['hogar','deporte-casa','familia'].
       <aside class="sidebar">
         <div class="side-card testing-card">
           <h3>Reviews en las que puedes confiar</h3>
-          <p>Inspirado en el modelo editorial de laboratorio: criterios visibles, comparación lado a lado, limitaciones y alternativas por caso de uso.</p>
+          <p>Comparamos productos por uso real, limitaciones y alternativas para que puedas decidir sin depender solo del ranking de una tienda.</p>
           <ul>
             <li>Sin “mejor producto” universal.</li>
             <li>Sin chollos sin contexto.</li>
@@ -87,10 +87,10 @@ const categoryList = categories.filter(c => !['hogar','deporte-casa','familia'].
 
   <section class="section proof-band">
     <div class="container proof-grid">
-      <div><strong>30</strong><span>URLs iniciales</span></div>
-      <div><strong>53</strong><span>páginas en sitemap</span></div>
-      <div><strong>14</strong><span>categorías base</span></div>
-      <div><strong>100%</strong><span>transparencia afiliada</span></div>
+      <div><strong>Sin ruido</strong><span>comparativas directas</span></div>
+      <div><strong>Sin precios fijos</strong><span>evitamos datos obsoletos</span></div>
+      <div><strong>Por uso</strong><span>recomendaciones según necesidad</span></div>
+      <div><strong>Claro</strong><span>pros, contras y límites</span></div>
     </div>
   </section>
 </BaseLayout>

@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.1 — 2026-06-30
+
+- Fixed: eliminadas referencias internas/no orientadas al visitante en home, guías, reviews, marcas y páginas legales.
+- Changed: bloque de metodología en artículos reescrito como criterios de compra visibles para usuario final.
+- Changed: métricas internas de la home sustituidas por beneficios comprensibles para el comprador.
+
 ## v1.3.0 — 2026-06-30
 
 - Changed: contenido adaptado al informe técnico TSA evolucionado: capa transaccional + capa inbound, criterios de decisión, aviso Amazon y enlaces `rel="sponsored nofollow noopener"`.
