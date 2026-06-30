@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.1.0 — 2026-06-30
+
+- Changed: rediseño visual inspirado en referencias GearLab/comparadores/ofertas: cabecera con búsqueda, barra de categorías, tarjetas tipo ranking, score visual, sidebar editorial y páginas de review con comparativa rápida.
+- Changed: home orientada a marketplace editorial/ecommerce, menos landing genérica y más navegación por categorías/productos.
+- Changed: plantilla de artículos con veredicto, score, cards de producto y criterios visibles.
+- Verification: `npm run build` OK; 53 páginas generadas; revisión local en home y artículo P1.
+
 ## v1.0.0 — 2026-06-30
 
 - Added: primera implementación de Casa Resuelta según SOP.

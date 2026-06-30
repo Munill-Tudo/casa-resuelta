@@ -2,6 +2,95 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { categories } from '../data/categories';
 import { articles } from '../data/articles';
-const top = articles.filter(a => a.priority === 'P1').slice(0, 9);
+const top = articles.filter(a => a.priority === 'P1').slice(0, 10);
+const featured = top[0];
+const secondary = top.slice(1, 5);
+const categoryList = categories.filter(c => !['hogar','deporte-casa','familia'].includes(c.slug));
 ---
-<BaseLayout title="Casa Resuelta" description="Productos útiles, decisiones sencillas. Guías prácticas para elegir mejor productos de hogar, cocina, limpieza, climatización, terraza, piscina, mascotas y teletrabajo."><section class="hero"><div class="container"><span class="eyebrow">Nueva guía editorial de hogar práctico</span><h1>Productos útiles para casa, elegidos con criterio.</h1><p class="lead">Casa Resuelta ayuda a decidir sin perder horas entre rankings vacíos: comparativas claras, errores que evitar, para quién sí, para quién no y alternativas por presupuesto.</p><div class="hero-actions"><a class="btn btn-primary" href="/categorias/">Explorar categorías</a><a class="btn btn-secondary" href="/metodologia/">Cómo recomendamos</a></div></div></section><section class="section soft"><div class="container"><h2>No va de chollos. Va de resolver problemas de casa.</h2><p class="section-intro">Ordenar una cocina pequeña, dormir con calor, limpiar pelo de mascota, preparar una terraza o mejorar el teletrabajo: cada guía parte de un caso real de uso.</p><div class="grid grid-3"><div class="card"><h3>Para quién es</h3><p>Personas que quieren comprar con cabeza, entender límites y elegir según vivienda, presupuesto y frecuencia de uso.</p></div><div class="card"><h3>Para quién no es</h3><p>No somos una lista automática de ofertas ni prometemos “el mejor producto definitivo” sin contexto.</p></div><div class="card"><h3>Cómo monetiza</h3><p>Usamos enlaces afiliados de forma transparente. La comisión no debe sustituir el criterio editorial.</p></div></div></div></section><section class="section"><div class="container"><h2>Categorías principales</h2><p class="section-intro">La arquitectura sigue el SOP: hogar práctico como marca amplia, con verticales de alto potencial evergreen y estacional.</p><div class="grid grid-3">{categories.filter(c => !['hogar','deporte-casa','familia'].includes(c.slug)).map(c => <a class="card card-link" href={`/${c.slug}/`}><span class="badge">{c.icon} {c.name}</span><h3>{c.name}</h3><p>{c.description}</p></a>)}</div></div></section><section class="section soft"><div class="container"><h2>30 páginas iniciales publicadas</h2><p class="section-intro">La web arranca con el backlog mínimo del SOP: rankings, guías prácticas, comparativas y selección editorial.</p><div class="grid grid-3">{top.map(a => <a class="card card-link" href={a.url}><div class="meta"><span class="pill">{a.type}</span><span class="pill">{a.priority}</span></div><h3>{a.title}</h3><p>{a.description}</p></a>)}</div><p style="margin-top:24px"><a class="btn btn-secondary" href="/categorias/">Ver las 30 URLs</a></p></div></section><section class="section"><div class="container"><h2>Sistema editorial aplicado</h2><div class="score"><div><strong>30</strong><span>contenidos iniciales</span></div><div><strong>13</strong><span>categorías base</span></div><div><strong>100%</strong><span>con aviso afiliado</span></div><div><strong>SEO</strong><span>sitemap + URLs limpias</span></div></div></div></section></BaseLayout>
+<BaseLayout title="Casa Resuelta" description="Comparativas y guías de compra para productos útiles de casa: hogar, cocina, climatización, limpieza, terraza, piscina, mascotas y teletrabajo.">
+  <section class="market-hero">
+    <div class="container hero-market-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Casa práctica · análisis editorial</span>
+        <h1>Compara antes de comprar productos para casa.</h1>
+        <p class="lead">Guías visuales, rankings y tablas claras para elegir ventiladores, robots, organizadores, luces solares, herramientas y productos útiles sin caer en rankings vacíos.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/categorias/">Ver categorías</a>
+          <a class="btn btn-secondary" href="/metodologia/">Cómo recomendamos</a>
+        </div>
+      </div>
+      <aside class="hero-featured-card">
+        <span class="deal-label">Guía destacada</span>
+        <div class="hero-image">🌬️</div>
+        <div class="store-line"><span>Casa Resuelta</span><strong>Actualizado hoy</strong></div>
+        <h2><a href={`/${featured.category}/${featured.slug}/`}>{featured.title}</a></h2>
+        <p>{featured.description}</p>
+        <div class="price-row"><strong>Comparativa P1</strong><span>Ranking + criterios + errores</span></div>
+        <a class="btn btn-primary full" href={`/${featured.category}/${featured.slug}/`}>Leer análisis</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section category-dock-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Categorías populares</h2>
+        <a href="/categorias/">Ver todas</a>
+      </div>
+      <div class="category-dock">
+        {categoryList.slice(0, 11).map(c => <a class="category-tile" href={`/${c.slug}/`}><span>{c.icon}</span><strong>{c.name}</strong><small>{c.description}</small></a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section deals-layout">
+    <div class="container page-grid">
+      <main>
+        <div class="section-head tabs-head">
+          <h2>Guías y comparativas recomendadas</h2>
+          <div class="tabs"><span class="active">Destacadas</span><span>Populares</span><span>Nuevas</span></div>
+        </div>
+        <div class="deal-list">
+          {top.map((a, i) => {
+            const cat = categories.find(c => c.slug === a.category);
+            return <a class="deal-card" href={`/${a.category}/${a.slug}/`}>
+              <div class="deal-vote"><strong>{92 - i}</strong><span>score</span></div>
+              <div class="deal-thumb">{cat?.icon ?? '🏠'}</div>
+              <div class="deal-body">
+                <div class="deal-meta"><span>{cat?.name}</span><span>{a.type}</span><span>{a.priority}</span></div>
+                <h3>{a.title}</h3>
+                <p>{a.description}</p>
+                <div class="deal-tags"><span>Para quién sí/no</span><span>Tabla comparativa</span><span>Errores comunes</span></div>
+              </div>
+              <div class="deal-cta"><strong>{a.type === 'Ranking' ? 'Top opciones' : 'Guía clara'}</strong><span>Leer ahora</span></div>
+            </a>;
+          })}
+        </div>
+      </main>
+      <aside class="sidebar">
+        <div class="side-card testing-card">
+          <h3>Reviews en las que puedes confiar</h3>
+          <p>Inspirado en el modelo editorial de laboratorio: criterios visibles, comparación lado a lado, limitaciones y alternativas por caso de uso.</p>
+          <ul>
+            <li>Sin “mejor producto” universal.</li>
+            <li>Sin chollos sin contexto.</li>
+            <li>Con aviso afiliado claro.</li>
+          </ul>
+        </div>
+        <div class="side-card popular-card">
+          <h3>Más buscado</h3>
+          {secondary.map(a => <a href={`/${a.category}/${a.slug}/`}><span>{a.type}</span>{a.title}</a>)}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section proof-band">
+    <div class="container proof-grid">
+      <div><strong>30</strong><span>URLs iniciales</span></div>
+      <div><strong>53</strong><span>páginas en sitemap</span></div>
+      <div><strong>14</strong><span>categorías base</span></div>
+      <div><strong>100%</strong><span>transparencia afiliada</span></div>
+    </div>
+  </section>
+</BaseLayout>

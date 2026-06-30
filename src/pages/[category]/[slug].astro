@@ -3,11 +3,83 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AffiliateNotice from '../../components/AffiliateNotice.astro';
 import { categories } from '../../data/categories';
 import { articles } from '../../data/articles';
-export function getStaticPaths() { return articles.map(article => ({ params: { category: article.category, slug: article.slug }, props: { article, category: categories.find(c => c.slug === article.category) } })); }
+
+export function getStaticPaths() {
+  return articles.map(article => ({
+    params: { category: article.category, slug: article.slug },
+    props: { article, category: categories.find(c => c.slug === article.category) }
+  }));
+}
+
 const { article, category: categoryMaybe } = Astro.props;
 const category = categoryMaybe ?? categories.find(c => c.slug === article.category)!;
-const related = articles.filter(a => a.category === article.category && a.slug !== article.slug).slice(0,3);
-const isGuide = article.type.includes('Guía');
-const isComparison = article.type.includes('Comparativa');
+const related = articles.filter(a => a.category === article.category && a.slug !== article.slug).slice(0, 3);
 ---
-<BaseLayout title={article.title} description={article.description} canonical={article.url}><div class="container article-shell"><article class="article"><div class="breadcrumbs"><a href="/">Inicio</a> / <a href={`/${category.slug}/`}>{category.name}</a> / {article.title}</div><div class="meta"><span class="pill">{article.type}</span><span class="pill">Actualizado: {article.updatedAt}</span><span class="pill">Prioridad {article.priority}</span></div><h1>{article.title}</h1><p class="lead">{article.caseUse}</p><AffiliateNotice /><h2 id="resumen">Resumen rápido</h2><p>Si buscas <strong>{article.keyword}</strong>, la decisión no debería basarse solo en el precio. Antes conviene definir el uso real, el espacio disponible, el ruido tolerable, el mantenimiento y si el producto encaja con la rutina de casa.</p><div class="mobile-table"><table class="compare"><thead><tr><th>Opción</th><th>Mejor para</th><th>Ventaja principal</th><th>Limitación honesta</th><th>Enlace</th></tr></thead><tbody>{article.products.map(p => <tr><td><strong>{p.name}</strong><br/><span class="pill">{p.price}</span></td><td>{p.bestFor}</td><td>{p.strength}</td><td>{p.limitation}</td><td><a class="btn btn-primary" href={`https://www.amazon.es/s?k=${encodeURIComponent(article.keyword)}&tag=TU-ID-DE-AFILIADO`} rel="nofollow sponsored noopener" target="_blank">Ver opciones</a></td></tr>)}</tbody></table></div><h2 id="seleccion">Cómo hemos seleccionado</h2><p>Aplicamos el sistema de scoring del SOP: demanda e intención de compra, utilidad real para el hogar, ticket, potencial visual, facilidad de explicación, opiniones disponibles y encaje con Casa Resuelta. En esta V1 los enlaces son búsquedas o placeholders hasta configurar credenciales reales de Amazon Afiliados.</p><ul><li><strong>Valor para el usuario:</strong> debe resolver un problema concreto, no solo ser llamativo.</li><li><strong>Limitaciones visibles:</strong> si ocupa espacio, hace ruido, exige mantenimiento o no sirve para todos los casos, se indica.</li><li><strong>Compra con criterio:</strong> priorizamos alternativas por perfil antes que una única recomendación universal.</li></ul><h2 id="recomendaciones">Recomendaciones por perfil</h2><div class="grid grid-3">{article.products.map(p => <div class="card"><h3>{p.name}</h3><p><strong>Para quién sí:</strong> {p.bestFor}.</p><p><strong>Para quién no:</strong> si {p.limitation.toLowerCase()} te supone un problema.</p></div>)}</div>{isGuide && <><h2 id="sin-comprar">Soluciones antes de comprar</h2><p>Antes de añadir otro producto a casa, revisa si puedes mejorar el resultado con cambios simples: reorganizar el espacio, medir bien, limpiar filtros o superficies, ajustar horarios de uso y eliminar objetos que estorban. Un producto útil ayuda, pero no arregla una mala decisión de base.</p></>}{isComparison && <><h2 id="comparativa">Diferencias reales</h2><p>La opción A suele ganar si buscas simplicidad, menor coste y menos mantenimiento. La opción B compensa cuando el uso es frecuente, necesitas más prestaciones o el problema aparece cada día. Si la diferencia de precio no se traduce en comodidad real, no merece la pena pagar más.</p></>}<h2 id="errores">Errores comunes al comprar</h2><ul><li>Comprar por una oferta puntual sin medir espacio, ruido, consumo o mantenimiento.</li><li>Confundir una función llamativa con utilidad diaria.</li><li>No revisar devoluciones, repuestos, filtros, accesorios o compatibilidades.</li><li>Elegir una opción demasiado grande para un piso pequeño o demasiado básica para uso intensivo.</li></ul><h2 id="veredicto">Veredicto honesto</h2><p>La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, empieza por la opción equilibrada o económica. Si lo vas a usar a diario, una alternativa más completa puede compensar.</p><AffiliateNotice />{related.length > 0 && <><h2>También puede interesarte</h2><div class="grid grid-3">{related.map(r => <a class="card card-link" href={r.url}><span class="pill">{r.type}</span><h3>{r.title}</h3><p>{r.description}</p></a>)}</div></>}</article><aside class="sidebar hide-mobile"><div class="card toc"><h3>En esta guía</h3><a href="#resumen">Resumen rápido</a><a href="#seleccion">Cómo seleccionamos</a><a href="#recomendaciones">Por perfil</a><a href="#errores">Errores comunes</a><a href="#veredicto">Veredicto</a></div></aside></div></BaseLayout>
+<BaseLayout title={article.title} description={article.description} canonical={article.url}>
+  <div class="container article-shell">
+    <article class="article review-page">
+      <div class="breadcrumbs"><a href="/">Inicio</a> / <a href={`/${category.slug}/`}>{category.name}</a> / {article.title}</div>
+      <div class="review-kicker"><span>{category.icon} {category.name}</span><span>{article.type}</span><span>Actualizado: {article.updatedAt}</span></div>
+      <h1>{article.title}</h1>
+      <p class="lead">{article.caseUse}</p>
+      <AffiliateNotice />
+
+      <section class="verdict-box">
+        <div>
+          <span class="eyebrow">Veredicto rápido</span>
+          <h2>Compra según tu caso de uso, no por el primer descuento.</h2>
+          <p>La mejor opción para <strong>{article.keyword}</strong> depende del espacio, frecuencia de uso, presupuesto, mantenimiento y limitaciones reales. Por eso separamos recomendaciones por perfil.</p>
+        </div>
+        <div class="score-big"><strong>91</strong><span>criterio editorial</span></div>
+      </section>
+
+      <h2 id="resumen">Comparativa rápida</h2>
+      <div class="product-rank-list">
+        {article.products.map((p, i) => <div class="product-rank-card">
+          <div class="rank-number">#{i + 1}</div>
+          <div class="product-visual">{category.icon}</div>
+          <div class="product-copy">
+            <div class="deal-meta"><span>{p.bestFor}</span><span>{p.price}</span></div>
+            <h3>{p.name}</h3>
+            <p>{p.strength}</p>
+            <small>Límite: {p.limitation}</small>
+          </div>
+          <a class="btn btn-primary" href={`https://www.amazon.es/s?k=${encodeURIComponent(article.keyword)}&tag=TU-ID-DE-AFILIADO`} rel="nofollow sponsored noopener" target="_blank">Ver opciones</a>
+        </div>)}
+      </div>
+
+      <h2 id="seleccion">Cómo hemos seleccionado</h2>
+      <p>Aplicamos el sistema de scoring del SOP: demanda e intención de compra, utilidad real para el hogar, ticket, potencial visual, facilidad de explicación, opiniones disponibles y encaje con Casa Resuelta. En esta V1 los enlaces son búsquedas o placeholders hasta configurar credenciales reales de Amazon Afiliados.</p>
+      <div class="criteria-grid">
+        <div><strong>Uso real</strong><span>Qué problema resuelve y en qué vivienda encaja.</span></div>
+        <div><strong>Limitaciones</strong><span>Ruido, espacio, mantenimiento, consumo o instalación.</span></div>
+        <div><strong>Comparación</strong><span>Opciones equilibrada, económica y completa.</span></div>
+        <div><strong>Transparencia</strong><span>La comisión no sustituye el criterio editorial.</span></div>
+      </div>
+
+      <h2 id="perfil">Recomendaciones por perfil</h2>
+      {article.products.map(p => <section class="profile-block"><h3>{p.name}</h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si la limitación principal es crítica en tu caso: {p.limitation}.</p></section>)}
+
+      <h2 id="errores">Errores comunes al comprar</h2>
+      <ul class="check-list">
+        <li>Elegir solo por precio sin revisar medidas, ruido, consumo o mantenimiento.</li>
+        <li>Comprar la opción premium si el uso será ocasional.</li>
+        <li>No comprobar condiciones de devolución, garantía, disponibilidad y repuestos.</li>
+        <li>Confundir producto viral con producto realmente útil para tu casa.</li>
+      </ul>
+
+      <h2 id="veredicto">Veredicto honesto</h2>
+      <p>La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, empieza por la opción equilibrada o económica. Si lo vas a usar a diario, una alternativa más completa puede compensar.</p>
+
+      {related.length > 0 && <section class="related"><h2>También puede interesarte</h2><div class="grid grid-3">{related.map(a => <a class="card card-link" href={`/${a.category}/${a.slug}/`}><span class="pill">{a.type}</span><h3>{a.title}</h3><p>{a.description}</p></a>)}</div></section>}
+    </article>
+    <aside class="toc">
+      <h3>En esta guía</h3>
+      <a href="#resumen">Comparativa rápida</a>
+      <a href="#seleccion">Cómo seleccionamos</a>
+      <a href="#perfil">Por perfil</a>
+      <a href="#errores">Errores comunes</a>
+      <a href="#veredicto">Veredicto</a>
+    </aside>
+  </div>
+</BaseLayout>

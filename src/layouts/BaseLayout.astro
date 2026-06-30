@@ -1,7 +1,68 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import { categories } from '../data/categories';
 const { title = site.name, description = site.description, canonical } = Astro.props;
 const pageTitle = title === site.name ? site.name : `${title} | ${site.name}`;
+const navCats = categories.filter(c => ['climatizacion','cocina','limpieza','jardin-terraza','piscina','bricolaje','tecnologia-util','mascotas'].includes(c.slug));
 ---
-<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{pageTitle}</title><meta name="description" content={description}/>{canonical && <link rel="canonical" href={canonical}/>}<link rel="icon" href="/favicon.svg"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/><meta property="og:title" content={pageTitle}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/></head><body><header class="site-header"><div class="container nav"><a class="brand" href="/"><span class="logo">🏠</span><span>Casa Resuelta</span></a><nav class="nav-links"><a href="/categorias/">Categorías</a><a href="/metodologia/">Metodología</a><a href="/afiliacion/">Afiliación</a><a href="/contacto/">Contacto</a><a class="btn btn-primary" href="/selecciones/productos-utiles-casa-menos-30-euros/">Ver selección</a></nav></div></header><main><slot /></main><footer class="footer"><div class="container grid grid-3"><div><a class="brand" href="/"><span class="logo">🏠</span><span>Casa Resuelta</span></a><p>Productos útiles, decisiones sencillas. Recomendaciones prácticas para casa con criterio editorial y transparencia afiliada.</p></div><div><h3>Guías</h3><p><a href="/climatizacion/">Climatización</a><br/><a href="/cocina/">Cocina</a><br/><a href="/limpieza/">Limpieza</a><br/><a href="/jardin-terraza/">Jardín y terraza</a></p></div><div><h3>Transparencia</h3><p><a href="/metodologia/">Metodología</a><br/><a href="/afiliacion/">Afiliación</a><br/><a href="/aviso-legal/">Aviso legal</a><br/><a href="/privacidad/">Privacidad</a><br/><a href="/cookies/">Cookies</a></p></div></div></footer></body></html>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto+Slab:wght@600;700;800&display=swap" rel="stylesheet" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="/" aria-label="Casa Resuelta">
+          <span class="brand-mark">CR</span>
+          <span class="brand-text"><strong>Casa Resuelta</strong><small>Reviews y comparativas útiles</small></span>
+        </a>
+        <form class="search-box" action="/categorias/">
+          <input type="search" placeholder="¿Qué producto de casa estás comparando?" aria-label="Buscar" />
+          <button type="submit">Buscar</button>
+        </form>
+        <a class="submit-deal" href="/selecciones/productos-utiles-casa-menos-30-euros/">Ver selección</a>
+      </div>
+      <nav class="catbar" aria-label="Categorías principales">
+        <div class="container catbar-scroll">
+          <a href="/categorias/">Todas</a>
+          {navCats.map(c => <a href={`/${c.slug}/`}>{c.name}</a>)}
+          <a href="/metodologia/">Cómo probamos</a>
+          <a href="/afiliacion/">Afiliación</a>
+        </div>
+      </nav>
+      <div class="trust-strip">
+        <div class="container">Análisis editorial · comparativas lado a lado · enlaces afiliados transparentes · sin promesas vacías</div>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="/"><span class="brand-mark">CR</span><span class="brand-text"><strong>Casa Resuelta</strong><small>Productos útiles, decisiones sencillas</small></span></a>
+          <p>Guías de compra y comparativas para elegir productos de hogar con criterio, límites claros y transparencia afiliada.</p>
+        </div>
+        <div>
+          <h3>Comparativas</h3>
+          <p><a href="/climatizacion/">Climatización</a><br /><a href="/cocina/">Cocina</a><br /><a href="/limpieza/">Limpieza</a><br /><a href="/jardin-terraza/">Jardín y terraza</a></p>
+        </div>
+        <div>
+          <h3>Confianza</h3>
+          <p><a href="/metodologia/">Metodología</a><br /><a href="/afiliacion/">Afiliación</a><br /><a href="/aviso-legal/">Aviso legal</a><br /><a href="/privacidad/">Privacidad</a><br /><a href="/cookies/">Cookies</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
