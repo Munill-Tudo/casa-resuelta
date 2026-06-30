@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://casa-resuelta.vercel.app/sitemap.xml

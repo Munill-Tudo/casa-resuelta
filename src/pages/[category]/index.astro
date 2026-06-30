@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories } from '../../data/categories';
+import { articles } from '../../data/articles';
+export function getStaticPaths() { return categories.map(category => ({ params: { category: category.slug }, props: { category } })); }
+const { category } = Astro.props;
+const items = articles.filter(a => a.category === category.slug);
+---
+<BaseLayout title={category.name} description={category.description}><section class="category-hero"><div class="container"><div class="breadcrumbs"><a href="/">Inicio</a> / <a href="/categorias/">Categorías</a> / {category.name}</div><span class="eyebrow">{category.icon} {category.name}</span><h1>{category.name}</h1><p class="lead">{category.description}</p></div></section><section class="section"><div class="container"><h2>Guías publicadas</h2>{items.length ? <div class="grid grid-3">{items.map(a => <a class="card card-link" href={a.url}><div class="meta"><span class="pill">{a.type}</span><span class="pill">{a.priority}</span></div><h3>{a.title}</h3><p>{a.description}</p></a>)}</div> : <div class="card"><h3>Cluster preparado</h3><p>Esta categoría está creada para el roadmap editorial, pero sus artículos llegarán en próximas iteraciones.</p></div>}</div></section></BaseLayout>

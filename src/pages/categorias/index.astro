@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories } from '../../data/categories';
+import { articles } from '../../data/articles';
+---
+<BaseLayout title="Categorías" description="Categorías editoriales de Casa Resuelta: climatización, cocina, limpieza, terraza, piscina, bricolaje, tecnología útil, mascotas y teletrabajo."><section class="category-hero"><div class="container"><span class="eyebrow">Arquitectura editorial</span><h1>Categorías</h1><p class="lead">Clusters pensados para enlazar guías, comparativas y rankings long-tail sin depender de una sola moda.</p></div></section><section class="section"><div class="container grid grid-3">{categories.map(c => {const count=articles.filter(a=>a.category===c.slug).length; return <a class="card card-link" href={`/${c.slug}/`}><span class="badge">{c.icon}</span><h3>{c.name}</h3><p>{c.description}</p><span class="pill">{count} guías publicadas</span></a>})}</div></section></BaseLayout>
