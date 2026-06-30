@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { articles } from '../../data/articles';
+const items = articles.filter(a => a.type.toLowerCase().includes('comparativa'));
+---
+<BaseLayout title="Comparativas" description="Comparativas con veredicto claro para usuarios que dudan entre dos tipos, marcas o soluciones.">
+<section class="category-hero"><div class="container"><span class="eyebrow">Decisión final</span><h1>Comparativas con conclusión</h1><p class="lead">No hacemos comparativas neutras: explicamos cuándo elegir cada alternativa y qué error evitar antes de ir a Amazon.</p></div></section>
+<section class="section"><div class="container grid grid-3">{items.map(a => <a class="card card-link" href={`/${a.category}/${a.slug}/`}><span class="pill">{a.category}</span><h3>{a.title}</h3><p>{a.description}</p></a>)}</div></section>
+</BaseLayout>

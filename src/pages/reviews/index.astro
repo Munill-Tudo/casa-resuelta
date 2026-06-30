@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { articles } from '../../data/articles';
+const products = [...new Map(articles.flatMap(a => a.products.map(p => [p.name, { ...p, article: a }]))).values()].slice(0, 24);
+---
+<BaseLayout title="Reviews" description="Base de productos reales incluidos en las comparativas de Con Buen Ojo.">
+<section class="category-hero"><div class="container"><span class="eyebrow">Productos reales</span><h1>Reviews y productos incluidos</h1><p class="lead">Inventario inicial de productos reales usados en las comparativas. Las reviews completas se priorizarán según Search Console, clics y conversión.</p></div></section>
+<section class="section"><div class="container grid grid-3">{products.map(p => <a class="card card-link" href={`/${p.article.category}/${p.article.slug}/`}><span class="pill">{p.article.type}</span><h3>{p.name}</h3><p><strong>Ideal para:</strong> {p.bestFor}. {p.strength}</p></a>)}</div></section>
+</BaseLayout>

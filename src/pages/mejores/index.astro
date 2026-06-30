@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { articles } from '../../data/articles';
+const money = articles.filter(a => ['Ranking','Selección editorial'].includes(a.type));
+---
+<BaseLayout title="Mejores productos" description="Rankings y páginas transaccionales de Con Buen Ojo para elegir productos reales de casa.">
+<section class="category-hero"><div class="container"><span class="eyebrow">Capa transaccional</span><h1>Mejores productos para casa</h1><p class="lead">Páginas pensadas para decidir compra: top 3, comparativa, limitaciones, errores frecuentes y enlaces a Amazon sin precios manuales.</p></div></section>
+<section class="section"><div class="container grid grid-3">{money.map(a => <a class="card card-link" href={`/${a.category}/${a.slug}/`}><span class="pill">{a.type}</span><h3>{a.title}</h3><p>{a.products?.slice(0,3).map(p => p.name).join(' · ')}</p></a>)}</div></section>
+</BaseLayout>

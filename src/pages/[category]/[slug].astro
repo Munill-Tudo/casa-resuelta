@@ -27,13 +27,22 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <section class="verdict-box">
         <div>
           <span class="eyebrow">Veredicto rápido</span>
-          <h2>Compra según tu caso de uso, no por el primer descuento.</h2>
-          <p>La mejor opción para <strong>{article.keyword}</strong> depende del espacio, frecuencia de uso, presupuesto, mantenimiento y limitaciones reales. Por eso separamos recomendaciones por perfil.</p>
+          <h2>Top 3 real para comparar antes de ir a Amazon.</h2>
+          <p>Para <strong>{article.keyword}</strong>, empezaría comparando <strong>{article.products[0]?.name}</strong> si buscas equilibrio, <strong>{article.products[1]?.name}</strong> si quieres ajustar presupuesto y <strong>{article.products[2]?.name}</strong> si vas a darle uso frecuente o necesitas más prestaciones.</p>
         </div>
         <div class="score-big"><strong>91</strong><span>criterio editorial</span></div>
       </section>
 
-      <h2 id="resumen">Comparativa rápida</h2>
+      <h2 id="resumen">Top 3 recomendado</h2>
+      <div class="top3-grid">
+        {article.products.map((p, i) => <a class="top3-card" href={p.url} rel="sponsored nofollow noopener" target="_blank">
+          <span>{i === 0 ? 'Mejor global' : i === 1 ? 'Calidad-precio' : 'Alternativa premium'}</span>
+          <strong>{p.name}</strong>
+          <small>{p.bestFor}</small>
+        </a>)}
+      </div>
+
+      <h2 id="comparativa">Comparativa rápida</h2>
       <div class="product-rank-list">
         {article.products.map((p, i) => <div class="product-rank-card">
           <div class="rank-number">#{i + 1}</div>
@@ -42,14 +51,15 @@ const related = articles.filter(a => a.category === article.category && a.slug !
             <div class="deal-meta"><span>{p.bestFor}</span><span>{p.price}</span></div>
             <h3>{p.name}</h3>
             <p>{p.strength}</p>
-            <small>Límite: {p.limitation}</small>
+            <small>Punto débil: {p.limitation}</small>
           </div>
-          <a class="btn btn-primary" href={`https://www.amazon.es/s?k=${encodeURIComponent(article.keyword)}&tag=TU-ID-DE-AFILIADO`} rel="nofollow sponsored noopener" target="_blank">Ver opciones</a>
+          <a class="btn btn-primary" href={p.url} rel="sponsored nofollow noopener" target="_blank">{p.cta ?? 'Ver precio en Amazon'}</a>
         </div>)}
       </div>
+      <p class="microcopy">No mostramos precios manuales para evitar datos desactualizados. El botón abre una búsqueda/producto en Amazon y allí debes comprobar precio, stock, vendedor, envío y condiciones.</p>
 
       <h2 id="seleccion">Cómo hemos seleccionado</h2>
-      <p>Aplicamos el sistema de scoring del SOP: demanda e intención de compra, utilidad real para el hogar, ticket, potencial visual, facilidad de explicación, opiniones disponibles y encaje con Con Buen Ojo. En esta V1 los enlaces son búsquedas o placeholders hasta configurar credenciales reales de Amazon Afiliados.</p>
+      <p>Aplicamos el sistema TSA evolucionado del informe: intención transaccional, producto real comprable, utilidad en casa, comparación por necesidad, mantenimiento, limitaciones y posibilidad de enlazar con guías inbound. En esta fase los enlaces van a Amazon sin tag definitivo; cuando el programa esté configurado se sustituirán por URLs afiliadas verificadas.</p>
       <div class="criteria-grid">
         <div><strong>Uso real</strong><span>Qué problema resuelve y en qué vivienda encaja.</span></div>
         <div><strong>Limitaciones</strong><span>Ruido, espacio, mantenimiento, consumo o instalación.</span></div>
@@ -69,13 +79,14 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       </ul>
 
       <h2 id="veredicto">Veredicto honesto</h2>
-      <p>La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, empieza por la opción equilibrada o económica. Si lo vas a usar a diario, una alternativa más completa puede compensar.</p>
+      <p>La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, compara primero una alternativa sencilla o de coste contenido. Si lo vas a usar a diario, una opción más completa puede compensar.</p>
 
       {related.length > 0 && <section class="related"><h2>También puede interesarte</h2><div class="grid grid-3">{related.map(a => <a class="card card-link" href={`/${a.category}/${a.slug}/`}><span class="pill">{a.type}</span><h3>{a.title}</h3><p>{a.description}</p></a>)}</div></section>}
     </article>
     <aside class="toc">
       <h3>En esta guía</h3>
-      <a href="#resumen">Comparativa rápida</a>
+      <a href="#resumen">Top 3 recomendado</a>
+      <a href="#comparativa">Comparativa rápida</a>
       <a href="#seleccion">Cómo seleccionamos</a>
       <a href="#perfil">Por perfil</a>
       <a href="#errores">Errores comunes</a>

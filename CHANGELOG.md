@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.3.0 — 2026-06-30
+
+- Changed: contenido adaptado al informe técnico TSA evolucionado: capa transaccional + capa inbound, criterios de decisión, aviso Amazon y enlaces `rel="sponsored nofollow noopener"`.
+- Added: 90 productos reales iniciales enlazados a Amazon por búsqueda/producto, sin precios manuales ni claims de disponibilidad.
+- Added: índices SEO `/mejores/`, `/comparativas/`, `/guias/`, `/reviews/` y `/marcas/` para reforzar arquitectura SILO/cluster.
+- Changed: páginas de artículo con Top 3 real, comparativa rápida, microcopy de precios, metodología TSA y CTAs “Ver precio en Amazon”.
+
 ## v1.2.0 — 2026-06-30
 
 - Changed: cambio de marca visible de Casa Resuelta a **Con Buen Ojo**.

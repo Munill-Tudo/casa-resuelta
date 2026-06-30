@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { articles } from '../../data/articles';
+const brands = Array.from(new Set(articles.flatMap(a => a.products.map(p => p.name.split(' ')[0].replace('De’Longhi','De’Longhi'))))).sort();
+---
+<BaseLayout title="Marcas" description="Marcas y fabricantes presentes en las comparativas iniciales de Con Buen Ojo.">
+<section class="category-hero"><div class="container"><span class="eyebrow">Mapa de marcas</span><h1>Marcas incluidas en las comparativas</h1><p class="lead">Agrupación inicial para construir futuras páginas de marca cuando haya datos suficientes de búsqueda, clics y conversión.</p></div></section>
+<section class="section"><div class="container grid grid-3">{brands.map(b => <div class="card"><span class="pill">Marca</span><h3>{b}</h3><p>Presente en al menos una comparativa o guía inicial. La página específica se creará cuando tenga intención SEO clara.</p></div>)}</div></section>
+</BaseLayout>

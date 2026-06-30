@@ -8,6 +8,10 @@ for (const a of articles){
  const key=`${a.category}/${a.slug}`; if(slugs.has(key)) errors.push(`Slug duplicado: ${key}`); slugs.add(key);
  if(!a.title || !a.description || !a.url || !a.updatedAt) errors.push(`Artículo incompleto: ${key}`);
  if(!a.products || a.products.length < 3) errors.push(`Faltan productos: ${key}`);
+ for (const product of (a.products || [])) {
+   if(!product.name || /opción equilibrada|opción económica|opción completa/i.test(product.name)) errors.push(`Producto genérico en ${key}: ${product.name}`);
+   if(!product.url || !product.url.startsWith('https://www.amazon.es/')) errors.push(`URL Amazon ausente en ${key}: ${product.name}`);
+ }
 }
 if(articles.length !== 30) errors.push(`La V1 debe tener 30 artículos; hay ${articles.length}`);
 const p1=articles.filter(a=>a.priority==='P1').length;
