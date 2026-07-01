@@ -12,6 +12,7 @@ export function getStaticPaths() {
 const { product } = Astro.props;
 const category = categories.find(c => c.slug === product.category);
 const related = product.relatedProducts.map(productBySlug).filter(Boolean).slice(0, 3) as typeof products;
+const comparisonProducts = [product, ...related];
 const canonical = `${site.url}/productos/${product.slug}/`;
 const scoreRows = [
   ['Calidad', product.scores.quality, 'Calidad percibida y solidez de la propuesta.'],
@@ -101,7 +102,7 @@ const schemaJson = {
         {scoreRows.map(([label, score, comment]) => <div class="score-row"><strong>{label}</strong><span class="score-bar"><i style={`width:${Number(score) * 10}%`}></i></span><b>{score}/10</b><small>{comment}</small></div>)}
       </div>
 
-      {related.length > 0 && <section class="related"><h2>Comparativa con alternativas</h2><div class="grid grid-3">{related.map(alt => <a class="card card-link" href={`/productos/${alt.slug}/`}><span class="pill">{alt.rankingLabel}</span><h3>{alt.name}</h3><p>{alt.shortDescription}</p><strong>{alt.overallScore}/10</strong></a>)}</div></section>}
+      {related.length > 0 && <section class="related product-comparison-section"><h2>Comparativa con alternativas</h2><p class="microcopy">Tabla comparativa generada con los mismos campos estructurados de cada ficha. El precio exacto se oculta mientras no exista sincronización oficial actualizada.</p><div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Producto</th><th>Mejor para</th><th>Nota</th><th>Precio</th><th>Disponibilidad</th><th>Marca / modelo</th><th>Punto fuerte</th><th>Punto débil</th><th>Acción</th></tr></thead><tbody>{comparisonProducts.map((alt, index) => <tr class={alt.slug === product.slug ? 'is-current' : ''}><td><a href={`/productos/${alt.slug}/`}><strong>{alt.name}</strong></a>{index === 0 && <span class="current-chip">Ficha actual</span>}</td><td>{alt.rankingLabel}</td><td><strong>{alt.overallScore}/10</strong></td><td>Ver precio actualizado</td><td>{alt.availability}</td><td><span>{alt.brand}</span><small>{alt.model}</small></td><td>{alt.mainBenefit}</td><td>{alt.mainObjection}</td><td><a class="btn btn-primary" href={alt.affiliateUrl} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon</a></td></tr>)}</tbody></table></div></section>}
 
       <h2 id="opinion">Opinión final</h2>
       <p>Lo recomendaría si resuelve tu caso concreto y si, al comprobar Amazon, precio, envío, vendedor y disponibilidad siguen encajando. No lo compraría solo por aparecer en un ranking: revisa el punto débil, compáralo con las alternativas y confirma las condiciones vigentes antes de pagar.</p>
