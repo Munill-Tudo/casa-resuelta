@@ -1,64 +1,154 @@
-# Integración de productos vivos con Amazon PA API
+# Integración de productos vivos: Amazon Creators API y PA API
 
-## Decisión técnica
+## Estado actual de la documentación de Amazon
 
-La vía profesional y compatible para precios, disponibilidad, enlaces e imágenes reales de Amazon es Product Advertising API 5.0 (PA API). No se debe scrapear Amazon ni copiar imágenes/precios manualmente.
+Revisión realizada el 1 de julio de 2026 sobre documentación oficial de Amazon:
 
-## Qué sincroniza
+- La documentación de Product Advertising API 5.0 indica: **“PA-API will be deprecated on May 15th, 2026. Please migrate to Creators API.”**
+- También indica que el sitio de documentación de PA API ya no se mantiene y puede contener información obsoleta.
+- La documentación de Creators API incluye una guía específica: **“Migrating to Creators API from Product Advertising API”**.
+- Creators API ofrece operaciones equivalentes para nuestro caso: `SearchItems`, `GetItems`, `GetVariations`, `GetBrowseNodes`.
+- Para precio y disponibilidad en Creators API ya no se usa `Offers.Listings`; se usa **`offersV2`**.
 
-El script `scripts/sync-amazon-products.mjs` puede traer por ASIN confirmado:
+Conclusión operativa: **la integración nueva debe prepararse para Creators API por defecto**. PA API queda solo como proveedor legacy si una cuenta concreta todavía lo tiene activo durante transición.
 
-- título de Amazon;
-- imagen principal real (`Images.Primary.Large`);
-- URL afiliada/detail page;
-- precio (`Offers.Listings.Price`);
-- disponibilidad (`Offers.Listings.Availability.Message/Type`);
-- elegibilidad Prime si viene en la respuesta;
-- fecha de sincronización y caducidad.
+## Qué mantiene seguro el proyecto
 
-Los datos se guardan en `src/data/product-commercial.json` y las fichas los muestran solo si siguen frescos. Si caducan o no existen, la web vuelve al modo seguro: “Ver precio actualizado en Amazon” y “Consultar en Amazon”.
+La web conserva la lógica ya creada:
 
-## Archivos
+- No muestra precio exacto sin dato oficial fresco.
+- No muestra disponibilidad como afirmación si no viene de API oficial fresca.
+- Si el dato caduca, cae a: **“Ver precio actualizado en Amazon”**.
+- No se exponen claves en HTML, repo ni snapshots.
+- `src/data/product-commercial.json` no contiene secretos.
+- El validador falla si un precio visible está caducado.
+- Si una API devuelve producto sin stock, la ficha puede proponer alternativa relacionada disponible.
 
-- `src/data/amazon-product-map.json`: mapa de productos internos a ASIN confirmado.
-- `src/data/product-commercial.json`: snapshot comercial generado, sin secretos.
-- `scripts/sync-amazon-products.mjs`: cliente PA API con firma AWS SigV4, sin dependencias externas.
+## Proveedor por defecto
 
-## Variables necesarias
-
-Configurar en local y Vercel/cron, sin commitear secretos:
+El script `scripts/sync-amazon-products.mjs` usa por defecto:
 
 ```bash
-AMAZON_PAAPI_ACCESS_KEY=...
-AMAZON_PAAPI_SECRET_KEY=...
-AMAZON_PARTNER_TAG=...-21
+AMAZON_PRODUCT_API_PROVIDER=creators
+```
+
+También admite legacy:
+
+```bash
+AMAZON_PRODUCT_API_PROVIDER=paapi
+```
+
+## Variables comunes
+
+Estas sí se pueden configurar de forma provisional:
+
+```bash
+AMAZON_PARTNER_TAG=tu-tag-de-amazon-es
 AMAZON_MARKETPLACE=www.amazon.es
-AMAZON_PAAPI_HOST=webservices.amazon.es
-AMAZON_PAAPI_REGION=eu-west-1
 AMAZON_SNAPSHOT_TTL_HOURS=24
 ```
 
-## Flujo recomendado
+## Variables para Creators API — vía recomendada
 
-1. Confirmar ASINs en `src/data/amazon-product-map.json`.
-2. Ejecutar `npm run sync:amazon`.
-3. Revisar que `src/data/product-commercial.json` contiene imagen/precio/disponibilidad.
-4. Ejecutar `npm run build`.
-5. Desplegar.
-6. Programar una sincronización periódica + redeploy para mantener la web viva.
+Para Amazon.es, Creators API usa marketplace `www.amazon.es`. La versión de credencial depende de lo que asigne Amazon al crearla:
 
-## Candidatos automáticos
+- Europa v2.x: normalmente `2.2`, token endpoint Cognito EU.
+- Europa v3.x: normalmente `3.2`, token endpoint Login with Amazon EU.
 
-Si hay credenciales PA API, se puede ejecutar:
+Variables:
+
+```bash
+AMAZON_PRODUCT_API_PROVIDER=creators
+AMAZON_CREATORS_CREDENTIAL_ID=...
+AMAZON_CREATORS_CREDENTIAL_SECRET=...
+AMAZON_CREATORS_CREDENTIAL_VERSION=3.2
+AMAZON_MARKETPLACE=www.amazon.es
+AMAZON_PARTNER_TAG=...-21
+```
+
+Opcionales si Amazon entrega un endpoint específico:
+
+```bash
+AMAZON_CREATORS_TOKEN_ENDPOINT=https://api.amazon.co.uk/auth/o2/token
+AMAZON_CREATORS_API_BASE=https://creatorsapi.amazon
+AMAZON_CREATORS_SCOPE=creatorsapi::default
+```
+
+Defaults implementados:
+
+- `3.2` → `https://api.amazon.co.uk/auth/o2/token`, scope `creatorsapi::default`.
+- `2.2` → `https://creatorsapi.auth.eu-south-2.amazoncognito.com/oauth2/token`, scope `creatorsapi/default`.
+- API base → `https://creatorsapi.amazon`.
+
+Headers usados para llamadas Creators API:
+
+- `Authorization: Bearer ***` para v3.x.
+- `Authorization: Bearer <token>, Version <version>` para v2.x.
+- `Content-Type: application/json`.
+- `x-marketplace: www.amazon.es`.
+
+Recursos solicitados:
+
+- `images.primary.large`
+- `images.primary.medium`
+- `itemInfo.title`
+- `itemInfo.byLineInfo`
+- `offersV2.listings.price`
+- `offersV2.listings.availability`
+- `offersV2.listings.condition`
+- `offersV2.listings.type`
+- `offersV2.listings.isBuyBoxWinner`
+- `offersV2.listings.merchantInfo`
+
+## Variables para PA API — solo legacy/transición
+
+No configurar estas claves hasta confirmar que la cuenta concreta todavía tiene PA API funcional y que Amazon permite usarlo para esa cuenta.
+
+```bash
+AMAZON_PRODUCT_API_PROVIDER=paapi
+AMAZON_PAAPI_ACCESS_KEY=...
+AMAZON_PAAPI_SECRET_KEY=...
+AMAZON_PAAPI_HOST=webservices.amazon.es
+AMAZON_PAAPI_REGION=eu-west-1
+AMAZON_MARKETPLACE=www.amazon.es
+AMAZON_PARTNER_TAG=...-21
+```
+
+## Flujo recomendado ahora
+
+1. Configurar solo:
+
+```bash
+AMAZON_PARTNER_TAG=...
+AMAZON_MARKETPLACE=www.amazon.es
+AMAZON_PRODUCT_API_PROVIDER=creators
+```
+
+2. Entrar en Associates Central y revisar si aparece **CreatorsAPI** en Tools.
+3. Crear aplicación y credencial Creators API.
+4. Guardar sin commitear:
+
+```bash
+AMAZON_CREATORS_CREDENTIAL_ID=...
+AMAZON_CREATORS_CREDENTIAL_SECRET=...
+AMAZON_CREATORS_CREDENTIAL_VERSION=...
+```
+
+5. Generar candidatos ASIN:
 
 ```bash
 npm run sync:amazon:candidates
 ```
 
-Eso genera `src/data/amazon-product-candidates.json` con posibles ASINs por búsqueda. Hay que revisar antes de publicar: un primer resultado automático puede no ser exactamente el producto correcto.
+6. Revisar candidatos y copiar ASIN correcto a `src/data/amazon-product-map.json`.
+7. Sincronizar snapshot comercial:
 
-## Límites reales
+```bash
+npm run sync:amazon
+```
 
-- PA API puede requerir cuenta de afiliado aprobada y ventas cualificadas para acceso/rate limits.
-- Sin credenciales oficiales, no hay forma fiable ni compatible de mostrar precios, stock o fotos reales de Amazon de forma automatizada.
-- Las reseñas de Amazon no deben copiarse. La web debe mantener análisis editorial propio.
+8. Build + deploy.
+
+## Respuesta a la pregunta “¿PA API sigue siendo funcional?”
+
+Con la documentación pública actual no conviene asumirlo para nuevas integraciones. Amazon dice que PA API será deprecada el 15/05/2026, que hay que migrar a Creators API y que PA API ya no acepta nuevos clientes. Si una cuenta ya tenía PA API antes, podría seguir funcionando durante transición hasta la fecha límite o según condiciones internas de Amazon, pero para esta web la integración correcta es **Creators API**.
