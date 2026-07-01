@@ -1,0 +1,798 @@
+{
+  "version": 1,
+  "marketplace": "www.amazon.es",
+  "items": {
+    "rowenta-turbo-silence-extreme-vu5840": {
+      "slug": "rowenta-turbo-silence-extreme-vu5840",
+      "name": "Rowenta Turbo Silence Extreme+ VU5840",
+      "asin": null,
+      "searchTerm": "Rowenta Turbo Silence Extreme+ VU5840",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cecotec-energysilence-890-skyline": {
+      "slug": "cecotec-energysilence-890-skyline",
+      "name": "Cecotec EnergySilence 890 Skyline",
+      "asin": null,
+      "searchTerm": "Cecotec EnergySilence 890 Skyline",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "duux-whisper-flex-smart": {
+      "slug": "duux-whisper-flex-smart",
+      "name": "Duux Whisper Flex Smart",
+      "asin": null,
+      "searchTerm": "Duux Whisper Flex Smart",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "delonghi-pinguino-pac-n82-eco": {
+      "slug": "delonghi-pinguino-pac-n82-eco",
+      "name": "De’Longhi Pinguino PAC N82 ECO",
+      "asin": null,
+      "searchTerm": "De’Longhi Pinguino PAC N82 ECO",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cecotec-forceclima-9050": {
+      "slug": "cecotec-forceclima-9050",
+      "name": "Cecotec ForceClima 9050",
+      "asin": null,
+      "searchTerm": "Cecotec ForceClima 9050",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "olimpia-splendid-dolceclima-compact-8-p": {
+      "slug": "olimpia-splendid-dolceclima-compact-8-p",
+      "name": "Olimpia Splendid Dolceclima Compact 8 P",
+      "asin": null,
+      "searchTerm": "Olimpia Splendid Dolceclima Compact 8 P",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "orbegozo-sf-0147-ventilador-de-pie": {
+      "slug": "orbegozo-sf-0147-ventilador-de-pie",
+      "name": "Orbegozo SF 0147 ventilador de pie",
+      "asin": null,
+      "searchTerm": "Orbegozo SF 0147 ventilador de pie",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "amazon-basics-cortina-opaca-termica": {
+      "slug": "amazon-basics-cortina-opaca-termica",
+      "name": "Amazon Basics cortina opaca térmica",
+      "asin": null,
+      "searchTerm": "Amazon Basics cortina opaca térmica",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "klarstein-skyscraper-ice": {
+      "slug": "klarstein-skyscraper-ice",
+      "name": "Klarstein Skyscraper Ice",
+      "asin": null,
+      "searchTerm": "Klarstein Skyscraper Ice",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "honeywell-quietset-hyf290e": {
+      "slug": "honeywell-quietset-hyf290e",
+      "name": "Honeywell QuietSet HYF290E",
+      "asin": null,
+      "searchTerm": "Honeywell QuietSet HYF290E",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "joseph-joseph-cupboardstore-organizador-de-estante": {
+      "slug": "joseph-joseph-cupboardstore-organizador-de-estante",
+      "name": "Joseph Joseph CupboardStore organizador de estante",
+      "asin": null,
+      "searchTerm": "Joseph Joseph CupboardStore organizador de estante",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "mdesign-lazy-susan-organizador-giratorio": {
+      "slug": "mdesign-lazy-susan-organizador-giratorio",
+      "name": "mDesign Lazy Susan organizador giratorio",
+      "asin": null,
+      "searchTerm": "mDesign Lazy Susan organizador giratorio",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "amazon-basics-estante-organizador-apilable": {
+      "slug": "amazon-basics-estante-organizador-apilable",
+      "name": "Amazon Basics estante organizador apilable",
+      "asin": null,
+      "searchTerm": "Amazon Basics estante organizador apilable",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cosori-turbo-blaze-6l": {
+      "slug": "cosori-turbo-blaze-6l",
+      "name": "Cosori Turbo Blaze 6L",
+      "asin": null,
+      "searchTerm": "Cosori Turbo Blaze 6L",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cecotec-bake-toast-1090-white": {
+      "slug": "cecotec-bake-toast-1090-white",
+      "name": "Cecotec Bake&Toast 1090 White",
+      "asin": null,
+      "searchTerm": "Cecotec Bake&Toast 1090 White",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "ninja-foodi-max-dual-zone-af400eu": {
+      "slug": "ninja-foodi-max-dual-zone-af400eu",
+      "name": "Ninja Foodi MAX Dual Zone AF400EU",
+      "asin": null,
+      "searchTerm": "Ninja Foodi MAX Dual Zone AF400EU",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cosori-lite-3-8l": {
+      "slug": "cosori-lite-3-8l",
+      "name": "Cosori Lite 3,8L",
+      "asin": null,
+      "searchTerm": "Cosori Lite 3,8L",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "philips-essential-airfryer-hd9252-90": {
+      "slug": "philips-essential-airfryer-hd9252-90",
+      "name": "Philips Essential Airfryer HD9252/90",
+      "asin": null,
+      "searchTerm": "Philips Essential Airfryer HD9252/90",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "xiaomi-mi-smart-air-fryer-3-5l": {
+      "slug": "xiaomi-mi-smart-air-fryer-3-5l",
+      "name": "Xiaomi Mi Smart Air Fryer 3.5L",
+      "asin": null,
+      "searchTerm": "Xiaomi Mi Smart Air Fryer 3.5L",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "joseph-joseph-cupboardstore-expandable": {
+      "slug": "joseph-joseph-cupboardstore-expandable",
+      "name": "Joseph Joseph CupboardStore Expandable",
+      "asin": null,
+      "searchTerm": "Joseph Joseph CupboardStore Expandable",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "youcopia-sinksuite-organizador-bajo-fregadero": {
+      "slug": "youcopia-sinksuite-organizador-bajo-fregadero",
+      "name": "YouCopia SinkSuite organizador bajo fregadero",
+      "asin": null,
+      "searchTerm": "YouCopia SinkSuite organizador bajo fregadero",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "mdesign-organizador-bajo-fregadero-con-cajones": {
+      "slug": "mdesign-organizador-bajo-fregadero-con-cajones",
+      "name": "mDesign organizador bajo fregadero con cajones",
+      "asin": null,
+      "searchTerm": "mDesign organizador bajo fregadero con cajones",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "rowenta-x-force-flex-12-60": {
+      "slug": "rowenta-x-force-flex-12-60",
+      "name": "Rowenta X-Force Flex 12.60",
+      "asin": null,
+      "searchTerm": "Rowenta X-Force Flex 12.60",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "dyson-v15-detect": {
+      "slug": "dyson-v15-detect",
+      "name": "Dyson V15 Detect",
+      "asin": null,
+      "searchTerm": "Dyson V15 Detect",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cecotec-conga-rockstar-2500": {
+      "slug": "cecotec-conga-rockstar-2500",
+      "name": "Cecotec Conga Rockstar 2500",
+      "asin": null,
+      "searchTerm": "Cecotec Conga Rockstar 2500",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "roborock-q-revo": {
+      "slug": "roborock-q-revo",
+      "name": "Roborock Q Revo",
+      "asin": null,
+      "searchTerm": "Roborock Q Revo",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "irobot-roomba-j7": {
+      "slug": "irobot-roomba-j7",
+      "name": "iRobot Roomba j7+",
+      "asin": null,
+      "searchTerm": "iRobot Roomba j7+",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cecotec-conga-2290-ultra-home": {
+      "slug": "cecotec-conga-2290-ultra-home",
+      "name": "Cecotec Conga 2290 Ultra Home",
+      "asin": null,
+      "searchTerm": "Cecotec Conga 2290 Ultra Home",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "roborock-q8-max": {
+      "slug": "roborock-q8-max",
+      "name": "Roborock Q8 Max+",
+      "asin": null,
+      "searchTerm": "Roborock Q8 Max+",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "irobot-roomba-combo-j5": {
+      "slug": "irobot-roomba-combo-j5",
+      "name": "iRobot Roomba Combo j5+",
+      "asin": null,
+      "searchTerm": "iRobot Roomba Combo j5+",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "dreame-l10s-ultra": {
+      "slug": "dreame-l10s-ultra",
+      "name": "Dreame L10s Ultra",
+      "asin": null,
+      "searchTerm": "Dreame L10s Ultra",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "black-decker-dustbuster-bhhv520bfp": {
+      "slug": "black-decker-dustbuster-bhhv520bfp",
+      "name": "Black+Decker Dustbuster BHHV520BFP",
+      "asin": null,
+      "searchTerm": "Black+Decker Dustbuster BHHV520BFP",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "bosch-move-lithium-bhn24l": {
+      "slug": "bosch-move-lithium-bhn24l",
+      "name": "Bosch Move Lithium BHN24L",
+      "asin": null,
+      "searchTerm": "Bosch Move Lithium BHN24L",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "shark-wandvac-2-0": {
+      "slug": "shark-wandvac-2-0",
+      "name": "Shark WandVac 2.0",
+      "asin": null,
+      "searchTerm": "Shark WandVac 2.0",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "philips-hue-outdoor-lightstrip": {
+      "slug": "philips-hue-outdoor-lightstrip",
+      "name": "Philips Hue Outdoor Lightstrip",
+      "asin": null,
+      "searchTerm": "Philips Hue Outdoor Lightstrip",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "aigostar-luces-solares-jardin": {
+      "slug": "aigostar-luces-solares-jardin",
+      "name": "Aigostar luces solares jardín",
+      "asin": null,
+      "searchTerm": "Aigostar luces solares jardín",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "litogo-focos-solares-exterior-con-sensor": {
+      "slug": "litogo-focos-solares-exterior-con-sensor",
+      "name": "Litogo focos solares exterior con sensor",
+      "asin": null,
+      "searchTerm": "Litogo focos solares exterior con sensor",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "sekey-toldo-vela-impermeable-triangular": {
+      "slug": "sekey-toldo-vela-impermeable-triangular",
+      "name": "Sekey toldo vela impermeable triangular",
+      "asin": null,
+      "searchTerm": "Sekey toldo vela impermeable triangular",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "sol-royal-solvision-ps9": {
+      "slug": "sol-royal-solvision-ps9",
+      "name": "Sol Royal SolVision PS9",
+      "asin": null,
+      "searchTerm": "Sol Royal SolVision PS9",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "amazon-basics-toldo-vela-rectangular": {
+      "slug": "amazon-basics-toldo-vela-rectangular",
+      "name": "Amazon Basics toldo vela rectangular",
+      "asin": null,
+      "searchTerm": "Amazon Basics toldo vela rectangular",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "ikea-applaro-mesa-abatible-exterior": {
+      "slug": "ikea-applaro-mesa-abatible-exterior",
+      "name": "IKEA ÄPPLARÖ mesa abatible exterior",
+      "asin": null,
+      "searchTerm": "IKEA ÄPPLARÖ mesa abatible exterior",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "keter-unity-xl": {
+      "slug": "keter-unity-xl",
+      "name": "Keter Unity XL",
+      "asin": null,
+      "searchTerm": "Keter Unity XL",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "kg-kit-garden-set-bistro-plegable": {
+      "slug": "kg-kit-garden-set-bistro-plegable",
+      "name": "KG Kit Garden set bistró plegable",
+      "asin": null,
+      "searchTerm": "KG Kit Garden set bistró plegable",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "bestway-aquatronix": {
+      "slug": "bestway-aquatronix",
+      "name": "Bestway Aquatronix",
+      "asin": null,
+      "searchTerm": "Bestway Aquatronix",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "intex-zx300-deluxe": {
+      "slug": "intex-zx300-deluxe",
+      "name": "Intex ZX300 Deluxe",
+      "asin": null,
+      "searchTerm": "Intex ZX300 Deluxe",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "dolphin-e10": {
+      "slug": "dolphin-e10",
+      "name": "Dolphin E10",
+      "asin": null,
+      "searchTerm": "Dolphin E10",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "intex-26644-depuradora-de-arena": {
+      "slug": "intex-26644-depuradora-de-arena",
+      "name": "Intex 26644 depuradora de arena",
+      "asin": null,
+      "searchTerm": "Intex 26644 depuradora de arena",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "bestway-flowclear-depuradora-de-cartucho": {
+      "slug": "bestway-flowclear-depuradora-de-cartucho",
+      "name": "Bestway Flowclear depuradora de cartucho",
+      "asin": null,
+      "searchTerm": "Bestway Flowclear depuradora de cartucho",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "intex-krystal-clear-28604": {
+      "slug": "intex-krystal-clear-28604",
+      "name": "Intex Krystal Clear 28604",
+      "asin": null,
+      "searchTerm": "Intex Krystal Clear 28604",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "intex-kit-mantenimiento-piscina": {
+      "slug": "intex-kit-mantenimiento-piscina",
+      "name": "Intex kit mantenimiento piscina",
+      "asin": null,
+      "searchTerm": "Intex kit mantenimiento piscina",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "bestway-dispensador-quimico-flotante": {
+      "slug": "bestway-dispensador-quimico-flotante",
+      "name": "Bestway dispensador químico flotante",
+      "asin": null,
+      "searchTerm": "Bestway dispensador químico flotante",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "gre-analizador-ph-cloro": {
+      "slug": "gre-analizador-ph-cloro",
+      "name": "Gre analizador pH cloro",
+      "asin": null,
+      "searchTerm": "Gre analizador pH cloro",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "bosch-home-and-garden-maletin-x-line": {
+      "slug": "bosch-home-and-garden-maletin-x-line",
+      "name": "Bosch Home and Garden maletín X-Line",
+      "asin": null,
+      "searchTerm": "Bosch Home and Garden maletín X-Line",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "stanley-stht0-73929-caja-herramientas": {
+      "slug": "stanley-stht0-73929-caja-herramientas",
+      "name": "Stanley STHT0-73929 caja herramientas",
+      "asin": null,
+      "searchTerm": "Stanley STHT0-73929 caja herramientas",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "mannesmann-m29065-maletin-herramientas": {
+      "slug": "mannesmann-m29065-maletin-herramientas",
+      "name": "Mannesmann M29065 maletín herramientas",
+      "asin": null,
+      "searchTerm": "Mannesmann M29065 maletín herramientas",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "bosch-easydrill-18v-40": {
+      "slug": "bosch-easydrill-18v-40",
+      "name": "Bosch EasyDrill 18V-40",
+      "asin": null,
+      "searchTerm": "Bosch EasyDrill 18V-40",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "black-decker-bdcdd12k": {
+      "slug": "black-decker-bdcdd12k",
+      "name": "BLACK+DECKER BDCDD12K",
+      "asin": null,
+      "searchTerm": "BLACK+DECKER BDCDD12K",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "makita-dhp453": {
+      "slug": "makita-dhp453",
+      "name": "Makita DHP453",
+      "asin": null,
+      "searchTerm": "Makita DHP453",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "tesa-powerstrips-ganchos-adhesivos": {
+      "slug": "tesa-powerstrips-ganchos-adhesivos",
+      "name": "tesa Powerstrips ganchos adhesivos",
+      "asin": null,
+      "searchTerm": "tesa Powerstrips ganchos adhesivos",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "command-tiras-para-cuadros": {
+      "slug": "command-tiras-para-cuadros",
+      "name": "Command tiras para cuadros",
+      "asin": null,
+      "searchTerm": "Command tiras para cuadros",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "fischer-no-tools-soporte-adhesivo": {
+      "slug": "fischer-no-tools-soporte-adhesivo",
+      "name": "Fischer No Tools soporte adhesivo",
+      "asin": null,
+      "searchTerm": "Fischer No Tools soporte adhesivo",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "tp-link-tapo-p110": {
+      "slug": "tp-link-tapo-p110",
+      "name": "TP-Link Tapo P110",
+      "asin": null,
+      "searchTerm": "TP-Link Tapo P110",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "amazon-smart-plug": {
+      "slug": "amazon-smart-plug",
+      "name": "Amazon Smart Plug",
+      "asin": null,
+      "searchTerm": "Amazon Smart Plug",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "meross-mss210": {
+      "slug": "meross-mss210",
+      "name": "Meross MSS210",
+      "asin": null,
+      "searchTerm": "Meross MSS210",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "philips-hue-white-color-ambiance-e27": {
+      "slug": "philips-hue-white-color-ambiance-e27",
+      "name": "Philips Hue White & Color Ambiance E27",
+      "asin": null,
+      "searchTerm": "Philips Hue White & Color Ambiance E27",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "tp-link-tapo-l530e": {
+      "slug": "tp-link-tapo-l530e",
+      "name": "TP-Link Tapo L530E",
+      "asin": null,
+      "searchTerm": "TP-Link Tapo L530E",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "ledvance-smart-wifi-e27": {
+      "slug": "ledvance-smart-wifi-e27",
+      "name": "Ledvance Smart+ WiFi E27",
+      "asin": null,
+      "searchTerm": "Ledvance Smart+ WiFi E27",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "tp-link-re705x": {
+      "slug": "tp-link-re705x",
+      "name": "TP-Link RE705X",
+      "asin": null,
+      "searchTerm": "TP-Link RE705X",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "avm-fritz-repeater-1200-ax": {
+      "slug": "avm-fritz-repeater-1200-ax",
+      "name": "AVM FRITZ!Repeater 1200 AX",
+      "asin": null,
+      "searchTerm": "AVM FRITZ!Repeater 1200 AX",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "tp-link-deco-x20": {
+      "slug": "tp-link-deco-x20",
+      "name": "TP-Link Deco X20",
+      "asin": null,
+      "searchTerm": "TP-Link Deco X20",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "catit-flower-fountain": {
+      "slug": "catit-flower-fountain",
+      "name": "Catit Flower Fountain",
+      "asin": null,
+      "searchTerm": "Catit Flower Fountain",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "petsafe-drinkwell-platinum": {
+      "slug": "petsafe-drinkwell-platinum",
+      "name": "PetSafe Drinkwell Platinum",
+      "asin": null,
+      "searchTerm": "PetSafe Drinkwell Platinum",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "xiaomi-smart-pet-fountain": {
+      "slug": "xiaomi-smart-pet-fountain",
+      "name": "Xiaomi Smart Pet Fountain",
+      "asin": null,
+      "searchTerm": "Xiaomi Smart Pet Fountain",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "petsafe-eatwell-5-meal": {
+      "slug": "petsafe-eatwell-5-meal",
+      "name": "PetSafe Eatwell 5 Meal",
+      "asin": null,
+      "searchTerm": "PetSafe Eatwell 5 Meal",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "cat-mate-c500": {
+      "slug": "cat-mate-c500",
+      "name": "Cat Mate C500",
+      "asin": null,
+      "searchTerm": "Cat Mate C500",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "xiaomi-smart-pet-food-feeder": {
+      "slug": "xiaomi-smart-pet-food-feeder",
+      "name": "Xiaomi Smart Pet Food Feeder",
+      "asin": null,
+      "searchTerm": "Xiaomi Smart Pet Food Feeder",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "chomchom-roller": {
+      "slug": "chomchom-roller",
+      "name": "ChomChom Roller",
+      "asin": null,
+      "searchTerm": "ChomChom Roller",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "furminator-cepillo-deslanador": {
+      "slug": "furminator-cepillo-deslanador",
+      "name": "FURminator cepillo deslanador",
+      "asin": null,
+      "searchTerm": "FURminator cepillo deslanador",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "black-decker-dustbuster-pet": {
+      "slug": "black-decker-dustbuster-pet",
+      "name": "Black+Decker Dustbuster Pet",
+      "asin": null,
+      "searchTerm": "Black+Decker Dustbuster Pet",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "nulaxy-c3-soporte-portatil-aluminio": {
+      "slug": "nulaxy-c3-soporte-portatil-aluminio",
+      "name": "Nulaxy C3 soporte portátil aluminio",
+      "asin": null,
+      "searchTerm": "Nulaxy C3 soporte portátil aluminio",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "boyata-soporte-portatil-ajustable": {
+      "slug": "boyata-soporte-portatil-ajustable",
+      "name": "BoYata soporte portátil ajustable",
+      "asin": null,
+      "searchTerm": "BoYata soporte portátil ajustable",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "moft-soporte-portatil-adhesivo": {
+      "slug": "moft-soporte-portatil-adhesivo",
+      "name": "MOFT soporte portátil adhesivo",
+      "asin": null,
+      "searchTerm": "MOFT soporte portátil adhesivo",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "sihoo-m18": {
+      "slug": "sihoo-m18",
+      "name": "SIHOO M18",
+      "asin": null,
+      "searchTerm": "SIHOO M18",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "hbada-e3": {
+      "slug": "hbada-e3",
+      "name": "Hbada E3",
+      "asin": null,
+      "searchTerm": "Hbada E3",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "ikea-markus": {
+      "slug": "ikea-markus",
+      "name": "IKEA Markus",
+      "asin": null,
+      "searchTerm": "IKEA Markus",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "tp-link-tapo-p100": {
+      "slug": "tp-link-tapo-p100",
+      "name": "TP-Link Tapo P100",
+      "asin": null,
+      "searchTerm": "TP-Link Tapo P100",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "command-tiras-adhesivas-para-cuadros": {
+      "slug": "command-tiras-adhesivas-para-cuadros",
+      "name": "Command tiras adhesivas para cuadros",
+      "asin": null,
+      "searchTerm": "Command tiras adhesivas para cuadros",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    },
+    "mdesign-organizador-giratorio-cocina": {
+      "slug": "mdesign-organizador-giratorio-cocina",
+      "name": "mDesign organizador giratorio cocina",
+      "asin": null,
+      "searchTerm": "mDesign organizador giratorio cocina",
+      "enabled": true,
+      "reviewStatus": "needs_asin_review",
+      "notes": "Añadir ASIN confirmado para sincronización PA API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { articles } from './articles.ts';
 import { categories } from './categories.ts';
+import commercialSnapshot from './product-commercial.json' with { type: 'json' };
 
 export type ProductScoreKey = 'quality' | 'priceValue' | 'features' | 'easeOfUse' | 'durability' | 'userFit' | 'maintenance';
 
@@ -20,10 +21,14 @@ export type ProductEntity = {
   dataSource: 'manual' | 'amazon_search' | 'amazon_api';
   priceDisplayMode: 'exact' | 'hidden' | 'check_on_amazon';
   priceStatus: 'fresh' | 'stale' | 'unavailable' | 'api_error' | 'manual_blocked';
-  currentPrice: null;
-  availability: 'Consultar en Amazon';
+  currentPrice: null | { display: string; amount?: number; currency?: string; expiresAt: string };
+  availability: string;
   lastReviewedAt: string;
-  lastPriceSyncAt: null;
+  lastPriceSyncAt: null | string;
+  commercialExpiresAt: null | string;
+  isCommercialDataFresh: boolean;
+  amazonTitle: null | string;
+  isAvailable: null | boolean;
   complianceNotes: string;
   bestFor: string;
   notFor: string;
@@ -60,12 +65,32 @@ const scoreFrom = (name: string, index: number, bonus = 0) => {
   return clampScore(7.4 + ((sum + index * 17) % 14) / 10 + bonus);
 };
 
+type CommercialSnapshotItem = {
+  slug: string;
+  asin?: string;
+  title?: string | null;
+  brand?: string | null;
+  detailPageUrl?: string | null;
+  image?: { url: string; width?: number; height?: number } | null;
+  price?: { display: string; amount?: number; currency?: string } | null;
+  availability?: { message?: string | null; type?: string | null; isAvailable?: boolean | null };
+  fetchedAt?: string;
+  expiresAt?: string;
+  error?: string;
+};
+const commercialItems = (commercialSnapshot as { items?: Record<string, CommercialSnapshotItem> }).items ?? {};
+const isFreshCommercial = (item?: CommercialSnapshotItem) => Boolean(item?.expiresAt && new Date(item.expiresAt).getTime() > Date.now() && !item.error);
+const commercialFor = (slug: string) => commercialItems[slug];
+const priceLabelFor = (item?: CommercialSnapshotItem) => isFreshCommercial(item) && item?.price?.display ? item.price.display : 'Ver precio actualizado en Amazon';
+
 const bySlug = new Map<string, ProductEntity>();
 for (const article of articles) {
   const category = categories.find(c => c.slug === article.category);
   article.products.forEach((product, index) => {
     const slug = slugifyProduct(product.name);
-    const brand = inferBrand(product.name);
+    const commercial = commercialFor(slug);
+    const commercialFresh = isFreshCommercial(commercial);
+    const brand = commercialFresh && commercial?.brand ? commercial.brand : inferBrand(product.name);
     const model = inferModel(product.name, brand);
     const scores = {
       quality: scoreFrom(product.name, index, index === 0 ? .2 : 0),
@@ -86,7 +111,7 @@ for (const article of articles) {
     }
     bySlug.set(slug, {
       id: `prod-${slug}`,
-      asin: 'dato-pendiente',
+      asin: commercial?.asin ?? 'dato-pendiente',
       slug,
       name: product.name,
       brand,
@@ -95,17 +120,21 @@ for (const article of articles) {
       subcategory: article.keyword,
       shortDescription: `${product.strength} Encaja especialmente como ${product.bestFor.toLowerCase()} dentro de ${article.keyword}.`,
       editorialSummary: `Es una opción a considerar si buscas ${article.keyword} para este caso: ${article.caseUse.toLowerCase()} La decisión debe apoyarse en su punto fuerte —${product.strength.toLowerCase()}— y en su límite principal: ${product.limitation.toLowerCase()}`,
-      mainImageUrl: '',
-      affiliateUrl: product.url,
+      mainImageUrl: commercialFresh && commercial?.image?.url ? commercial.image.url : '',
+      affiliateUrl: commercialFresh && commercial?.detailPageUrl ? commercial.detailPageUrl : product.url,
       status: 'published',
-      dataSource: 'amazon_search',
-      priceDisplayMode: 'check_on_amazon',
-      priceStatus: 'manual_blocked',
-      currentPrice: null,
-      availability: 'Consultar en Amazon',
+      dataSource: commercialFresh ? 'amazon_api' : 'amazon_search',
+      priceDisplayMode: commercialFresh && commercial?.price?.display ? 'exact' : 'check_on_amazon',
+      priceStatus: commercial?.error ? 'api_error' : commercialFresh && commercial?.price?.display ? 'fresh' : commercialFresh ? 'unavailable' : 'manual_blocked',
+      currentPrice: commercialFresh && commercial?.price?.display ? { ...commercial.price, expiresAt: commercial.expiresAt as string } : null,
+      availability: commercialFresh && commercial?.availability?.message ? commercial.availability.message : 'Consultar en Amazon',
       lastReviewedAt: article.updatedAt,
-      lastPriceSyncAt: null,
-      complianceNotes: 'Precio y disponibilidad no sincronizados por API oficial; se oculta precio exacto y se envía a comprobar en Amazon.',
+      lastPriceSyncAt: commercialFresh && commercial?.fetchedAt ? commercial.fetchedAt : null,
+      commercialExpiresAt: commercialFresh && commercial?.expiresAt ? commercial.expiresAt : null,
+      isCommercialDataFresh: commercialFresh,
+      amazonTitle: commercialFresh && commercial?.title ? commercial.title : null,
+      isAvailable: commercialFresh && commercial?.availability ? commercial.availability.isAvailable ?? null : null,
+      complianceNotes: commercialFresh ? 'Precio, disponibilidad, enlace e imagen proceden de Amazon PA API y caducan automáticamente según TTL.' : 'Precio y disponibilidad no sincronizados por API oficial; se oculta precio exacto y se envía a comprobar en Amazon.',
       bestFor: `${product.bestFor}: ${product.strength}`,
       notFor: product.limitation,
       mainBenefit: product.strength,
@@ -125,7 +154,7 @@ for (const article of articles) {
         { key: 'best_for', label: 'Mejor para', value: product.bestFor },
         { key: 'main_benefit', label: 'Punto fuerte', value: product.strength },
         { key: 'main_objection', label: 'Punto débil', value: product.limitation },
-        { key: 'price', label: 'Precio', value: 'Ver precio actualizado en Amazon' }
+        { key: 'price', label: 'Precio', value: priceLabelFor(commercial) }
       ],
       pros: [
         product.strength,

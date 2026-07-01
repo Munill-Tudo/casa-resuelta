@@ -1,6 +1,7 @@
 import { articles } from '../src/data/articles.ts';
 import { categories } from '../src/data/categories.ts';
 import { products, productUrl } from '../src/data/products.ts';
+import amazonProductMap from '../src/data/amazon-product-map.json' with { type: 'json' };
 const errors=[];
 const catSlugs=new Set(categories.map(c=>c.slug));
 const slugs=new Set();
@@ -24,10 +25,12 @@ for (const a of articles) {
 }
 for (const p of products) {
  if(!p.name || !p.slug || !p.brand || !p.model || !p.shortDescription) errors.push(`Ficha producto incompleta: ${p.slug}`);
- if(p.currentPrice !== null || p.priceDisplayMode !== 'check_on_amazon') errors.push(`Precio inseguro visible: ${p.slug}`);
+ if(p.currentPrice !== null && (!p.isCommercialDataFresh || !p.commercialExpiresAt || new Date(p.commercialExpiresAt).getTime() <= Date.now())) errors.push(`Precio caducado visible: ${p.slug}`);
+ if(p.priceDisplayMode === 'exact' && !p.currentPrice?.display) errors.push(`Modo precio exacto sin precio: ${p.slug}`);
  if(!p.pros || p.pros.length < 3 || !p.cons || p.cons.length < 3) errors.push(`Pros/contras insuficientes: ${p.slug}`);
  if(!p.specs || p.specs.length < 8) errors.push(`Specs insuficientes: ${p.slug}`);
  if(!p.affiliateUrl || !p.affiliateUrl.startsWith('https://www.amazon.es/')) errors.push(`CTA Amazon ausente: ${p.slug}`);
+ if(!amazonProductMap.items?.[p.slug]) errors.push(`Producto sin mapa Amazon/ASIN: ${p.slug}`);
 }
 const p1=articles.filter(a=>a.priority==='P1').length;
 if(p1 < 20) errors.push(`Pocos P1: ${p1}`);
