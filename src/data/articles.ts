@@ -39,7 +39,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Duux%20Whisper%20Flex%20Smart",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Si es para dormir, prioriza modo noche real, caudal regulable y estabilidad; la potencia máxima importa menos que que no moleste a 2-3 metros.",
+      "verdictTitle": "Para dormitorio, silencio útil antes que “muchos vatios”.",
+      "verdictText": "Rowenta encaja si quieres caudal y bajo ruido en habitación media; Cecotec tiene sentido si necesitas torre estrecha y temporizador; Duux solo compensa si valoras diseño, app y ajuste fino diario.",
+      "selectionIntro": "En ventiladores para dormir hemos pesado más el ruido percibido, la estabilidad, el rango de velocidades bajas y el temporizador que la potencia bruta. Un modelo muy fuerte pero molesto acaba apagado a media noche.",
+      "criteria": [
+        [
+          "Ruido nocturno",
+          "Modos bajos aprovechables, temporizador y ausencia de zumbidos molestos cerca de la cama."
+        ],
+        [
+          "Caudal regulable",
+          "Que mueva aire sin obligarte a usar siempre la velocidad máxima."
+        ],
+        [
+          "Formato y estabilidad",
+          "Pedestal si quieres dirigir aire; torre si prima el espacio y guardar fácil."
+        ],
+        [
+          "Uso real en dormitorio",
+          "Mando, oscilación y altura ajustable pesan más que funciones decorativas."
+        ]
+      ],
+      "mistakes": [
+        "Comprar el ventilador más potente sin comprobar si tiene velocidad baja usable para dormir.",
+        "Elegir torre solo por estética cuando necesitas aire directo a la cama.",
+        "No medir altura, base y distancia al enchufe antes de comprar.",
+        "Confundir “silencioso” de ficha comercial con ruido aceptable para sueño ligero."
+      ],
+      "honestVerdict": "Para dormir, la compra razonable suele ser un ventilador estable con velocidad baja convincente y temporizador. Si tienes espacio y quieres caudal, pedestal; si el dormitorio es pequeño, torre. Paga premium solo si vas a usarlo muchas noches y aprecias ajustes finos."
+    }
   },
   {
     "id": 2,
@@ -81,7 +112,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Olimpia%20Splendid%20Dolceclima%20Compact%208%20P",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Antes de mirar modelos, confirma que puedes sacar el tubo a ventana y sellarlo bien; sin ese punto, cualquier portátil rendirá peor y hará más ruido.",
+      "verdictTitle": "El kit de ventana decide casi tanto como la máquina.",
+      "verdictText": "De’Longhi es la vía equilibrada para uso frecuente en habitación media; Cecotec sirve si el presupuesto manda; Olimpia Splendid tiene sentido cuando el espacio es pequeño y no necesitas enfriar un salón soleado.",
+      "selectionIntro": "En aire portátil hemos priorizado frigorías razonables, evacuación de aire, ruido, tamaño y facilidad para montar/desmontar en pisos de alquiler. No lo tratamos como sustituto directo de un split.",
+      "criteria": [
+        [
+          "Salida de aire",
+          "Tubo, adaptador y sellado de ventana: si fuga aire caliente, baja mucho el rendimiento."
+        ],
+        [
+          "Tamaño de estancia",
+          "No elegir por “metros máximos” optimistas: sol, orientación y aislamiento cambian el resultado."
+        ],
+        [
+          "Ruido asumible",
+          "Compresor dentro de la habitación; conviene prever si dormirás con él encendido."
+        ],
+        [
+          "Movilidad real",
+          "Peso, ruedas, depósito/condensación y dónde guardarlo fuera de temporada."
+        ]
+      ],
+      "mistakes": [
+        "Comprar sin comprobar si la ventana admite un kit de sellado decente.",
+        "Esperar el silencio o eficiencia de un aire acondicionado split.",
+        "Elegir potencia justa para una estancia muy soleada o mal aislada.",
+        "Olvidar espacio libre para tubo, salida trasera y almacenamiento."
+      ],
+      "honestVerdict": "Un portátil es buena solución cuando no puedes instalar split y necesitas frío puntual en una estancia. Si el calor es diario y la casa es tuya, quizá convenga ahorrar para instalación fija; si es alquiler o uso estacional, prioriza montaje limpio y ruido soportable."
+    }
   },
   {
     "id": 3,
@@ -207,7 +269,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Amazon%20Basics%20estante%20organizador%20apilable%20cocina",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Primero mide armarios, baldas y fondo útil; el organizador correcto es el que hace visible lo que ya tienes, no el que añade más piezas a una cocina saturada.",
+      "verdictTitle": "Ordenar cocina pequeña va de acceso, no de comprar cajas.",
+      "verdictText": "Joseph Joseph sirve para ganar altura en armarios; mDesign resuelve fondos y esquinas; Amazon Basics es la solución barata si solo necesitas duplicar una balda sin obra.",
+      "selectionIntro": "En organizadores de cocina pequeña hemos priorizado medidas reales, acceso visual, estabilidad y facilidad de limpieza. La compra buena elimina fricción diaria: encontrar, sacar y guardar sin desmontar medio armario.",
+      "criteria": [
+        [
+          "Medidas exactas",
+          "Ancho, fondo, altura y margen para puertas/bisagras antes de elegir."
+        ],
+        [
+          "Visibilidad",
+          "Que botes, platos o especias dejen de quedar escondidos al fondo."
+        ],
+        [
+          "Estabilidad",
+          "Material y apoyo suficientes para no volcar con peso real."
+        ],
+        [
+          "Limpieza",
+          "Superficies que no acumulen grasa ni obliguen a desmontajes continuos."
+        ]
+      ],
+      "mistakes": [
+        "Comprar packs grandes sin haber medido los huecos.",
+        "Usar organizadores que tapan lo que hay detrás y empeoran el acceso.",
+        "Sobrecargar estantes ligeros con vajilla pesada.",
+        "Confundir cocina ordenada con tener más recipientes que limpiar."
+      ],
+      "honestVerdict": "En cocina pequeña, menos piezas pero mejor elegidas. Empieza por el armario o zona que más te frena cada día y mide bien. Si un organizador no mejora acceso y visibilidad, probablemente solo está moviendo el desorden."
+    }
   },
   {
     "id": 6,
@@ -291,7 +384,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Xiaomi%20Mi%20Smart%20Air%20Fryer%203.5L",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Para 1-2 personas busca cesta fácil de limpiar y capacidad real, no litros inflados: si cocinas proteína y guarnición a la vez, una “pequeña” puede quedarse corta.",
+      "verdictTitle": "Pequeña sí, pero no minúscula si quieres usarla a diario.",
+      "verdictText": "Cosori encaja para uso frecuente sin ocupar media encimera; Xiaomi tiene sentido si te atrae la programación; Cecotec es la opción contenida si solo quieres raciones simples y precio ajustado.",
+      "selectionIntro": "En freidoras pequeñas hemos valorado huella en encimera, capacidad útil de cesta, limpieza, programas sencillos y si resuelven cenas reales para una o dos personas sin obligar a cocinar en demasiadas tandas.",
+      "criteria": [
+        [
+          "Capacidad útil",
+          "Litros reales de cesta para patatas, verduras o proteína, no solo volumen declarado."
+        ],
+        [
+          "Limpieza diaria",
+          "Cesta antiadherente, piezas accesibles y grasa fácil de retirar."
+        ],
+        [
+          "Encimera disponible",
+          "Tamaño exterior, apertura de cajón y dónde se guarda si no queda fija."
+        ],
+        [
+          "Uso semanal",
+          "Si cocinarás a diario, compensa mejor control de temperatura y acabados."
+        ]
+      ],
+      "mistakes": [
+        "Comprar la más pequeña y acabar cocinando en dos o tres tandas.",
+        "No comprobar medidas exteriores y apertura del cajón.",
+        "Elegir por número de programas cuando siempre usarás temperatura y tiempo manual.",
+        "Ignorar que algunas cestas pierden antiadherente si se limpian mal."
+      ],
+      "honestVerdict": "Para una persona basta una freidora compacta, pero para dos conviene margen. La mejor compra no es la de más programas: es la que cabe en tu cocina, se limpia sin pereza y permite cocinar una ración completa sin convertir la cena en turnos."
+    }
   },
   {
     "id": 8,
@@ -417,7 +541,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Cecotec%20Conga%202290%20Ultra%20Home",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Con mascotas, mira cepillo, depósito y navegación antes que potencia anunciada: lo importante es que no se atasque con pelo y pueda repetir zonas críticas.",
+      "verdictTitle": "Para pelo de mascota manda la constancia, no el milagro.",
+      "verdictText": "Roborock encaja si quieres navegación y rutina fiable; Dreame es fuerte si buscas buena relación prestación/precio; iRobot tiene sentido si prefieres ecosistema simple y mantenimiento conocido.",
+      "selectionIntro": "En robots para pelo de mascota hemos dado peso a cepillos anti-enredos, navegación por habitaciones, depósito, mantenimiento y disponibilidad de recambios. Ningún robot sustituye una limpieza profunda, pero sí reduce pelo diario.",
+      "criteria": [
+        [
+          "Cepillo y enredos",
+          "Diseño que tolere pelo largo y acceso fácil para retirar acumulaciones."
+        ],
+        [
+          "Mapa y rutinas",
+          "Zonas, habitaciones y horarios para insistir donde duerme la mascota."
+        ],
+        [
+          "Depósito y base",
+          "Capacidad suficiente; base de autovaciado si hay mucho pelo cada día."
+        ],
+        [
+          "Recambios",
+          "Filtros, cepillos y mopas disponibles sin depender de modelos raros."
+        ]
+      ],
+      "mistakes": [
+        "Comprar solo por potencia de succión y olvidar cepillos y mantenimiento.",
+        "Esperar que friegue manchas o arena pesada como una limpieza manual.",
+        "No revisar altura si debe pasar bajo sofá o cama.",
+        "Elegir un modelo sin recambios claros para filtros y cepillos."
+      ],
+      "honestVerdict": "Si tienes mascota, compra un robot que puedas mantener y programar fácilmente. Lo valioso es que pase a diario y no se bloquee. La base de autovaciado puede compensar si hay mucho pelo, pero no sustituye retirar enredos y limpiar filtros."
+    }
   },
   {
     "id": 11,
@@ -543,7 +698,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Litogo%20focos%20solares%20exterior%20sensor",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Define si quieres ambiente, paso o seguridad: cada uso exige potencia, sensor y autonomía distintos, y la placa solar necesita horas reales de sol.",
+      "verdictTitle": "La ubicación solar importa más que la foto bonita.",
+      "verdictText": "Aigostar encaja para ambiente decorativo; Baxia es mejor si quieres sensor de movimiento; Sol Royal tiene sentido para camino o zona concreta donde prima instalación sencilla.",
+      "selectionIntro": "En luces solares hemos valorado orientación, autonomía, resistencia exterior y tipo de luz. No prometemos iluminación permanente si la terraza recibe poco sol o el invierno reduce carga.",
+      "criteria": [
+        [
+          "Horas de sol",
+          "Placa orientada y sin sombras: sin carga suficiente, cualquier luz decepciona."
+        ],
+        [
+          "Tipo de uso",
+          "Ambiente cálido, baliza de paso o sensor de seguridad requieren productos distintos."
+        ],
+        [
+          "Resistencia exterior",
+          "Protección frente a lluvia, polvo y cambios de temperatura."
+        ],
+        [
+          "Montaje",
+          "Estaca, pared o guirnalda según si puedes taladrar y dónde pasa la gente."
+        ]
+      ],
+      "mistakes": [
+        "Comprar guirnaldas decorativas esperando iluminar una zona de trabajo.",
+        "Instalar la placa en sombra y culpar a la batería.",
+        "No revisar tono de luz si buscas ambiente cálido.",
+        "Olvidar que en invierno la autonomía puede caer bastante."
+      ],
+      "honestVerdict": "Las luces solares son buena compra para ambiente o señalización sin cable, no para sustituir una instalación eléctrica potente. Elige según uso concreto y ubicación con sol. Si la terraza es sombreada, mejor valorar alternativas con enchufe o batería recargable."
+    }
   },
   {
     "id": 14,
@@ -711,7 +897,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Intex%20Krystal%20Clear%2028604",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Para piscina pequeña y uso ocasional, cartucho puede bastar; si la piscina se usa mucho o quieres menos mantenimiento repetitivo, arena suele compensar.",
+      "verdictTitle": "Arena o cartucho depende de volumen y constancia de uso.",
+      "verdictText": "Intex de arena encaja para más caudal y menos cambio frecuente; Bestway de cartucho sirve para piscinas pequeñas; una opción salina/arena solo tiene sentido si vas a mantener la piscina toda la temporada.",
+      "selectionIntro": "En depuradoras hemos valorado volumen de piscina, caudal real, coste de consumibles, facilidad de limpieza y espacio para instalación. La elección mala suele ser quedarse corto y pasar el verano corrigiendo agua.",
+      "criteria": [
+        [
+          "Volumen de agua",
+          "Caudal suficiente para recircular la piscina en tiempos razonables."
+        ],
+        [
+          "Mantenimiento",
+          "Lavar arena frente a cambiar cartuchos con frecuencia."
+        ],
+        [
+          "Coste de temporada",
+          "Consumibles, arena, filtros y horas de funcionamiento."
+        ],
+        [
+          "Instalación",
+          "Mangueras, conexiones, espacio y compatibilidad con la piscina existente."
+        ]
+      ],
+      "mistakes": [
+        "Elegir cartucho barato para una piscina que se usa a diario por varias personas.",
+        "No calcular volumen y caudal antes de comprar.",
+        "Olvidar consumibles y recambios al comparar precio inicial.",
+        "Pensar que la depuradora sustituye control de pH, cloro y limpieza física."
+      ],
+      "honestVerdict": "Si la piscina es pequeña y temporal, cartucho puede ser suficiente. Para más volumen, calor y uso intenso, arena suele dar menos trabajo a medio plazo. Decide por litros, uso semanal y ganas reales de mantenimiento, no solo por precio de compra."
+    }
   },
   {
     "id": 18,
@@ -795,7 +1012,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Mannesmann%20M29065",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Compra herramientas para tareas probables: medir, apretar, colgar y montar muebles. Un kit enorme de baja calidad suele estorbar más que ayudar.",
+      "verdictTitle": "El kit útil es pequeño, reconocible y resistente.",
+      "verdictText": "Stanley encaja como caja base ordenada; Bosch IXO sirve si montas muebles y quieres atornillar sin esfuerzo; Mannesmann tiene sentido si quieres cubrir muchas tareas puntuales con coste contenido.",
+      "selectionIntro": "En herramientas básicas hemos priorizado calidad mínima, orden, seguridad y frecuencia de uso doméstico. El objetivo es resolver incidencias comunes sin comprar material profesional innecesario.",
+      "criteria": [
+        [
+          "Tareas habituales",
+          "Montar muebles, apretar bisagras, medir, colgar ligero y pequeñas reparaciones."
+        ],
+        [
+          "Calidad mínima",
+          "Destornilladores, alicates y cinta métrica que no fallen al primer uso."
+        ],
+        [
+          "Orden y acceso",
+          "Caja o estuche donde encuentres rápido cada pieza."
+        ],
+        [
+          "Seguridad",
+          "Herramientas adecuadas para no improvisar con cuchillos, tijeras o piezas incorrectas."
+        ]
+      ],
+      "mistakes": [
+        "Comprar un maletín enorme con piezas blandas que se redondean.",
+        "No incluir cinta métrica, nivel o cúter decente y luego improvisar.",
+        "Usar adhesivos o tacos sin revisar peso y tipo de pared.",
+        "Comprar taladro si solo vas a montar muebles una vez al año."
+      ],
+      "honestVerdict": "Para casa conviene un kit contenido pero decente: medir, atornillar, cortar, apretar y colgar ligero. Añade herramientas específicas solo cuando aparezca una tarea real. Menos volumen y mejor calidad suele ser mejor que un maletín interminable."
+    }
   },
   {
     "id": 20,
@@ -921,7 +1169,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=Meross%20MSS210",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Elige por ecosistema y seguridad: si quieres medir consumo, no compres el modelo básico; si solo automatizas una lámpara, no pagues funciones que no usarás.",
+      "verdictTitle": "El enchufe correcto depende de qué vas a automatizar.",
+      "verdictText": "Tapo P110 es el más lógico si quieres medir consumo; Tapo P100 vale para encendido simple; Meross encaja si priorizas integración con Apple/HomeKit según versión disponible.",
+      "selectionIntro": "En enchufes inteligentes hemos mirado medición de consumo, compatibilidad con asistentes, tamaño, programación y uso seguro con aparatos adecuados. No todos sirven para cargas altas o electrodomésticos exigentes.",
+      "criteria": [
+        [
+          "Medición de consumo",
+          "Imprescindible si quieres saber gasto real; prescindible para lámparas simples."
+        ],
+        [
+          "Compatibilidad",
+          "Alexa, Google, HomeKit/Matter según el ecosistema que ya usas."
+        ],
+        [
+          "Tamaño y forma",
+          "Que no bloquee enchufes contiguos en regletas o bases dobles."
+        ],
+        [
+          "Carga segura",
+          "Revisar potencia máxima y no usar con aparatos inadecuados."
+        ]
+      ],
+      "mistakes": [
+        "Comprar P100 esperando estadísticas de consumo: para eso hace falta modelo con medición.",
+        "No comprobar compatibilidad con HomeKit/Matter si usas Apple Casa.",
+        "Tapar enchufes vecinos por elegir un diseño demasiado ancho.",
+        "Automatizar calefactores u otros aparatos de alto consumo sin revisar potencia máxima."
+      ],
+      "honestVerdict": "Para empezar en domótica, un enchufe simple basta si solo quieres horarios. Si tu objetivo es controlar gasto, paga por medición. La compra sensata es la que encaja con tu app actual y con la potencia del aparato, no la que más logos muestra."
+    }
   },
   {
     "id": 23,
@@ -1215,7 +1494,38 @@ export const articles = [
         "url": "https://www.amazon.es/s?k=IKEA%20Markus%20silla%20oficina",
         "cta": "Ver precio en Amazon"
       }
-    ]
+    ],
+    "editorial": {
+      "quickDecision": "Para teletrabajo real, exige ajuste lumbar, altura y brazos razonables; una silla bonita sin regulación acaba saliendo cara si pasas horas sentado.",
+      "verdictTitle": "Calidad-precio significa ajuste suficiente, no estética gamer.",
+      "verdictText": "SIHOO encaja si priorizas apoyo lumbar y malla; Hbada sirve si tienes poco espacio; SONGMICS tiene sentido como opción económica, sabiendo que no ofrece el mismo ajuste fino.",
+      "selectionIntro": "En sillas ergonómicas hemos ponderado postura sostenida, regulación, transpirabilidad, medidas del usuario y facilidad de montaje. La ergonomía depende de que la silla se adapte a ti y a tu mesa.",
+      "criteria": [
+        [
+          "Ajuste lumbar",
+          "Soporte regulable o bien situado para evitar encorvarte tras varias horas."
+        ],
+        [
+          "Altura y brazos",
+          "Que permita apoyar pies, antebrazos y trabajar sin subir hombros."
+        ],
+        [
+          "Asiento y respaldo",
+          "Malla o acolchado según calor, peso y preferencias de uso diario."
+        ],
+        [
+          "Espacio real",
+          "Anchura, ruedas, giro y si cabe bajo la mesa."
+        ]
+      ],
+      "mistakes": [
+        "Comprar por diseño sin comprobar altura mínima/máxima.",
+        "Ignorar la mesa: una buena silla no arregla una mesa demasiado alta.",
+        "Elegir brazos fijos si chocan con el tablero.",
+        "Esperar ergonomía profesional de una silla muy barata para jornadas completas."
+      ],
+      "honestVerdict": "Si trabajas muchas horas, la silla debe poder ajustarse a tu cuerpo y mesa. En presupuestos medios, prioriza lumbar, altura y respaldo transpirable. Si el uso es ocasional, puedes ahorrar; si es diario, no conviene comprar solo por apariencia."
+    }
   },
   {
     "id": 30,

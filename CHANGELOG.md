@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.3 — 2026-07-01
+
+- Changed: 10 páginas money reforzadas con decisión rápida, veredicto, criterios, errores y cierre específicos por categoría.
+- Changed: plantilla de artículos preparada para usar bloques editoriales específicos y mantener fallback genérico en el resto de guías.
+- Verification: `npm run build` OK; 30 artículos, 14 categorías, 28 P1 y 88 fichas producto validadas; 147 páginas generadas.
+
 ## v1.3.2 — 2026-06-30
 
 - Changed: barra superior reorientada al comprador: comparar rápido, elegir según la casa y evitar compras que no encajan.

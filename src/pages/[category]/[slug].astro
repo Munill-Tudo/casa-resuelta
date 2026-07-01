@@ -15,6 +15,24 @@ export function getStaticPaths() {
 const { article, category: categoryMaybe } = Astro.props;
 const category = categoryMaybe ?? categories.find(c => c.slug === article.category)!;
 const related = articles.filter(a => a.category === article.category && a.slug !== article.slug).slice(0, 3);
+const editorial = (article as any).editorial ?? {};
+const decisionText = editorial.quickDecision ?? 'Empieza por la comparativa y abre Amazon solo para confirmar precio, stock y vendedor antes de comprar.';
+const verdictTitle = editorial.verdictTitle ?? 'Tres opciones para comparar sin perder tiempo.';
+const verdictText = editorial.verdictText ?? `Para ${article.keyword}, compara ${article.products[0]?.name} si buscas una opción equilibrada, ${article.products[1]?.name} si quieres ajustar el presupuesto y ${article.products[2]?.name} si necesitas más prestaciones.`;
+const selectionIntro = editorial.selectionIntro ?? 'La selección prioriza productos útiles para el uso indicado, diferencias claras entre modelos y limitaciones que conviene conocer antes de comprar. La idea es que puedas descartar rápido lo que no encaja contigo.';
+const criteria: [string, string][] = editorial.criteria ?? [
+  ['Uso principal', 'Qué necesidad resuelve y en qué tipo de casa encaja mejor.'],
+  ['Punto fuerte', 'La razón práctica por la que cada producto merece estar en la comparativa.'],
+  ['Punto débil', 'La limitación que debes revisar antes de decidir.'],
+  ['Alternativa adecuada', 'Cuándo elegir una opción sencilla, calidad-precio o más completa.']
+];
+const mistakes: string[] = editorial.mistakes ?? [
+  'Elegir solo por precio sin revisar medidas, ruido, consumo o mantenimiento.',
+  'Comprar la opción premium si el uso será ocasional.',
+  'No comprobar condiciones de devolución, garantía, disponibilidad y repuestos.',
+  'Confundir producto viral con producto realmente útil para tu casa.'
+];
+const honestVerdict = editorial.honestVerdict ?? 'La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, compara primero una alternativa sencilla o de coste contenido. Si lo vas a usar a diario, una opción más completa puede compensar.';
 ---
 <BaseLayout title={article.title} description={article.description} canonical={article.url}>
   <div class="container article-shell">
@@ -27,7 +45,7 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <section class="article-action-panel" aria-label="Acciones rápidas">
         <div>
           <strong>Decisión rápida</strong>
-          <span>Empieza por la comparativa y abre Amazon solo para confirmar precio, stock y vendedor antes de comprar.</span>
+          <span>{decisionText}</span>
         </div>
         <a class="btn btn-primary" href="#comparativa">Ver comparativa</a>
         <a class="btn btn-secondary" href={productUrl(article.products[0]?.name)}>Ficha del recomendado</a>
@@ -36,8 +54,8 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <section class="verdict-box">
         <div>
           <span class="eyebrow">Veredicto rápido</span>
-          <h2>Tres opciones para comparar sin perder tiempo.</h2>
-          <p>Para <strong>{article.keyword}</strong>, compara <strong>{article.products[0]?.name}</strong> si buscas una opción equilibrada, <strong>{article.products[1]?.name}</strong> si quieres ajustar el presupuesto y <strong>{article.products[2]?.name}</strong> si necesitas más prestaciones.</p>
+          <h2>{verdictTitle}</h2>
+          <p>{verdictText}</p>
         </div>
         <div class="verdict-badge"><strong>Top 3</strong><span>selección recomendada</span></div>
       </section>
@@ -68,12 +86,9 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <p class="microcopy">No publicamos precios fijos para evitar datos desactualizados. Antes de comprar, revisa en Amazon el precio vigente, stock, vendedor, envío y condiciones.</p>
 
       <h2 id="seleccion">Qué hemos tenido en cuenta</h2>
-      <p>La selección prioriza productos útiles para el uso indicado, diferencias claras entre modelos y limitaciones que conviene conocer antes de comprar. La idea es que puedas descartar rápido lo que no encaja contigo.</p>
+      <p>{selectionIntro}</p>
       <div class="criteria-grid">
-        <div><strong>Uso principal</strong><span>Qué necesidad resuelve y en qué tipo de casa encaja mejor.</span></div>
-        <div><strong>Punto fuerte</strong><span>La razón práctica por la que cada producto merece estar en la comparativa.</span></div>
-        <div><strong>Punto débil</strong><span>La limitación que debes revisar antes de decidir.</span></div>
-        <div><strong>Alternativa adecuada</strong><span>Cuándo elegir una opción sencilla, calidad-precio o más completa.</span></div>
+        {criteria.map(([label, text]) => <div><strong>{label}</strong><span>{text}</span></div>)}
       </div>
 
       <h2 id="perfil">Recomendaciones por perfil</h2>
@@ -81,14 +96,11 @@ const related = articles.filter(a => a.category === article.category && a.slug !
 
       <h2 id="errores">Errores comunes al comprar</h2>
       <ul class="check-list">
-        <li>Elegir solo por precio sin revisar medidas, ruido, consumo o mantenimiento.</li>
-        <li>Comprar la opción premium si el uso será ocasional.</li>
-        <li>No comprobar condiciones de devolución, garantía, disponibilidad y repuestos.</li>
-        <li>Confundir producto viral con producto realmente útil para tu casa.</li>
+        {mistakes.map(item => <li>{item}</li>)}
       </ul>
 
       <h2 id="veredicto">Veredicto honesto</h2>
-      <p>La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, compara primero una alternativa sencilla o de coste contenido. Si lo vas a usar a diario, una opción más completa puede compensar.</p>
+      <p>{honestVerdict}</p>
       <AffiliateNotice />
 
       {related.length > 0 && <section class="related"><h2>También puede interesarte</h2><div class="grid grid-3">{related.map(a => <a class="card card-link" href={`/${a.category}/${a.slug}/`}><span class="pill">{a.type}</span><h3>{a.title}</h3><p>{a.description}</p></a>)}</div></section>}
