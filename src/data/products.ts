@@ -18,7 +18,7 @@ export type ProductEntity = {
   mainImageUrl: string;
   affiliateUrl: string;
   status: 'published' | 'draft' | 'paused' | 'discontinued';
-  dataSource: 'manual' | 'amazon_search' | 'amazon_api';
+  dataSource: 'manual' | 'amazon_search' | 'amazon_api' | 'manual_snapshot';
   priceDisplayMode: 'exact' | 'hidden' | 'check_on_amazon';
   priceStatus: 'fresh' | 'stale' | 'unavailable' | 'api_error' | 'manual_blocked';
   currentPrice: null | { display: string; amount?: number; currency?: string; expiresAt: string };
@@ -77,6 +77,7 @@ type CommercialSnapshotItem = {
   fetchedAt?: string;
   expiresAt?: string;
   error?: string;
+  source?: string;
 };
 const commercialItems = (commercialSnapshot as { items?: Record<string, CommercialSnapshotItem> }).items ?? {};
 const isFreshCommercial = (item?: CommercialSnapshotItem) => Boolean(item?.expiresAt && new Date(item.expiresAt).getTime() > Date.now() && !item.error);
@@ -109,6 +110,11 @@ for (const article of articles) {
       existing.relatedProducts = Array.from(new Set([...existing.relatedProducts, ...article.products.filter(p => slugifyProduct(p.name) !== slug).map(p => slugifyProduct(p.name))])).slice(0, 6);
       return;
     }
+    const commercialSource = commercial?.source ?? '';
+    const dataSource = commercialFresh ? (commercialSource === 'manual-operator-snapshot' ? 'manual_snapshot' : 'amazon_api') : 'amazon_search';
+    const freshComplianceNotes = commercialSource === 'manual-operator-snapshot'
+      ? 'Precio, disponibilidad, enlace e imagen proceden de snapshot manual revisado por operador y caducan automáticamente según TTL.'
+      : 'Precio, disponibilidad, enlace e imagen proceden de fuente oficial de Amazon y caducan automáticamente según TTL.';
     bySlug.set(slug, {
       id: `prod-${slug}`,
       asin: commercial?.asin ?? 'dato-pendiente',
@@ -123,7 +129,7 @@ for (const article of articles) {
       mainImageUrl: commercialFresh && commercial?.image?.url ? commercial.image.url : '',
       affiliateUrl: commercialFresh && commercial?.detailPageUrl ? commercial.detailPageUrl : product.url,
       status: 'published',
-      dataSource: commercialFresh ? 'amazon_api' : 'amazon_search',
+      dataSource,
       priceDisplayMode: commercialFresh && commercial?.price?.display ? 'exact' : 'check_on_amazon',
       priceStatus: commercial?.error ? 'api_error' : commercialFresh && commercial?.price?.display ? 'fresh' : commercialFresh ? 'unavailable' : 'manual_blocked',
       currentPrice: commercialFresh && commercial?.price?.display ? { ...commercial.price, expiresAt: commercial.expiresAt as string } : null,
@@ -134,7 +140,7 @@ for (const article of articles) {
       isCommercialDataFresh: commercialFresh,
       amazonTitle: commercialFresh && commercial?.title ? commercial.title : null,
       isAvailable: commercialFresh && commercial?.availability ? commercial.availability.isAvailable ?? null : null,
-      complianceNotes: commercialFresh ? 'Precio, disponibilidad, enlace e imagen proceden de Amazon PA API y caducan automáticamente según TTL.' : 'Precio y disponibilidad no sincronizados por API oficial; se oculta precio exacto y se envía a comprobar en Amazon.',
+      complianceNotes: commercialFresh ? freshComplianceNotes : 'Precio y disponibilidad no sincronizados por fuente compatible actualizada; se oculta precio exacto y se envía a comprobar en Amazon.',
       bestFor: `${product.bestFor}: ${product.strength}`,
       notFor: product.limitation,
       mainBenefit: product.strength,
@@ -163,12 +169,12 @@ for (const article of articles) {
       ],
       cons: [
         product.limitation,
-        'El precio exacto no se muestra porque no está sincronizado mediante fuente oficial actualizada.',
+        'El precio exacto se muestra solo si existe una sincronización fresca mediante fuente compatible; si caduca, volvemos al enlace de comprobación.',
         'Antes de comprar conviene revisar medidas, stock, vendedor, envío y condiciones directamente en Amazon.'
       ],
       faqs: [
         { question: `¿Merece la pena ${product.name}?`, answer: `Puede merecer la pena si tu prioridad coincide con ${product.bestFor.toLowerCase()} y aceptas su límite principal: ${product.limitation.toLowerCase()}` },
-        { question: '¿Mostramos precio actualizado?', answer: 'No. Hasta integrar una API oficial o fuente compatible, ocultamos el precio exacto y recomendamos comprobar el precio vigente en Amazon.' },
+        { question: '¿Mostramos precio actualizado?', answer: 'Solo si hay una fuente compatible fresca. Si no existe o caduca, ocultamos el precio exacto y recomendamos comprobar el precio vigente en Amazon.' },
         { question: '¿Para qué usuario encaja mejor?', answer: `Para quien busca ${article.keyword} en este contexto: ${article.caseUse.toLowerCase()}` }
       ],
       sourceArticles: [sourceArticle],
