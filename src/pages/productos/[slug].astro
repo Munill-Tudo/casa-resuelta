@@ -50,8 +50,8 @@ const schemaJson = {
 };
 const priceLabel = product.currentPrice?.display ?? 'Ver precio actualizado en Amazon';
 const priceHelper = product.currentPrice?.display
-? `Precio sincronizado desde Amazon. Última actualización: ${product.lastPriceSyncAt ? new Date(product.lastPriceSyncAt).toLocaleString('es-ES') : 'reciente'}. Puede cambiar antes de la compra.`
-: 'No mostramos precio exacto porque todavía no está sincronizado mediante API oficial. El precio aplicable será el mostrado en Amazon en el momento de la compra.';
+? `Precio actualizado desde fuente compatible. Última actualización: ${product.lastPriceSyncAt ? new Date(product.lastPriceSyncAt).toLocaleString('es-ES') : 'reciente'}. Puede cambiar antes de la compra.`
+: 'No mostramos precio exacto porque no hay una fuente compatible fresca. El precio aplicable será el mostrado en Amazon en el momento de la compra.';
 ---
 <BaseLayout title={`${product.name}: análisis y opinión`} description={product.shortDescription} canonical={canonical} schemaJson={schemaJson}>
   <div class="container product-page-shell">

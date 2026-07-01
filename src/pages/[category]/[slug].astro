@@ -24,6 +24,15 @@ const related = articles.filter(a => a.category === article.category && a.slug !
       <h1>{article.title}</h1>
       <p class="lead">{article.caseUse}</p>
 
+      <section class="article-action-panel" aria-label="Acciones rápidas">
+        <div>
+          <strong>Decisión rápida</strong>
+          <span>Empieza por la comparativa y abre Amazon solo para confirmar precio, stock y vendedor antes de comprar.</span>
+        </div>
+        <a class="btn btn-primary" href="#comparativa">Ver comparativa</a>
+        <a class="btn btn-secondary" href={productUrl(article.products[0]?.name)}>Ficha del recomendado</a>
+      </section>
+
       <section class="verdict-box">
         <div>
           <span class="eyebrow">Veredicto rápido</span>

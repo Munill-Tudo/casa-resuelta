@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { articles } from '../data/articles';
+import { categories } from '../data/categories';
+import { products } from '../data/products';
+
+const categoryBySlug = new Map<string, (typeof categories)[number]>(categories.map(c => [c.slug, c]));
+const featuredGuides = articles.filter(a => a.priority === 'P1').slice(0, 8).map(article => ({
+  type: 'Guía',
+  title: article.title,
+  url: article.url,
+  description: article.description,
+  category: categoryBySlug.get(article.category)?.name ?? article.category,
+  icon: categoryBySlug.get(article.category)?.icon ?? '🏠',
+  tags: [article.type, article.keyword, 'comparativa']
+}));
+const searchIndex = [
+  ...articles.map(article => ({
+    kind: 'guide',
+    label: article.type,
+    title: article.title,
+    url: article.url,
+    description: article.description,
+    category: categoryBySlug.get(article.category)?.name ?? article.category,
+    icon: categoryBySlug.get(article.category)?.icon ?? '🏠',
+    keywords: [article.keyword, article.caseUse, ...article.products.map(p => `${p.name} ${p.bestFor} ${p.strength}`)].join(' ')
+  })),
+  ...products.map(product => ({
+    kind: 'product',
+    label: 'Ficha producto',
+    title: product.name,
+    url: `/productos/${product.slug}/`,
+    description: product.shortDescription,
+    category: categoryBySlug.get(product.category)?.name ?? product.category,
+    icon: categoryBySlug.get(product.category)?.icon ?? '🏠',
+    keywords: [product.brand, product.model, product.subcategory, product.bestFor, product.mainBenefit, product.mainObjection].join(' ')
+  }))
+];
+---
+<BaseLayout title="Buscar guías y productos" description="Buscador interno de guías, comparativas y fichas de producto para casa en Con Buen Ojo.">
+  <section class="section search-page">
+    <div class="container">
+      <div class="search-hero-panel">
+        <span class="eyebrow">Buscador interno</span>
+        <h1>Encuentra rápido la guía o producto que estás comparando.</h1>
+        <p class="lead">Busca por producto, problema o categoría: “ventilador silencioso”, “robot aspirador mascotas”, “organizador cocina”, “piscina desmontable”…</p>
+        <form class="search-page-form" action="/buscar/" method="get">
+          <input id="site-search-input" type="search" name="q" placeholder="Buscar guía, producto o necesidad" autocomplete="off" />
+          <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+        <div class="quick-searches" aria-label="Búsquedas frecuentes">
+          {['ventilador silencioso','freidora de aire','robot aspirador mascotas','organizador cocina','luces solares','enchufe inteligente'].map(term => <a href={`/buscar/?q=${encodeURIComponent(term)}`}>{term}</a>)}
+        </div>
+      </div>
+
+      <div class="search-results-layout">
+        <main>
+          <div class="section-head">
+            <h2 id="search-result-title">Recomendados para empezar</h2>
+            <span id="search-result-count" class="result-count">Guías principales</span>
+          </div>
+          <div id="search-results" class="search-results-grid">
+            {featuredGuides.map(item => <a class="search-result-card" href={item.url}>
+              <div class="search-result-icon">{item.icon}</div>
+              <div>
+                <span>{item.category} · {item.type}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <div class="deal-tags">{item.tags.map(tag => <small>{tag}</small>)}</div>
+              </div>
+            </a>)}
+          </div>
+        </main>
+        <aside class="sidebar search-help-sidebar">
+          <div class="side-card testing-card">
+            <h3>Cómo buscar mejor</h3>
+            <ul>
+              <li>Problema: “calor dormitorio”, “pelo mascota”.</li>
+              <li>Producto: “Rowenta”, “Cosori”, “Tapo”.</li>
+              <li>Uso: “terraza pequeña”, “cocina pequeña”.</li>
+            </ul>
+          </div>
+          <div class="side-card popular-card">
+            <h3>Atajos útiles</h3>
+            <a href="/mejores/"><span>Rankings</span>Mejores productos</a>
+            <a href="/comparativas/"><span>Comparar</span>Comparativas directas</a>
+            <a href="/metodologia/"><span>Confianza</span>Cómo recomendamos</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+  <script is:inline define:vars={{ searchIndex }}>
+    const normalize = (value) => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const params = new URLSearchParams(window.location.search);
+    const input = document.getElementById('site-search-input');
+    const results = document.getElementById('search-results');
+    const title = document.getElementById('search-result-title');
+    const count = document.getElementById('search-result-count');
+    const q = params.get('q') || '';
+    input.value = q;
+    const render = (term) => {
+      const tokens = normalize(term).split(/\s+/).filter(Boolean);
+      if (!tokens.length) return;
+      const ranked = searchIndex.map(item => {
+        const haystack = normalize([item.title, item.description, item.category, item.label, item.keywords].join(' '));
+        const score = tokens.reduce((acc, token) => acc + (haystack.includes(token) ? 1 : 0) + (normalize(item.title).includes(token) ? 2 : 0), 0);
+        return { item, score };
+      }).filter(row => row.score > 0).sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title)).slice(0, 24);
+      title.textContent = `Resultados para “${term}”`;
+      count.textContent = `${ranked.length} resultado${ranked.length === 1 ? '' : 's'}`;
+      results.innerHTML = ranked.length ? ranked.map(({ item }) => `
+        <a class="search-result-card" href="${item.url}">
+          <div class="search-result-icon">${item.icon}</div>
+          <div>
+            <span>${item.category} · ${item.label}</span>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+          </div>
+        </a>
+      `).join('') : '<div class="empty-search"><h3>No hay resultados claros.</h3><p>Prueba con una categoría, marca o uso más general. También puedes navegar por categorías.</p><a class="btn btn-secondary" href="/categorias/">Ver categorías</a></div>';
+    };
+    render(q);
+    input.addEventListener('input', event => render(event.target.value));
+  </script>
+</BaseLayout>
