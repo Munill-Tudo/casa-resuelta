@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.5 — 2026-07-02
+
+- Fixed: coherencia editorial entre veredictos rápidos y Top 3 en páginas money; eliminadas menciones a modelos que no estaban en la selección visible.
+- Changed: el bloque Top 3 muestra el ranking numérico y deja el posicionamiento real en `bestFor`, evitando etiquetas genéricas que chocaban con el criterio editorial.
+- Verification: `npm run build` OK; auditoría de coherencia producto/veredicto OK; smoke local de 6 páginas corregidas OK.
+
 ## v1.3.4 — 2026-07-02
 
 - Changed: 10 páginas money incorporan bloque de decisión de compra segura: comprar si, mejor no comprar si y comprobaciones antes de abrir Amazon.

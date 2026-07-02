@@ -80,7 +80,7 @@ const primaryProduct = article.products[0];
       <h2 id="resumen">Top 3 recomendado</h2>
       <div class="top3-grid">
         {article.products.map((p, i) => <a class="top3-card" href={productUrl(p.name)}>
-          <span>{i === 0 ? 'Mejor global' : i === 1 ? 'Calidad-precio' : 'Alternativa premium'}</span>
+          <span>{`#${i + 1}`}</span>
           <strong>{p.name}</strong>
           <small>{p.bestFor}</small>
         </a>)}

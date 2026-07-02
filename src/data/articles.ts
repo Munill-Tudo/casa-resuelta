@@ -439,7 +439,7 @@ export const articles = [
     "editorial": {
       "quickDecision": "Para 1-2 personas busca cesta fácil de limpiar y capacidad real, no litros inflados: si cocinas proteína y guarnición a la vez, una “pequeña” puede quedarse corta.",
       "verdictTitle": "Pequeña sí, pero no minúscula si quieres usarla a diario.",
-      "verdictText": "Cosori encaja para uso frecuente sin ocupar media encimera; Xiaomi tiene sentido si te atrae la programación; Cecotec es la opción contenida si solo quieres raciones simples y precio ajustado.",
+      "verdictText": "Cosori encaja para uso frecuente sin ocupar media encimera; Philips tiene sentido si prefieres marca consolidada y manejo sencillo; Xiaomi compensa si te atrae la programación desde app.",
       "selectionIntro": "En freidoras pequeñas hemos valorado huella en encimera, capacidad útil de cesta, limpieza, programas sencillos y si resuelven cenas reales para una o dos personas sin obligar a cocinar en demasiadas tandas.",
       "criteria": [
         [
@@ -613,7 +613,7 @@ export const articles = [
     "editorial": {
       "quickDecision": "Con mascotas, mira cepillo, depósito y navegación antes que potencia anunciada: lo importante es que no se atasque con pelo y pueda repetir zonas críticas.",
       "verdictTitle": "Para pelo de mascota manda la constancia, no el milagro.",
-      "verdictText": "Roborock encaja si quieres navegación y rutina fiable; Dreame es fuerte si buscas buena relación prestación/precio; iRobot tiene sentido si prefieres ecosistema simple y mantenimiento conocido.",
+      "verdictText": "Roborock encaja si quieres navegación y rutina fiable para mascotas; iRobot tiene sentido si priorizas detección de obstáculos y mantenimiento conocido; Cecotec es la alternativa contenida si el presupuesto manda.",
       "selectionIntro": "En robots para pelo de mascota hemos dado peso a cepillos anti-enredos, navegación por habitaciones, depósito, mantenimiento y disponibilidad de recambios. Ningún robot sustituye una limpieza profunda, pero sí reduce pelo diario.",
       "criteria": [
         [
@@ -787,7 +787,7 @@ export const articles = [
     "editorial": {
       "quickDecision": "Define si quieres ambiente, paso o seguridad: cada uso exige potencia, sensor y autonomía distintos, y la placa solar necesita horas reales de sol.",
       "verdictTitle": "La ubicación solar importa más que la foto bonita.",
-      "verdictText": "Aigostar encaja para ambiente decorativo; Baxia es mejor si quieres sensor de movimiento; Sol Royal tiene sentido para camino o zona concreta donde prima instalación sencilla.",
+      "verdictText": "Philips Hue encaja si quieres ambiente premium integrado; Aigostar tiene sentido para balizamiento barato; Litogo es mejor si buscas focos con sensor para seguridad puntual.",
       "selectionIntro": "En luces solares hemos valorado orientación, autonomía, resistencia exterior y tipo de luz. No prometemos iluminación permanente si la terraza recibe poco sol o el invierno reduce carga.",
       "criteria": [
         [
@@ -1135,7 +1135,7 @@ export const articles = [
     "editorial": {
       "quickDecision": "Compra herramientas para tareas probables: medir, apretar, colgar y montar muebles. Un kit enorme de baja calidad suele estorbar más que ayudar.",
       "verdictTitle": "El kit útil es pequeño, reconocible y resistente.",
-      "verdictText": "Stanley encaja como caja base ordenada; Bosch IXO sirve si montas muebles y quieres atornillar sin esfuerzo; Mannesmann tiene sentido si quieres cubrir muchas tareas puntuales con coste contenido.",
+      "verdictText": "Bosch encaja como kit inicial para pequeñas tareas; Stanley sirve si ya tienes herramientas y necesitas ordenarlas; Mannesmann tiene sentido si quieres cubrir muchas tareas puntuales con coste contenido.",
       "selectionIntro": "En herramientas básicas hemos priorizado calidad mínima, orden, seguridad y frecuencia de uso doméstico. El objetivo es resolver incidencias comunes sin comprar material profesional innecesario.",
       "criteria": [
         [
@@ -1309,7 +1309,7 @@ export const articles = [
     "editorial": {
       "quickDecision": "Elige por ecosistema y seguridad: si quieres medir consumo, no compres el modelo básico; si solo automatizas una lámpara, no pagues funciones que no usarás.",
       "verdictTitle": "El enchufe correcto depende de qué vas a automatizar.",
-      "verdictText": "Tapo P110 es el más lógico si quieres medir consumo; Tapo P100 vale para encendido simple; Meross encaja si priorizas integración con Apple/HomeKit según versión disponible.",
+      "verdictText": "Tapo P110 es el más lógico si quieres medir consumo; Amazon Smart Plug encaja si usas Alexa y buscas instalación simple; Meross tiene sentido si priorizas integración con Apple/HomeKit según versión disponible.",
       "selectionIntro": "En enchufes inteligentes hemos mirado medición de consumo, compatibilidad con asistentes, tamaño, programación y uso seguro con aparatos adecuados. No todos sirven para cargas altas o electrodomésticos exigentes.",
       "criteria": [
         [
@@ -1651,7 +1651,7 @@ export const articles = [
     "editorial": {
       "quickDecision": "Para teletrabajo real, exige ajuste lumbar, altura y brazos razonables; una silla bonita sin regulación acaba saliendo cara si pasas horas sentado.",
       "verdictTitle": "Calidad-precio significa ajuste suficiente, no estética gamer.",
-      "verdictText": "SIHOO encaja si priorizas apoyo lumbar y malla; Hbada sirve si tienes poco espacio; SONGMICS tiene sentido como opción económica, sabiendo que no ofrece el mismo ajuste fino.",
+      "verdictText": "SIHOO encaja si priorizas apoyo lumbar y malla; Hbada sirve si tienes poco espacio y quieres más ajustes; IKEA Markus tiene sentido si prefieres una silla sencilla, robusta y fácil de probar.",
       "selectionIntro": "En sillas ergonómicas hemos ponderado postura sostenida, regulación, transpirabilidad, medidas del usuario y facilidad de montaje. La ergonomía depende de que la silla se adapte a ti y a tu mesa.",
       "criteria": [
         [
