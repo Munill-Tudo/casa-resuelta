@@ -70,12 +70,12 @@ if (provider === 'creators') {
   if (!creatorsConfig.credentialId) missing.push('AMAZON_CREATORS_CREDENTIAL_ID');
   if (!creatorsConfig.credentialSecret) missing.push('AMAZON_CREATORS_CREDENTIAL_SECRET');
   if (!creatorsConfig.credentialVersion) missing.push('AMAZON_CREATORS_CREDENTIAL_VERSION');
-  if (missing.length) failMissing('Creators API is the default provider. Configure Creators API credentials before syncing live Amazon data.', missing);
+  if (missing.length) failMissing('Creators API is the default provider. Configure Creators API credentials from Associates Central before syncing live Amazon data.', missing);
 } else if (provider === 'paapi') {
   const missing = [];
   if (!paapiConfig.accessKey) missing.push('AMAZON_PAAPI_ACCESS_KEY');
   if (!paapiConfig.secretKey) missing.push('AMAZON_PAAPI_SECRET_KEY');
-  if (missing.length) failMissing('PA API provider selected, but PA API credentials are missing.', missing);
+  if (missing.length) failMissing('PA API is legacy only. Select it only after confirming account-level PA API access; credentials are missing.', missing);
 } else {
   console.error(`Unsupported AMAZON_PRODUCT_API_PROVIDER=${provider}. Use "creators" or "paapi".`);
   process.exit(2);

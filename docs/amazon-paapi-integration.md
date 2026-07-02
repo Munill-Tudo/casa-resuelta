@@ -1,132 +1,158 @@
-# Integración de productos vivos: Amazon Creators API y PA API
+# Integración de productos vivos: Amazon Creators API y PA API legacy
 
-## Estado actual de la documentación de Amazon
+## Decisión ejecutiva — revisión 2026-07-02
 
-Revisión realizada el 1 de julio de 2026 sobre documentación oficial de Amazon:
+La integración nueva debe ir preparada para **Amazon Creators API** por defecto. No debemos introducir `AMAZON_PAAPI_ACCESS_KEY` ni `AMAZON_PAAPI_SECRET_KEY` ahora.
 
-- La documentación de Product Advertising API 5.0 indica: **“PA-API will be deprecated on May 15th, 2026. Please migrate to Creators API.”**
-- También indica que el sitio de documentación de PA API ya no se mantiene y puede contener información obsoleta.
-- La documentación de Creators API incluye una guía específica: **“Migrating to Creators API from Product Advertising API”**.
-- Creators API ofrece operaciones equivalentes para nuestro caso: `SearchItems`, `GetItems`, `GetVariations`, `GetBrowseNodes`.
-- Para precio y disponibilidad en Creators API ya no se usa `Offers.Listings`; se usa **`offersV2`**.
+Comprobado en documentación oficial de Amazon:
 
-Conclusión operativa: **la integración nueva debe prepararse para Creators API por defecto**. PA API queda solo como proveedor legacy si una cuenta concreta todavía lo tiene activo durante transición.
+- PA API 5.0 muestra el aviso: **“PA-API will be deprecated on May 15th, 2026. Please migrate to Creators API.”**
+- La misma página indica que la documentación PA API ya no se mantiene y puede contener información obsoleta.
+- Amazon remite a `https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction`.
+- Creators API documenta la migración desde PA API y dice que los clientes PA API existentes deben migrar.
+- Creators API ofrece las operaciones necesarias para nuestro caso: `SearchItems`, `GetItems`, `GetVariations`, `GetBrowseNodes`.
+- El locale/marketplace de España aparece como **Spain → `https://www.amazon.es`**.
+- Creators API usa OAuth 2.0 con `Credential ID`, `Credential Secret` y `Version`; las claves AWS Access Key/Secret Key de PA API no sirven para Creators API.
 
-## Qué mantiene seguro el proyecto
+## Respuestas concretas
 
-La web conserva la lógica ya creada:
+### ¿PA API sigue siendo funcional para Amazon.es en nuestra cuenta?
 
-- No muestra precio exacto sin dato oficial fresco.
-- No muestra disponibilidad como afirmación si no viene de API oficial fresca.
-- Si el dato caduca, cae a: **“Ver precio actualizado en Amazon”**.
-- No se exponen claves en HTML, repo ni snapshots.
-- `src/data/product-commercial.json` no contiene secretos.
-- El validador falla si un precio visible está caducado.
-- Si una API devuelve producto sin stock, la ficha puede proponer alternativa relacionada disponible.
+**No se puede confirmar sin entrar en Associates Central de esa cuenta o ejecutar una llamada real con credenciales vigentes.**
 
-## Proveedor por defecto
+Pero para una integración nueva la respuesta operativa es: **no basarse en PA API**. La documentación pública oficial ya la marca como deprecada con fecha 15/05/2026 y remite a Creators API. Si la cuenta conserva acceso legacy, debe tratarse solo como transición y no como base del proyecto.
 
-El script `scripts/sync-amazon-products.mjs` usa por defecto:
+### ¿Amazon exige Creators API para nuevas integraciones?
 
-```bash
-AMAZON_PRODUCT_API_PROVIDER=creators
-```
+**Sí, para este proyecto debemos asumir Creators API como vía correcta.** Amazon documenta Creators API como sustituto/migración de PA API y la propia documentación de PA API remite allí.
 
-También admite legacy:
+### ¿Qué se puede configurar provisionalmente ahora?
 
-```bash
-AMAZON_PRODUCT_API_PROVIDER=paapi
-```
-
-## Variables comunes
-
-Estas sí se pueden configurar de forma provisional:
+Variables no sensibles, válidas para dejar preparadas:
 
 ```bash
 AMAZON_PARTNER_TAG=tu-tag-de-amazon-es
 AMAZON_MARKETPLACE=www.amazon.es
+AMAZON_PRODUCT_API_PROVIDER=creators
 AMAZON_SNAPSHOT_TTL_HOURS=24
 ```
 
-## Variables para Creators API — vía recomendada
+No configurar todavía:
 
-Para Amazon.es, Creators API usa marketplace `www.amazon.es`. La versión de credencial depende de lo que asigne Amazon al crearla:
+```bash
+AMAZON_PAAPI_ACCESS_KEY=
+AMAZON_PAAPI_SECRET_KEY=
+```
 
-- Europa v2.x: normalmente `2.2`, token endpoint Cognito EU.
-- Europa v3.x: normalmente `3.2`, token endpoint Login with Amazon EU.
+## Variables exactas — Creators API, vía recomendada
 
-Variables:
+Requeridas cuando Amazon active/entregue la credencial:
 
 ```bash
 AMAZON_PRODUCT_API_PROVIDER=creators
+AMAZON_PARTNER_TAG=...-21
+AMAZON_MARKETPLACE=www.amazon.es
 AMAZON_CREATORS_CREDENTIAL_ID=...
 AMAZON_CREATORS_CREDENTIAL_SECRET=...
-AMAZON_CREATORS_CREDENTIAL_VERSION=3.2
-AMAZON_MARKETPLACE=www.amazon.es
-AMAZON_PARTNER_TAG=...-21
+AMAZON_CREATORS_CREDENTIAL_VERSION=...
+AMAZON_SNAPSHOT_TTL_HOURS=24
 ```
 
-Opcionales si Amazon entrega un endpoint específico:
+Opcionales si Amazon entrega endpoints/scope explícitos o cambia la versión:
 
 ```bash
-AMAZON_CREATORS_TOKEN_ENDPOINT=https://api.amazon.co.uk/auth/o2/token
+AMAZON_CREATORS_TOKEN_ENDPOINT=...
 AMAZON_CREATORS_API_BASE=https://creatorsapi.amazon
-AMAZON_CREATORS_SCOPE=creatorsapi::default
+AMAZON_CREATORS_SCOPE=...
 ```
 
-Defaults implementados:
+Defaults implementados en `scripts/sync-amazon-products.mjs`:
 
-- `3.2` → `https://api.amazon.co.uk/auth/o2/token`, scope `creatorsapi::default`.
-- `2.2` → `https://creatorsapi.auth.eu-south-2.amazoncognito.com/oauth2/token`, scope `creatorsapi/default`.
-- API base → `https://creatorsapi.amazon`.
+- `AMAZON_PRODUCT_API_PROVIDER`: `creators`.
+- `AMAZON_MARKETPLACE`: `www.amazon.es`.
+- `AMAZON_CREATORS_CREDENTIAL_VERSION`: `3.2`, salvo que Amazon indique otra.
+- `AMAZON_CREATORS_API_BASE`: `https://creatorsapi.amazon`.
+- Credencial `3.2` → token endpoint `https://api.amazon.co.uk/auth/o2/token`, scope `creatorsapi::default`.
+- Credencial `2.2` → token endpoint `https://creatorsapi.auth.eu-south-2.amazoncognito.com/oauth2/token`, scope `creatorsapi/default`.
 
-Headers usados para llamadas Creators API:
+Recursos solicitados en Creators API:
 
-- `Authorization: Bearer ***` para v3.x.
-- `Authorization: Bearer <token>, Version <version>` para v2.x.
-- `Content-Type: application/json`.
-- `x-marketplace: www.amazon.es`.
+```text
+images.primary.large
+images.primary.medium
+itemInfo.title
+itemInfo.byLineInfo
+offersV2.listings.price
+offersV2.listings.availability
+offersV2.listings.condition
+offersV2.listings.type
+offersV2.listings.isBuyBoxWinner
+offersV2.listings.merchantInfo
+```
 
-Recursos solicitados:
+## Variables exactas — PA API, solo legacy si se confirma cuenta activa
 
-- `images.primary.large`
-- `images.primary.medium`
-- `itemInfo.title`
-- `itemInfo.byLineInfo`
-- `offersV2.listings.price`
-- `offersV2.listings.availability`
-- `offersV2.listings.condition`
-- `offersV2.listings.type`
-- `offersV2.listings.isBuyBoxWinner`
-- `offersV2.listings.merchantInfo`
-
-## Variables para PA API — solo legacy/transición
-
-No configurar estas claves hasta confirmar que la cuenta concreta todavía tiene PA API funcional y que Amazon permite usarlo para esa cuenta.
+No usarlas salvo confirmación explícita en Associates Central o test real de cuenta.
 
 ```bash
 AMAZON_PRODUCT_API_PROVIDER=paapi
+AMAZON_PARTNER_TAG=...-21
+AMAZON_MARKETPLACE=www.amazon.es
 AMAZON_PAAPI_ACCESS_KEY=...
 AMAZON_PAAPI_SECRET_KEY=...
 AMAZON_PAAPI_HOST=webservices.amazon.es
 AMAZON_PAAPI_REGION=eu-west-1
-AMAZON_MARKETPLACE=www.amazon.es
-AMAZON_PARTNER_TAG=...-21
+AMAZON_SNAPSHOT_TTL_HOURS=24
 ```
+
+## ¿Debe adaptarse `scripts/sync-amazon-products.mjs`?
+
+**Ya está preparado para Creators API como proveedor por defecto.** Mantiene PA API como proveedor legacy opcional, pero el flujo principal es:
+
+```bash
+AMAZON_PRODUCT_API_PROVIDER=creators npm run sync:amazon:candidates
+AMAZON_PRODUCT_API_PROVIDER=creators npm run sync:amazon
+```
+
+Contrato de salida seguro en `src/data/product-commercial.json`:
+
+- `asin`
+- `title`
+- `brand`
+- `detailPageUrl`
+- `image`, si viene de fuente permitida
+- `price`, solo si viene fresco de API/snapshot válido
+- `availability`
+- `fetchedAt`
+- `expiresAt`
+- `source`
+- `error`, si no se obtiene dato seguro
+
+## Seguridad que no se toca
+
+La web debe mantener siempre:
+
+- Datos frescos con `fetchedAt` y `expiresAt`.
+- TTL explícito.
+- Si el precio caduca o falta, fallback a **“Ver precio actualizado en Amazon”**.
+- Sin claves en HTML, repo, snapshots ni cliente.
+- Validación de precios caducados antes de build/deploy.
+- Enlaces afiliados con `rel="sponsored nofollow noopener"`.
+- Aviso de afiliación visible.
 
 ## Flujo recomendado ahora
 
-1. Configurar solo:
+1. Configurar solo variables no sensibles:
 
 ```bash
-AMAZON_PARTNER_TAG=...
+AMAZON_PARTNER_TAG=...-21
 AMAZON_MARKETPLACE=www.amazon.es
 AMAZON_PRODUCT_API_PROVIDER=creators
 ```
 
-2. Entrar en Associates Central y revisar si aparece **CreatorsAPI** en Tools.
+2. Entrar en Associates Central de Amazon.es y comprobar si aparece **CreatorsAPI** en Tools.
 3. Crear aplicación y credencial Creators API.
-4. Guardar sin commitear:
+4. Guardar fuera del repo:
 
 ```bash
 AMAZON_CREATORS_CREDENTIAL_ID=...
@@ -134,7 +160,7 @@ AMAZON_CREATORS_CREDENTIAL_SECRET=...
 AMAZON_CREATORS_CREDENTIAL_VERSION=...
 ```
 
-5. Generar candidatos ASIN:
+5. Generar candidatos:
 
 ```bash
 npm run sync:amazon:candidates
@@ -147,8 +173,12 @@ npm run sync:amazon:candidates
 npm run sync:amazon
 ```
 
-8. Build + deploy.
+8. Ejecutar build/validación y desplegar.
 
-## Respuesta a la pregunta “¿PA API sigue siendo funcional?”
+## Fuentes oficiales revisadas
 
-Con la documentación pública actual no conviene asumirlo para nuevas integraciones. Amazon dice que PA API será deprecada el 15/05/2026, que hay que migrar a Creators API y que PA API ya no acepta nuevos clientes. Si una cuenta ya tenía PA API antes, podría seguir funcionando durante transición hasta la fecha límite o según condiciones internas de Amazon, pero para esta web la integración correcta es **Creators API**.
+- PA API 5.0 documentation: `https://webservices.amazon.com/paapi5/documentation/`
+- PA API 5.0 documentation, locale ES: `https://webservices.amazon.es/paapi5/documentation/`
+- Creators API introduction: `https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction`
+- Creators API migration guide: sección “Migrating to Creators API from Product Advertising API” en la documentación de Creators API.
+- Creators API locale reference: sección “Locale Reference”, Spain → `https://www.amazon.es`.

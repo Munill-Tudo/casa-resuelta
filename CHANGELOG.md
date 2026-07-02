@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.3.6 — 2026-07-02
+
+- Changed: Amazon product-data integration documented as Creators API-first after rechecking official Amazon docs; PA API remains legacy-only until account-level access is confirmed.
+- Added: `.env.example` with safe provisional Amazon variables and server-only Creators credential placeholders; `.gitignore` now allows committing this template without real `.env` files.
+- Changed: Amazon product map notes now refer to Creators API candidates instead of PA API; sync script missing-credential messages warn against PA API by default.
+- Verification: official PA API and Creators API documentation reviewed; `npm run build` OK; missing-credentials dry runs preserve safe fallback.
+
 ## v1.3.5 — 2026-07-02
 
 - Fixed: coherencia editorial entre veredictos rápidos y Top 3 en páginas money; eliminadas menciones a modelos que no estaban en la selección visible.
