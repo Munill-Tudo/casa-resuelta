@@ -69,7 +69,24 @@ export const articles = [
         "No medir altura, base y distancia al enchufe antes de comprar.",
         "Confundir “silencioso” de ficha comercial con ruido aceptable para sueño ligero."
       ],
-      "honestVerdict": "Para dormir, la compra razonable suele ser un ventilador estable con velocidad baja convincente y temporizador. Si tienes espacio y quieres caudal, pedestal; si el dormitorio es pequeño, torre. Paga premium solo si vas a usarlo muchas noches y aprecias ajustes finos."
+      "honestVerdict": "Para dormir, la compra razonable suele ser un ventilador estable con velocidad baja convincente y temporizador. Si tienes espacio y quieres caudal, pedestal; si el dormitorio es pequeño, torre. Paga premium solo si vas a usarlo muchas noches y aprecias ajustes finos.",
+      "conversion": {
+        "buyIf": [
+          "Vas a usarlo varias noches por semana y necesitas aire constante sin zumbido molesto.",
+          "Puedes colocarlo a distancia segura de la cama y regular altura/oscilación.",
+          "Te importa más dormir mejor que comprar el modelo más barato de la lista."
+        ],
+        "doNotBuyIf": [
+          "Solo buscas enfriar una habitación: un ventilador mueve aire, no baja grados como un aire acondicionado.",
+          "No tienes espacio para base de pedestal o una torre estable cerca de la cama.",
+          "Eres muy sensible al ruido y no vas a aceptar ningún sonido continuo."
+        ],
+        "amazonChecks": [
+          "Nivel de ruido/modo noche indicado y opiniones sobre uso real durmiendo.",
+          "Medidas de base, altura, oscilación y longitud de cable.",
+          "Vendedor, devolución y recambios o garantía de la marca."
+        ]
+      }
     }
   },
   {
@@ -142,7 +159,24 @@ export const articles = [
         "Elegir potencia justa para una estancia muy soleada o mal aislada.",
         "Olvidar espacio libre para tubo, salida trasera y almacenamiento."
       ],
-      "honestVerdict": "Un portátil es buena solución cuando no puedes instalar split y necesitas frío puntual en una estancia. Si el calor es diario y la casa es tuya, quizá convenga ahorrar para instalación fija; si es alquiler o uso estacional, prioriza montaje limpio y ruido soportable."
+      "honestVerdict": "Un portátil es buena solución cuando no puedes instalar split y necesitas frío puntual en una estancia. Si el calor es diario y la casa es tuya, quizá convenga ahorrar para instalación fija; si es alquiler o uso estacional, prioriza montaje limpio y ruido soportable.",
+      "conversion": {
+        "buyIf": [
+          "Tienes una ventana donde sacar el tubo y puedes sellarla razonablemente bien.",
+          "Necesitas frío puntual en una habitación concreta, no climatizar toda la vivienda.",
+          "Aceptas más ruido y consumo que con un split a cambio de no hacer obra."
+        ],
+        "doNotBuyIf": [
+          "No puedes evacuar aire caliente al exterior: sin tubo útil, la compra no tiene sentido.",
+          "Buscas dormir en silencio absoluto con el equipo funcionando.",
+          "La estancia es grande, muy soleada o mal aislada y esperas resultado de instalación fija."
+        ],
+        "amazonChecks": [
+          "Incluye kit de ventana compatible o tendrás que comprarlo aparte.",
+          "Frigorías/BTU, ruido declarado, dimensiones y peso.",
+          "Sistema de condensación, drenaje, devolución y plazo de entrega."
+        ]
+      }
     }
   },
   {
@@ -299,7 +333,24 @@ export const articles = [
         "Sobrecargar estantes ligeros con vajilla pesada.",
         "Confundir cocina ordenada con tener más recipientes que limpiar."
       ],
-      "honestVerdict": "En cocina pequeña, menos piezas pero mejor elegidas. Empieza por el armario o zona que más te frena cada día y mide bien. Si un organizador no mejora acceso y visibilidad, probablemente solo está moviendo el desorden."
+      "honestVerdict": "En cocina pequeña, menos piezas pero mejor elegidas. Empieza por el armario o zona que más te frena cada día y mide bien. Si un organizador no mejora acceso y visibilidad, probablemente solo está moviendo el desorden.",
+      "conversion": {
+        "buyIf": [
+          "Ya has identificado un armario o rincón que te hace perder tiempo cada día.",
+          "Has medido ancho, fondo y altura, incluida apertura de puerta o bisagra.",
+          "El organizador mejora acceso y visibilidad sin añadir más caos a la encimera."
+        ],
+        "doNotBuyIf": [
+          "Quieres comprar un pack completo sin saber qué hueco resolverá.",
+          "El problema real es exceso de objetos, no falta de cajas o estantes.",
+          "No quieres limpiar piezas adicionales o desmontarlas con frecuencia."
+        ],
+        "amazonChecks": [
+          "Medidas exactas y fotos con escala real dentro de armarios parecidos.",
+          "Material, estabilidad con peso y facilidad de limpieza.",
+          "Condiciones de devolución si no encaja en tu mueble."
+        ]
+      }
     }
   },
   {
@@ -414,7 +465,24 @@ export const articles = [
         "Elegir por número de programas cuando siempre usarás temperatura y tiempo manual.",
         "Ignorar que algunas cestas pierden antiadherente si se limpian mal."
       ],
-      "honestVerdict": "Para una persona basta una freidora compacta, pero para dos conviene margen. La mejor compra no es la de más programas: es la que cabe en tu cocina, se limpia sin pereza y permite cocinar una ración completa sin convertir la cena en turnos."
+      "honestVerdict": "Para una persona basta una freidora compacta, pero para dos conviene margen. La mejor compra no es la de más programas: es la que cabe en tu cocina, se limpia sin pereza y permite cocinar una ración completa sin convertir la cena en turnos.",
+      "conversion": {
+        "buyIf": [
+          "Cocinas para una o dos personas y quieres cenas rápidas sin encender horno grande.",
+          "Tienes hueco real para abrir el cajón y limpiar la cesta después de usarla.",
+          "Vas a usarla varias veces por semana, no como aparato ocasional."
+        ],
+        "doNotBuyIf": [
+          "Quieres cocinar para familia o hacer batch cooking: una cesta pequeña te obligará a tandas.",
+          "Tu encimera ya está saturada y no tienes dónde guardarla.",
+          "Esperas que todos los rebozados queden igual que fritura tradicional."
+        ],
+        "amazonChecks": [
+          "Capacidad útil de cesta, no solo litros anunciados.",
+          "Medidas exteriores, facilidad de limpieza y piezas aptas para lavavajillas si lo necesitas.",
+          "Garantía, devolución y disponibilidad de accesorios o recambios."
+        ]
+      }
     }
   },
   {
@@ -571,7 +639,24 @@ export const articles = [
         "No revisar altura si debe pasar bajo sofá o cama.",
         "Elegir un modelo sin recambios claros para filtros y cepillos."
       ],
-      "honestVerdict": "Si tienes mascota, compra un robot que puedas mantener y programar fácilmente. Lo valioso es que pase a diario y no se bloquee. La base de autovaciado puede compensar si hay mucho pelo, pero no sustituye retirar enredos y limpiar filtros."
+      "honestVerdict": "Si tienes mascota, compra un robot que puedas mantener y programar fácilmente. Lo valioso es que pase a diario y no se bloquee. La base de autovaciado puede compensar si hay mucho pelo, pero no sustituye retirar enredos y limpiar filtros.",
+      "conversion": {
+        "buyIf": [
+          "Hay pelo diario en suelo o alfombras y quieres reducir mantenimiento entre limpiezas profundas.",
+          "Puedes vaciar depósito, limpiar cepillos y mantener filtros con regularidad.",
+          "Te interesa programar zonas donde duerme la mascota o pasa más tiempo."
+        ],
+        "doNotBuyIf": [
+          "Esperas olvidarte por completo de aspirar o limpiar cepillos.",
+          "Tienes muchos cables, juguetes o obstáculos bajos que no vas a recoger.",
+          "Necesitas fregar manchas difíciles: el robot ayuda, pero no sustituye limpieza manual."
+        ],
+        "amazonChecks": [
+          "Tipo de cepillo, facilidad para retirar pelo y precio de recambios.",
+          "Altura del robot para pasar bajo muebles y capacidad/base de autovaciado.",
+          "Funciones de mapa, zonas prohibidas y política de devolución."
+        ]
+      }
     }
   },
   {
@@ -728,7 +813,24 @@ export const articles = [
         "No revisar tono de luz si buscas ambiente cálido.",
         "Olvidar que en invierno la autonomía puede caer bastante."
       ],
-      "honestVerdict": "Las luces solares son buena compra para ambiente o señalización sin cable, no para sustituir una instalación eléctrica potente. Elige según uso concreto y ubicación con sol. Si la terraza es sombreada, mejor valorar alternativas con enchufe o batería recargable."
+      "honestVerdict": "Las luces solares son buena compra para ambiente o señalización sin cable, no para sustituir una instalación eléctrica potente. Elige según uso concreto y ubicación con sol. Si la terraza es sombreada, mejor valorar alternativas con enchufe o batería recargable.",
+      "conversion": {
+        "buyIf": [
+          "La zona recibe varias horas de sol directo y buscas ambiente o señalización sin cable.",
+          "Tienes claro si necesitas guirnalda decorativa, baliza o foco con sensor.",
+          "Aceptas que autonomía y potencia bajen en invierno o días nublados."
+        ],
+        "doNotBuyIf": [
+          "La terraza está casi siempre en sombra o necesitas iluminación potente y constante.",
+          "Quieres sustituir una instalación eléctrica principal.",
+          "No puedes fijarlas de forma segura frente a viento o lluvia."
+        ],
+        "amazonChecks": [
+          "Protección exterior IP, batería/autonomía declarada y tipo de luz.",
+          "Modo de instalación: estaca, pared, guirnalda o sensor.",
+          "Opiniones sobre duración real después de varias semanas al exterior."
+        ]
+      }
     }
   },
   {
@@ -927,7 +1029,24 @@ export const articles = [
         "Olvidar consumibles y recambios al comparar precio inicial.",
         "Pensar que la depuradora sustituye control de pH, cloro y limpieza física."
       ],
-      "honestVerdict": "Si la piscina es pequeña y temporal, cartucho puede ser suficiente. Para más volumen, calor y uso intenso, arena suele dar menos trabajo a medio plazo. Decide por litros, uso semanal y ganas reales de mantenimiento, no solo por precio de compra."
+      "honestVerdict": "Si la piscina es pequeña y temporal, cartucho puede ser suficiente. Para más volumen, calor y uso intenso, arena suele dar menos trabajo a medio plazo. Decide por litros, uso semanal y ganas reales de mantenimiento, no solo por precio de compra.",
+      "conversion": {
+        "buyIf": [
+          "La piscina se usa a menudo y quieres reducir cambios continuos de cartucho.",
+          "Has calculado volumen aproximado y caudal necesario para mover el agua.",
+          "Tienes sitio para bomba, mangueras y mantenimiento sin dejarlo improvisado."
+        ],
+        "doNotBuyIf": [
+          "La piscina es muy pequeña, temporal y prefieres coste inicial mínimo.",
+          "No vas a controlar pH/cloro ni limpiar fondo: la depuradora no lo hace todo.",
+          "No tienes conexiones o espacio compatible con el sistema elegido."
+        ],
+        "amazonChecks": [
+          "Caudal, compatibilidad de mangueras y volumen recomendado.",
+          "Coste de arena/cartuchos, recambios y mantenimiento por temporada.",
+          "Medidas, ruido, garantía y opiniones con piscinas parecidas."
+        ]
+      }
     }
   },
   {
@@ -1042,7 +1161,24 @@ export const articles = [
         "Usar adhesivos o tacos sin revisar peso y tipo de pared.",
         "Comprar taladro si solo vas a montar muebles una vez al año."
       ],
-      "honestVerdict": "Para casa conviene un kit contenido pero decente: medir, atornillar, cortar, apretar y colgar ligero. Añade herramientas específicas solo cuando aparezca una tarea real. Menos volumen y mejor calidad suele ser mejor que un maletín interminable."
+      "honestVerdict": "Para casa conviene un kit contenido pero decente: medir, atornillar, cortar, apretar y colgar ligero. Añade herramientas específicas solo cuando aparezca una tarea real. Menos volumen y mejor calidad suele ser mejor que un maletín interminable.",
+      "conversion": {
+        "buyIf": [
+          "Quieres resolver tareas normales: medir, montar muebles, apretar, cortar o colgar ligero.",
+          "Prefieres pocas herramientas decentes y localizadas a un maletín enorme de piezas flojas.",
+          "Vas a guardar todo junto para encontrarlo rápido cuando surja una reparación."
+        ],
+        "doNotBuyIf": [
+          "Necesitas obra, electricidad o trabajos de carga: ahí conviene herramienta específica y seguridad.",
+          "Solo te atrae el número de piezas, no la calidad de destornilladores/alicates.",
+          "Ya tienes herramientas equivalentes y solo duplicarías material."
+        ],
+        "amazonChecks": [
+          "Contenido real del kit: cinta, nivel, puntas, alicates, cúter y caja.",
+          "Materiales, garantía y opiniones sobre resistencia de puntas/destornilladores.",
+          "Peso, tamaño de almacenamiento y devolución si faltan piezas."
+        ]
+      }
     }
   },
   {
@@ -1199,7 +1335,24 @@ export const articles = [
         "Tapar enchufes vecinos por elegir un diseño demasiado ancho.",
         "Automatizar calefactores u otros aparatos de alto consumo sin revisar potencia máxima."
       ],
-      "honestVerdict": "Para empezar en domótica, un enchufe simple basta si solo quieres horarios. Si tu objetivo es controlar gasto, paga por medición. La compra sensata es la que encaja con tu app actual y con la potencia del aparato, no la que más logos muestra."
+      "honestVerdict": "Para empezar en domótica, un enchufe simple basta si solo quieres horarios. Si tu objetivo es controlar gasto, paga por medición. La compra sensata es la que encaja con tu app actual y con la potencia del aparato, no la que más logos muestra.",
+      "conversion": {
+        "buyIf": [
+          "Quieres automatizar lámparas, rutinas o medir consumo sin cambiar instalación eléctrica.",
+          "Tu móvil/asistente es compatible con el ecosistema del enchufe.",
+          "Has revisado la potencia máxima del aparato que vas a conectar."
+        ],
+        "doNotBuyIf": [
+          "Quieres medir consumo pero estás mirando un modelo básico sin esa función.",
+          "Vas a conectar calefactores u otros aparatos exigentes sin comprobar amperaje.",
+          "Tu regleta o enchufe doble quedará bloqueado por el tamaño del adaptador."
+        ],
+        "amazonChecks": [
+          "Compatibilidad con Alexa, Google, HomeKit o Matter según tu caso.",
+          "Medición de consumo si la necesitas y potencia máxima soportada.",
+          "Tamaño físico, app requerida y condiciones de privacidad/garantía."
+        ]
+      }
     }
   },
   {
@@ -1524,7 +1677,24 @@ export const articles = [
         "Elegir brazos fijos si chocan con el tablero.",
         "Esperar ergonomía profesional de una silla muy barata para jornadas completas."
       ],
-      "honestVerdict": "Si trabajas muchas horas, la silla debe poder ajustarse a tu cuerpo y mesa. En presupuestos medios, prioriza lumbar, altura y respaldo transpirable. Si el uso es ocasional, puedes ahorrar; si es diario, no conviene comprar solo por apariencia."
+      "honestVerdict": "Si trabajas muchas horas, la silla debe poder ajustarse a tu cuerpo y mesa. En presupuestos medios, prioriza lumbar, altura y respaldo transpirable. Si el uso es ocasional, puedes ahorrar; si es diario, no conviene comprar solo por apariencia.",
+      "conversion": {
+        "buyIf": [
+          "Trabajas varias horas sentado y necesitas ajustar altura, lumbar y brazos.",
+          "Has medido mesa, hueco y altura para apoyar pies y antebrazos sin forzar hombros.",
+          "Prefieres una silla sobria y regulable antes que diseño llamativo."
+        ],
+        "doNotBuyIf": [
+          "Solo la usarás de forma ocasional y una silla simple ya cumple.",
+          "No puedes comprobar medidas mínimas/máximas para tu cuerpo y mesa.",
+          "Buscas ergonomía profesional de gama alta con presupuesto muy bajo."
+        ],
+        "amazonChecks": [
+          "Rango de altura, brazos, soporte lumbar y dimensiones de asiento.",
+          "Peso máximo, material del respaldo y opiniones de usuarios con jornadas largas.",
+          "Devolución, montaje y disponibilidad de piezas o garantía."
+        ]
+      }
     }
   },
   {

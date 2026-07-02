@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.3.4 — 2026-07-02
+
+- Changed: 10 páginas money incorporan bloque de decisión de compra segura: comprar si, mejor no comprar si y comprobaciones antes de abrir Amazon.
+- Changed: CTAs reforzados hacia ficha recomendada y Amazon con `rel="sponsored nofollow noopener"`, manteniendo el fallback de precio actualizado sin mostrar importes estáticos.
+- Changed: recomendaciones por perfil enlazan ahora a ficha interna y verificación de precio actualizado.
+- Verification: `npm run build` OK; 30 artículos, 14 categorías, 28 P1 y 88 fichas producto validadas; smoke local de las 10 páginas money OK.
+
 ## v1.3.3 — 2026-07-01
 
 - Changed: 10 páginas money reforzadas con decisión rápida, veredicto, criterios, errores y cierre específicos por categoría.

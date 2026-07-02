@@ -33,6 +33,23 @@ const mistakes: string[] = editorial.mistakes ?? [
   'Confundir producto viral con producto realmente útil para tu casa.'
 ];
 const honestVerdict = editorial.honestVerdict ?? 'La mejor compra será la que resuelva tu caso con el menor coste total: precio, espacio, mantenimiento y frecuencia de uso. Si el problema es ocasional, compara primero una alternativa sencilla o de coste contenido. Si lo vas a usar a diario, una opción más completa puede compensar.';
+const conversion = editorial.conversion ?? {};
+const buyIf: string[] = conversion.buyIf ?? [
+  `Tu caso coincide con ${article.caseUse.toLowerCase()}`,
+  `El producto recomendado encaja con tus medidas, frecuencia de uso y forma de guardar o mantenerlo.`,
+  'Vas a comprobar precio, vendedor, envío y condiciones actuales antes de comprar.'
+];
+const doNotBuyIf: string[] = conversion.doNotBuyIf ?? [
+  'Solo lo necesitas una vez o puedes resolverlo con algo que ya tienes.',
+  'No has medido el espacio disponible o no tienes claro dónde se usará.',
+  'La principal limitación del producto recomendado es importante para tu caso.'
+];
+const amazonChecks: string[] = conversion.amazonChecks ?? [
+  'Precio actualizado y posibles cupones o variaciones por vendedor.',
+  'Stock, plazo de entrega y política de devolución vigente.',
+  'Medidas, compatibilidad, recambios y condiciones de garantía.'
+];
+const primaryProduct = article.products[0];
 ---
 <BaseLayout title={article.title} description={article.description} canonical={article.url}>
   <div class="container article-shell">
@@ -85,6 +102,24 @@ const honestVerdict = editorial.honestVerdict ?? 'La mejor compra será la que r
       </div>
       <p class="microcopy">No publicamos precios fijos para evitar datos desactualizados. Antes de comprar, revisa en Amazon el precio vigente, stock, vendedor, envío y condiciones.</p>
 
+      <section class="purchase-fit-panel" id="decision-compra">
+        <div class="purchase-fit-header">
+          <span class="eyebrow">Decisión de compra</span>
+          <h2>Cuándo comprar y cuándo esperar</h2>
+          <p>Usa este bloque como filtro final antes de abrir Amazon: evita compras impulsivas y confirma solo lo que encaja con tu casa.</p>
+        </div>
+        <div class="purchase-fit-grid">
+          <div class="purchase-fit-card yes"><strong>Comprar si</strong><ul>{buyIf.map(item => <li>{item}</li>)}</ul></div>
+          <div class="purchase-fit-card no"><strong>Mejor no comprar si</strong><ul>{doNotBuyIf.map(item => <li>{item}</li>)}</ul></div>
+          <div class="purchase-fit-card check"><strong>Al abrir Amazon revisa</strong><ul>{amazonChecks.map(item => <li>{item}</li>)}</ul></div>
+        </div>
+        {primaryProduct && <div class="conversion-cta">
+          <div><strong>Si encaja contigo:</strong><span>lee primero la ficha de {primaryProduct.name} y después confirma precio actualizado, stock y vendedor en Amazon.</span></div>
+          <a class="btn btn-secondary" href={productUrl(primaryProduct.name)}>Ver ficha recomendada</a>
+          <a class="btn btn-primary" href={primaryProduct.url} rel="sponsored nofollow noopener" target="_blank">Comprobar en Amazon</a>
+        </div>}
+      </section>
+
       <h2 id="seleccion">Qué hemos tenido en cuenta</h2>
       <p>{selectionIntro}</p>
       <div class="criteria-grid">
@@ -92,7 +127,7 @@ const honestVerdict = editorial.honestVerdict ?? 'La mejor compra será la que r
       </div>
 
       <h2 id="perfil">Recomendaciones por perfil</h2>
-      {article.products.map(p => <section class="profile-block"><h3>{p.name}</h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si esta limitación es importante para ti: {p.limitation}</p></section>)}
+      {article.products.map(p => <section class="profile-block"><h3><a href={productUrl(p.name)}>{p.name}</a></h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si esta limitación es importante para ti: {p.limitation}</p><div class="profile-actions"><a href={productUrl(p.name)}>Leer ficha</a><a href={p.url} rel="sponsored nofollow noopener" target="_blank">Ver precio actualizado</a></div></section>)}
 
       <h2 id="errores">Errores comunes al comprar</h2>
       <ul class="check-list">
@@ -109,6 +144,7 @@ const honestVerdict = editorial.honestVerdict ?? 'La mejor compra será la que r
       <h3>En esta guía</h3>
       <a href="#resumen">Top 3 recomendado</a>
       <a href="#comparativa">Comparativa rápida</a>
+      <a href="#decision-compra">Comprar o esperar</a>
       <a href="#seleccion">Qué miramos</a>
       <a href="#perfil">Por perfil</a>
       <a href="#errores">Errores comunes</a>
