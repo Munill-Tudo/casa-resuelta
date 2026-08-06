@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { articles } from '../data/articles';
 import { categories } from '../data/categories';
-import { products } from '../data/products';
+import { buyerProfileLabel, products } from '../data/products';
 
 const categoryBySlug = new Map<string, (typeof categories)[number]>(categories.map(c => [c.slug, c]));
 const featuredGuides = articles.filter(a => a.priority === 'P1').slice(0, 8).map(article => ({
@@ -23,7 +23,7 @@ const searchIndex = [
     description: article.description,
     category: categoryBySlug.get(article.category)?.name ?? article.category,
     icon: categoryBySlug.get(article.category)?.icon ?? '🏠',
-    keywords: [article.keyword, article.caseUse, ...article.products.map(p => `${p.name} ${p.bestFor} ${p.strength}`)].join(' ')
+    keywords: [article.keyword, article.caseUse, ...article.products.map(p => `${p.name} ${buyerProfileLabel(p.bestFor)} ${p.strength}`)].join(' ')
   })),
   ...products.map(product => ({
     kind: 'product',

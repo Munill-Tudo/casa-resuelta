@@ -89,6 +89,7 @@ for (const article of articles) {
     const commercialFresh = isFreshCommercial(commercial);
     const brand = commercialFresh && commercial?.brand ? commercial.brand : inferBrand(product.name);
     const model = inferModel(product.name, brand);
+    const profileLabel = buyerProfileLabel(product.bestFor);
     const sourceArticle = { title: article.title, url: article.url, category: article.category, keyword: article.keyword };
     const existing = bySlug.get(slug);
     if (existing) {
@@ -110,7 +111,7 @@ for (const article of articles) {
       model,
       category: article.category,
       subcategory: article.keyword,
-      shortDescription: `${product.strength} Encaja especialmente como ${product.bestFor.toLowerCase()} dentro de ${article.keyword}.`,
+      shortDescription: `${product.strength} Puede encajar en un uso de ${profileLabel.toLowerCase()} dentro de ${article.keyword}.`,
       editorialSummary: `Es una opción a considerar si buscas ${article.keyword} para este caso: ${article.caseUse.toLowerCase()} La decisión debe apoyarse en su punto fuerte —${product.strength.toLowerCase()}— y en su límite principal: ${product.limitation.toLowerCase()}`,
       mainImageUrl: commercialFresh && commercial?.image?.url ? commercial.image.url : '',
       affiliateUrl: commercialFresh && commercial?.detailPageUrl ? commercial.detailPageUrl : product.url,
@@ -127,20 +128,20 @@ for (const article of articles) {
       amazonTitle: commercialFresh && commercial?.title ? commercial.title : null,
       isAvailable: commercialFresh && commercial?.availability ? commercial.availability.isAvailable ?? null : null,
       complianceNotes: commercialFresh ? freshComplianceNotes : 'Precio y disponibilidad no sincronizados por fuente compatible actualizada; se oculta precio exacto y se envía a comprobar en Amazon.',
-      bestFor: `${product.bestFor}: ${product.strength}`,
+      bestFor: `${profileLabel}: ${product.strength}`,
       notFor: product.limitation,
       mainBenefit: product.strength,
       mainObjection: product.limitation,
       ctaPrimary: 'Buscar modelo en Amazon',
       ctaSecondary: 'Ver comparativa donde aparece',
-      rankingLabel: buyerProfileLabel(product.bestFor),
+      rankingLabel: profileLabel,
       editorRecommendation: 'recomendado',
       specs: [
         { key: 'brand', label: 'Marca', value: brand },
         { key: 'model', label: 'Modelo', value: model },
         { key: 'category', label: 'Categoría', value: category?.name ?? article.category },
         { key: 'subcategory', label: 'Subcategoría', value: article.keyword },
-        { key: 'best_for', label: 'Mejor para', value: product.bestFor },
+        { key: 'best_for', label: 'Uso orientativo', value: profileLabel },
         { key: 'main_benefit', label: 'Punto fuerte', value: product.strength },
         { key: 'main_objection', label: 'Punto débil', value: product.limitation },
         { key: 'price', label: 'Precio', value: priceLabelFor(commercial) }
@@ -148,7 +149,7 @@ for (const article of articles) {
       pros: [
         product.strength,
         `Encaja bien cuando buscas ${article.keyword} para ${article.caseUse.toLowerCase()}`,
-        `Aporta una alternativa clara dentro de la comparativa: ${product.bestFor.toLowerCase()}.`
+        `Aporta una alternativa clara dentro de la comparativa: ${profileLabel.toLowerCase()}.`
       ],
       cons: [
         product.limitation,
