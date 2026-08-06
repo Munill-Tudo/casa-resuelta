@@ -74,7 +74,7 @@ const productsBySlug = {
     p('Shark WandVac 2.0', 'Diseño compacto', 'Muy manejable para tener siempre a mano.', 'Precio más alto para la capacidad que ofrece.', 'Ver precio', 'Shark WandVac 2.0')
   ],
   'luces-solares-jardin-terraza': [
-    p('Philips Hue Outdoor Lightstrip', 'Ambiente premium', 'Iluminación exterior conectada y decorativa para terrazas cuidadas.', 'Necesita ecosistema Hue y presupuesto mayor.', 'Ver precio', 'Philips Hue Outdoor Lightstrip'),
+    p('Aootek foco solar exterior con sensor', 'Seguridad en zonas de paso', 'Foco solar con sensor pensado para iluminar accesos y pasos exteriores sin cableado.', 'La potencia y autonomía dependen de horas reales de sol y de la ubicación de la placa.', 'Ver precio', 'Aootek foco solar exterior sensor'),
     p('Aigostar luces solares jardín', 'Balizamiento barato', 'Solución sencilla para marcar caminos o macetas sin cable.', 'Autonomía depende mucho del sol y la batería.', 'Ver precio', 'Aigostar luces solares jardin'),
     p('Litogo focos solares exterior con sensor', 'Seguridad puntual', 'Útiles para zonas de paso con sensor de movimiento.', 'No esperes iluminación decorativa cálida de alta gama.', 'Ver precio', 'Litogo focos solares exterior sensor')
   ],

@@ -15,45 +15,12 @@ const related = product.relatedProducts.map(productBySlug).filter(Boolean).slice
 const comparisonProducts = [product, ...related];
 const fallbackProduct = product.isAvailable === false ? related.find(alt => alt.isAvailable !== false) : undefined;
 const canonical = `${site.url}/productos/${product.slug}/`;
-const scoreRows = [
-  ['Calidad', product.scores.quality, 'Calidad percibida y solidez de la propuesta.'],
-  ['Calidad-precio', product.scores.priceValue, 'Valor relativo; pendiente de precio sincronizado.'],
-  ['Prestaciones', product.scores.features, 'Funciones útiles frente a alternativas similares.'],
-  ['Facilidad de uso', product.scores.easeOfUse, 'Uso diario sin complicaciones innecesarias.'],
-  ['Durabilidad/confianza', product.scores.durability, 'Confianza editorial según marca, tipo de producto y limitaciones.'],
-  ['Encaje de usuario', product.scores.userFit, 'Ajuste con la intención de compra principal.'],
-  ['Mantenimiento', product.scores.maintenance, 'Costes futuros, limpieza, repuestos o espacio necesario.']
-];
-const schemaJson = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: product.name,
-  description: product.shortDescription,
-  brand: { '@type': 'Brand', name: product.brand },
-  sku: product.asin !== 'dato-pendiente' ? product.asin : product.slug,
-  ...(product.mainImageUrl ? { image: product.mainImageUrl } : {}),
-  ...(product.currentPrice?.display ? { offers: {
-    '@type': 'Offer',
-    url: product.affiliateUrl,
-    priceCurrency: product.currentPrice.currency ?? 'EUR',
-    price: product.currentPrice.amount,
-    availability: product.isAvailable === false ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
-    priceValidUntil: product.commercialExpiresAt?.slice(0, 10)
-  } } : {}),
-  review: {
-    '@type': 'Review',
-    author: { '@type': 'Organization', name: site.name },
-    reviewRating: { '@type': 'Rating', ratingValue: String(product.overallScore), bestRating: '10', worstRating: '0' },
-    positiveNotes: { '@type': 'ItemList', itemListElement: product.pros.map((name, position) => ({ '@type': 'ListItem', position: position + 1, name })) },
-    negativeNotes: { '@type': 'ItemList', itemListElement: product.cons.map((name, position) => ({ '@type': 'ListItem', position: position + 1, name })) }
-  }
-};
 const priceLabel = product.currentPrice?.display ?? 'Ver precio actualizado en Amazon';
 const priceHelper = product.currentPrice?.display
 ? `Precio actualizado desde fuente compatible. Última actualización: ${product.lastPriceSyncAt ? new Date(product.lastPriceSyncAt).toLocaleString('es-ES') : 'reciente'}. Puede cambiar antes de la compra.`
 : 'No mostramos precio exacto porque no hay una fuente compatible fresca. El precio aplicable será el mostrado en Amazon en el momento de la compra.';
 ---
-<BaseLayout title={`${product.name}: análisis y opinión`} description={product.shortDescription} canonical={canonical} schemaJson={schemaJson}>
+<BaseLayout title={`${product.name}: ficha y criterio de compra`} description={product.shortDescription} canonical={canonical}>
   <div class="container product-page-shell">
     <article class="article product-page">
       <div class="breadcrumbs"><a href="/">Inicio</a> / <a href={`/${category?.slug}/`}>{category?.name}</a> / {product.name}</div>
@@ -64,12 +31,8 @@ const priceHelper = product.currentPrice?.display
         </div>
         <div class="product-hero-copy">
           <span class="pill">{product.rankingLabel}</span>
-          <h1>{product.name}: análisis y opinión</h1>
+          <h1>{product.name}: ficha y criterio de compra</h1>
           <p>{product.shortDescription}</p>
-          <div class="product-score-strip">
-            <strong>{product.overallScore}/10</strong>
-            <span>Nota editorial</span>
-          </div>
           <div class="safe-price-box">
             <strong>Precio: {priceLabel}</strong>
             <span>Disponibilidad: {product.availability}</span>
@@ -78,7 +41,7 @@ const priceHelper = product.currentPrice?.display
           </div>
           {fallbackProduct && <div class="safe-price-box fallback-box"><strong>Alternativa disponible</strong><span>{product.name} aparece sin stock en la última sincronización. Te proponemos revisar {fallbackProduct.name} como alternativa cercana.</span><a class="btn btn-secondary" href={`/productos/${fallbackProduct.slug}/`}>Ver alternativa</a></div>}
           <div class="hero-actions">
-            <a class="btn btn-primary" href={product.affiliateUrl} rel="sponsored nofollow noopener" target="_blank">{product.ctaPrimary}</a>
+            <a class="btn btn-primary" href={product.affiliateUrl} rel="noopener" target="_blank">{product.ctaPrimary}</a>
             <a class="btn btn-secondary" href={product.sourceArticles[0]?.url}>Ver comparativa</a>
           </div>
           <AffiliateNotice />
@@ -101,9 +64,9 @@ const priceHelper = product.currentPrice?.display
         {product.specs.map(spec => <div><strong>{spec.label}</strong><span>{spec.value}</span></div>)}
       </div>
 
-      <h2 id="analisis">Análisis editorial</h2>
+      <h2 id="analisis">Criterio editorial</h2>
       <p>{product.editorialSummary}</p>
-      <p>Esta ficha está pensada para decidir, no para rellenar SEO: separa recomendación, objeción, puntuación y precio seguro. Si falta un dato comercial actualizado, se marca como pendiente y no se convierte en una afirmación pública.</p>
+      <p>Esta ficha está pensada para decidir: separa el uso recomendado, la objeción principal y los datos comerciales que deben confirmarse antes de comprar. Si falta un dato actualizado, se marca como pendiente y no se convierte en una afirmación pública.</p>
 
       <h2 id="pros-contras">Pros y contras</h2>
       <div class="pros-cons-grid">
@@ -111,13 +74,7 @@ const priceHelper = product.currentPrice?.display
         <section><h3>Contras</h3><ul class="check-list con-list">{product.cons.map(con => <li>{con}</li>)}</ul></section>
       </div>
 
-      <h2 id="puntuacion">Puntuación por criterios</h2>
-      <p class="microcopy">{product.scoreExplanation}</p>
-      <div class="score-list">
-        {scoreRows.map(([label, score, comment]) => <div class="score-row"><strong>{label}</strong><span class="score-bar"><i style={`width:${Number(score) * 10}%`}></i></span><b>{score}/10</b><small>{comment}</small></div>)}
-      </div>
-
-      {related.length > 0 && <section class="related product-comparison-section"><h2>Comparativa con alternativas</h2><p class="microcopy">Tabla comparativa generada con los mismos campos estructurados de cada ficha. Si hay sincronización oficial vigente se muestra el precio recibido; si no, se manda a comprobar Amazon.</p><div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Producto</th><th>Mejor para</th><th>Nota</th><th>Precio</th><th>Disponibilidad</th><th>Marca / modelo</th><th>Punto fuerte</th><th>Punto débil</th><th>Acción</th></tr></thead><tbody>{comparisonProducts.map((alt, index) => <tr class={alt.slug === product.slug ? 'is-current' : ''}><td><a href={`/productos/${alt.slug}/`}><strong>{alt.name}</strong></a>{index === 0 && <span class="current-chip">Ficha actual</span>}</td><td>{alt.rankingLabel}</td><td><strong>{alt.overallScore}/10</strong></td><td>{alt.currentPrice?.display ?? 'Ver precio actualizado'}</td><td>{alt.availability}</td><td><span>{alt.brand}</span><small>{alt.model}</small></td><td>{alt.mainBenefit}</td><td>{alt.mainObjection}</td><td><a class="btn btn-primary" href={alt.affiliateUrl} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon</a></td></tr>)}</tbody></table></div></section>}
+      {related.length > 0 && <section class="related product-comparison-section"><h2>Comparativa con alternativas</h2><p class="microcopy">Compara el caso de uso, el punto fuerte y la limitación de cada modelo. Si no hay sincronización oficial vigente, confirma precio y disponibilidad directamente en Amazon.</p><div class="comparison-table-wrap"><table class="comparison-table"><thead><tr><th>Producto</th><th>Mejor para</th><th>Precio</th><th>Disponibilidad</th><th>Marca / modelo</th><th>Punto fuerte</th><th>Punto débil</th><th>Acción</th></tr></thead><tbody>{comparisonProducts.map((alt, index) => <tr class={alt.slug === product.slug ? 'is-current' : ''}><td><a href={`/productos/${alt.slug}/`}><strong>{alt.name}</strong></a>{index === 0 && <span class="current-chip">Ficha actual</span>}</td><td>{alt.rankingLabel}</td><td>{alt.currentPrice?.display ?? 'Comprobar en Amazon'}</td><td>{alt.availability}</td><td><span>{alt.brand}</span><small>{alt.model}</small></td><td>{alt.mainBenefit}</td><td>{alt.mainObjection}</td><td><a class="btn btn-primary" href={alt.affiliateUrl} rel="noopener" target="_blank">Buscar en Amazon</a></td></tr>)}</tbody></table></div></section>}
 
       <h2 id="opinion">Opinión final</h2>
       <p>Lo recomendaría si resuelve tu caso concreto y si, al comprobar Amazon, precio, envío, vendedor y disponibilidad siguen encajando. No lo compraría solo por aparecer en un ranking: revisa el punto débil, compáralo con las alternativas y confirma las condiciones vigentes antes de pagar.</p>
@@ -131,9 +88,8 @@ const priceHelper = product.currentPrice?.display
     <aside class="toc">
       <h3>En esta ficha</h3>
       <a href="#caracteristicas">Características</a>
-      <a href="#analisis">Análisis</a>
+      <a href="#analisis">Criterio</a>
       <a href="#pros-contras">Pros y contras</a>
-      <a href="#puntuacion">Puntuación</a>
       <a href="#opinion">Opinión final</a>
       <a href="#faq">FAQ</a>
     </aside>

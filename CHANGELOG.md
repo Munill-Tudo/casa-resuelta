@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.4.0 — 2026-08-06
+
+- Changed: las 88 fichas de producto usan modelos identificables y CTAs que abren una búsqueda del modelo en Amazon, sin depender aún de URL de referido.
+- Fixed: eliminadas puntuaciones calculadas artificialmente y el marcado `Review` asociado; las fichas muestran criterio de compra, limitaciones y verificación de precio/disponibilidad sin presentar una nota no sustentada.
+- Fixed: los enlaces se declaran como búsquedas no comisionadas mientras no exista afiliación activa; se retiran los atributos de patrocinio y las promesas de comisión.
+- Fixed: la guía de luces solares deja de incluir una tira conectada no solar; las etiquetas absolutas se sustituyen por perfiles de uso orientativos.
+- Verification: `astro check`, validador de 30 artículos/88 fichas y build estático de 147 páginas correctos; rastreo de HTML sin enlaces internos rotos, sponsorship anticipado ni claims de score/review/afiliación no sustentados.
+
 ## v1.3.6 — 2026-07-02
 
 - Changed: Amazon product-data integration documented as Creators API-first after rechecking official Amazon docs; PA API remains legacy-only until account-level access is confirmed.

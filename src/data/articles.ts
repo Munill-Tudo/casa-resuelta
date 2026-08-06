@@ -757,12 +757,12 @@ export const articles = [
     "updatedAt": "2026-06-30",
     "products": [
       {
-        "name": "Philips Hue Outdoor Lightstrip",
-        "bestFor": "Ambiente premium",
-        "strength": "Iluminación exterior conectada y decorativa para terrazas cuidadas.",
-        "limitation": "Necesita ecosistema Hue y presupuesto mayor.",
+        "name": "Aootek foco solar exterior con sensor",
+        "bestFor": "Seguridad en zonas de paso",
+        "strength": "Foco solar con sensor pensado para iluminar accesos y pasos exteriores sin cableado.",
+        "limitation": "La potencia y autonomía dependen de horas reales de sol y de la ubicación de la placa.",
         "price": "Ver precio",
-        "url": "https://www.amazon.es/s?k=Philips%20Hue%20Outdoor%20Lightstrip",
+        "url": "https://www.amazon.es/s?k=Aootek%20foco%20solar%20exterior%20sensor",
         "cta": "Ver precio en Amazon"
       },
       {
@@ -787,7 +787,7 @@ export const articles = [
     "editorial": {
       "quickDecision": "Define si quieres ambiente, paso o seguridad: cada uso exige potencia, sensor y autonomía distintos, y la placa solar necesita horas reales de sol.",
       "verdictTitle": "La ubicación solar importa más que la foto bonita.",
-      "verdictText": "Philips Hue encaja si quieres ambiente premium integrado; Aigostar tiene sentido para balizamiento barato; Litogo es mejor si buscas focos con sensor para seguridad puntual.",
+      "verdictText": "Aootek puede encajar si buscas iluminar una zona de paso con sensor; Aigostar tiene sentido para balizamiento; Litogo es una alternativa para focos solares con sensor.",
       "selectionIntro": "En luces solares hemos valorado orientación, autonomía, resistencia exterior y tipo de luz. No prometemos iluminación permanente si la terraza recibe poco sol o el invierno reduce carga.",
       "criteria": [
         [

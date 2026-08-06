@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AffiliateNotice from '../../components/AffiliateNotice.astro';
 import { categories } from '../../data/categories';
 import { articles } from '../../data/articles';
-import { productUrl } from '../../data/products';
+import { buyerProfileLabel, productUrl } from '../../data/products';
 
 export function getStaticPaths() {
   return articles.map(article => ({
@@ -82,7 +82,7 @@ const primaryProduct = article.products[0];
         {article.products.map((p, i) => <a class="top3-card" href={productUrl(p.name)}>
           <span>{`#${i + 1}`}</span>
           <strong>{p.name}</strong>
-          <small>{p.bestFor}</small>
+          <small>{buyerProfileLabel(p.bestFor)}</small>
         </a>)}
       </div>
 
@@ -92,12 +92,12 @@ const primaryProduct = article.products[0];
           <div class="rank-number">#{i + 1}</div>
           <div class="product-visual">{category.icon}</div>
           <div class="product-copy">
-            <div class="deal-meta"><span>{p.bestFor}</span><span>{p.price}</span></div>
+            <div class="deal-meta"><span>{buyerProfileLabel(p.bestFor)}</span><span>{p.price}</span></div>
             <h3><a href={productUrl(p.name)}>{p.name}</a></h3>
             <p>{p.strength}</p>
             <small>Punto débil: {p.limitation}</small>
           </div>
-          <div class="product-actions"><a class="btn btn-secondary" href={productUrl(p.name)}>Ver análisis</a><a class="btn btn-primary" href={p.url} rel="sponsored nofollow noopener" target="_blank">{p.cta ?? 'Ver precio en Amazon'}</a></div>
+          <div class="product-actions"><a class="btn btn-secondary" href={productUrl(p.name)}>Ver ficha</a><a class="btn btn-primary" href={p.url} rel="noopener" target="_blank">Buscar modelo en Amazon</a></div>
         </div>)}
       </div>
       <p class="microcopy">No publicamos precios fijos para evitar datos desactualizados. Antes de comprar, revisa en Amazon el precio vigente, stock, vendedor, envío y condiciones.</p>
@@ -116,7 +116,7 @@ const primaryProduct = article.products[0];
         {primaryProduct && <div class="conversion-cta">
           <div><strong>Si encaja contigo:</strong><span>lee primero la ficha de {primaryProduct.name} y después confirma precio actualizado, stock y vendedor en Amazon.</span></div>
           <a class="btn btn-secondary" href={productUrl(primaryProduct.name)}>Ver ficha recomendada</a>
-          <a class="btn btn-primary" href={primaryProduct.url} rel="sponsored nofollow noopener" target="_blank">Comprobar en Amazon</a>
+          <a class="btn btn-primary" href={primaryProduct.url} rel="noopener" target="_blank">Buscar modelo en Amazon</a>
         </div>}
       </section>
 
@@ -127,7 +127,7 @@ const primaryProduct = article.products[0];
       </div>
 
       <h2 id="perfil">Recomendaciones por perfil</h2>
-      {article.products.map(p => <section class="profile-block"><h3><a href={productUrl(p.name)}>{p.name}</a></h3><p><strong>Para quién sí:</strong> {p.bestFor}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si esta limitación es importante para ti: {p.limitation}</p><div class="profile-actions"><a href={productUrl(p.name)}>Leer ficha</a><a href={p.url} rel="sponsored nofollow noopener" target="_blank">Ver precio actualizado</a></div></section>)}
+      {article.products.map(p => <section class="profile-block"><h3><a href={productUrl(p.name)}>{p.name}</a></h3><p><strong>Para quién sí:</strong> {buyerProfileLabel(p.bestFor)}; usuarios que quieren resolver la necesidad principal sin comprar más de lo necesario.</p><p><strong>Para quién no:</strong> si esta limitación es importante para ti: {p.limitation}</p><div class="profile-actions"><a href={productUrl(p.name)}>Leer ficha</a><a href={p.url} rel="noopener" target="_blank">Buscar modelo en Amazon</a></div></section>)}
 
       <h2 id="errores">Errores comunes al comprar</h2>
       <ul class="check-list">

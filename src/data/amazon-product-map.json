@@ -308,11 +308,11 @@
       "reviewStatus": "needs_asin_review",
       "notes": "Añadir ASIN confirmado para sincronización Creators API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."
     },
-    "philips-hue-outdoor-lightstrip": {
-      "slug": "philips-hue-outdoor-lightstrip",
-      "name": "Philips Hue Outdoor Lightstrip",
+    "aootek-foco-solar-exterior-con-sensor": {
+      "slug": "aootek-foco-solar-exterior-con-sensor",
+      "name": "Aootek foco solar exterior con sensor",
       "asin": null,
-      "searchTerm": "Philips Hue Outdoor Lightstrip",
+      "searchTerm": "Aootek foco solar exterior sensor",
       "enabled": true,
       "reviewStatus": "needs_asin_review",
       "notes": "Añadir ASIN confirmado para sincronización Creators API. SearchItems puede proponer candidatos, pero no conviene publicar sin revisión."

@@ -13,6 +13,7 @@ for (const a of articles){
  for (const product of (a.products || [])) {
    if(!product.name || /opción equilibrada|opción económica|opción completa/i.test(product.name)) errors.push(`Producto genérico en ${key}: ${product.name}`);
    if(!product.url || !product.url.startsWith('https://www.amazon.es/')) errors.push(`URL Amazon ausente en ${key}: ${product.name}`);
+   if(!/([?&]k=|\/dp\/)/.test(product.url)) errors.push(`URL de producto no verificable en ${key}: ${product.name}`);
  }
 }
 if(articles.length !== 30) errors.push(`La V1 debe tener 30 artículos; hay ${articles.length}`);
@@ -30,6 +31,7 @@ for (const p of products) {
  if(!p.pros || p.pros.length < 3 || !p.cons || p.cons.length < 3) errors.push(`Pros/contras insuficientes: ${p.slug}`);
  if(!p.specs || p.specs.length < 8) errors.push(`Specs insuficientes: ${p.slug}`);
  if(!p.affiliateUrl || !p.affiliateUrl.startsWith('https://www.amazon.es/')) errors.push(`CTA Amazon ausente: ${p.slug}`);
+ if(!/([?&]k=|\/dp\/)/.test(p.affiliateUrl)) errors.push(`CTA no apunta a búsqueda/modelo Amazon: ${p.slug}`);
  if(!amazonProductMap.items?.[p.slug]) errors.push(`Producto sin mapa Amazon/ASIN: ${p.slug}`);
 }
 const p1=articles.filter(a=>a.priority==='P1').length;
