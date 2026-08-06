@@ -14,7 +14,7 @@ export const articles = [
     "products": [
       {
         "name": "Rowenta Turbo Silence Extreme+ VU5840",
-        "bestFor": "Mejor global",
+        "bestFor": "Uso doméstico equilibrado",
         "strength": "Ventilador de pedestal muy popular por su modo silencioso y buen caudal para dormitorio.",
         "limitation": "Ocupa más que un ventilador de torre y hay que revisar altura/espacio disponible.",
         "price": "Ver precio",
@@ -104,7 +104,7 @@ export const articles = [
     "products": [
       {
         "name": "De’Longhi Pinguino PAC N82 ECO",
-        "bestFor": "Mejor equilibrio",
+        "bestFor": "Uso doméstico equilibrado",
         "strength": "Modelo conocido de aire portátil para habitaciones medianas sin instalación fija.",
         "limitation": "Necesita salida de aire a ventana y no sustituye a un split bien instalado.",
         "price": "Ver precio",
@@ -584,7 +584,7 @@ export const articles = [
     "products": [
       {
         "name": "Roborock Q Revo",
-        "bestFor": "Mejor equilibrio mascotas",
+        "bestFor": "Hogares con mascotas",
         "strength": "Base de autovaciado/fregado y buena navegación para pelo diario.",
         "limitation": "La base ocupa espacio y requiere mantenimiento.",
         "price": "Ver precio",
